@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
 	--red: #720418;
@@ -15,6 +14,10 @@ body {
 	background-color: var(--background);
 	color: var(--text);
 	line-height: 196.19%;
+	font-optical-sizing: auto;
+	.modal-open & {
+		overflow: hidden;
+	}
 }
 
 [class*='__container'] {
@@ -30,7 +33,7 @@ body {
 	overflow-x: hidden;
 	position: relative;
 
-	&>main {
+	& > main {
 		flex: 1 1 auto;
 		min-width: 0;
 	}
@@ -119,34 +122,118 @@ body {
 
 .modal {
 	position: absolute;
-	background-color: rgba(0, 0, 0, 0.8);
-	inset: 0;
-	width: 100%;
-	height: 100%;
+	right: 0;
+	top: 0;
+	width: 10dvw;
+	height: 10dvh;
+	z-index: -1;
+	border-radius: 50%;
+	visibility: hidden;
+	transition: all 0.4s ease 0s;
+	background-color: rgba(0, 0, 0, 0.7);
+	transform: scale(0);
+
+	.modal-open & {
+		width: 100dvw;
+		height: 100dvh;
+		inset: 0;
+		border-radius: 0;
+		transform: scale(1);
+		z-index: 999;
+		visibility: visible;
+	}
 }
 
 .modal__content {
+	border: none;
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%) scale(0);
 	background-color: #fff;
 	max-width: 665px;
 	padding: 70px 35px 30px;
+	max-width: 675px;
+	width: 100%;
+	transition: all 0.3s ease 0.3s;
+	.modal-open & {
+		transform: translate(-50%, -50%) scale(1);
+	}
 }
 
-.modal__title {}
+.modal__title {
+	text-align: center;
+	margin-bottom: 50px;
+	font-size: 44px;
+	line-height: 54px;
+}
 
 .modal__form {
 	display: grid;
+	gap: 35px;
+	font-family: var(--crimson);
 }
 
-.modal__label {}
+.modal__label {
+}
 
-.modal__input {}
+.modal__input {
+	width: 100%;
+	border: 1px solid #cecece;
+	padding: 18px 10px;
+	&::placeholder {
+		padding-left: 52px;
+		font-size: 19px;
+		line-height: 25px;
+		color: #797667;
+	}
+}
 
-.modal__button {}
+.modal__button {
+	margin-top: 50px;
+	padding-block: 22px;
+	font-weight: 700;
+}
 
-.btn {}
+.btn {
+}
+
+/* ==================================== */
+
+/* Follow Section */
+
+.follow {
+	padding-bottom: 150px;
+}
+
+.follow__title {
+	margin-bottom: 30px;
+	text-align: center;
+	font-family: var();
+}
+.title {
+}
+.follow__actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 50px;
+}
+.follow__link {
+	transition: all 0.3s ease 0s;
+	transition-property: transform;
+	display: block;
+
+	svg {
+		transition: fill 0.3s ease 0s;
+		fill: var(--text);
+	}
+	&:hover {
+		transform: scale(1.1);
+		svg {
+			fill: var(--orange);
+		}
+	}
+}
 
 /* ==================================== */
