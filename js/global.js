@@ -10,7 +10,6 @@ html.addEventListener('click', e => {
 		modal.show()
 		html.classList.add('modal-open')
 	} else if (!e.target.closest('.modal__content') && html.classList.contains('modal-open')) {
-		console.log(e.target)
 		modal.close()
 		html.classList.remove('modal-open')
 	}

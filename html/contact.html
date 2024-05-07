@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/pages/contact.css">
-    <title>Document</title>
+    <title>Contact Page</title>
 </head>
 
 <body>
@@ -188,7 +188,26 @@
                 </div>
             </div>
         </footer>
+
+
+        <div class='modal'>
+            <dialog class="modal__content" id="modal">
+                <h3 class="modal__title">Join Us</h3>
+                <form class="modal__form" action="#">
+                    <label class="modal__label">
+                        <input class="modal__input" type="text" placeholder='Full name'>
+                    </label>
+                    <label class="modal__label">
+                        <input class="modal__input" type="email" placeholder='Email'>
+                    </label>
+                    <button class="modal__button btn" type="button" title="modal button">Join</button>
+                </form>
+            </dialog>
+        </div>
     </div>
+
+    <script src="../js/global.js"></script>
+    <script src="../js/contact.js"></script>
 </body>
 
 </html>
