@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+	--red: #720418;
+	--background: #fffaf5;
+	--text: #241400;
+	--orange: #e16a00;
+	--crimson: 'Crimson Text';
+	--mont: 'Montserrat';
+}
+
+body {
+	font-family: var(--mont);
+	background-color: var(--background);
+	color: var(--text);
+	line-height: 196.19%;
+}
+
+[class*='__container'] {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.wrapper {
+	min-height: 100dvh;
+	display: flex;
+	flex-direction: column;
+	overflow-x: clip;
+	position: relative;
+
+	& > main {
+		flex: 1 1 auto;
+		min-width: 0;
+	}
+}
+
+.container {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 20px;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	max-width: 200px;
+	transition: transform 0.3s ease 0s;
+	width: 100%;
+	line-height: 1;
+	&:hover {
+		transform: scale(1.1);
+	}
+
+	.logo__content {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5px;
+	}
+	.logo__heading {
+		font-size: 14px;
+		font-weight: 900;
+		line-height: 17px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.39);
+		color: #fff;
+	}
+
+	.logo__text {
+		font-size: 13px;
+		font-weight: 400;
+		padding-left: 2.5px;
+	}
+
+	&.logo_red {
+		max-width: 175px;
+		svg {
+			fill: var(--red);
+			min-width: 42px;
+		}
+
+		.logo__heading {
+			color: var(--red);
+			border-color: rgba(0, 0, 0, 0.59);
+		}
+	}
+
+	svg {
+		fill: #fff;
+	}
+}
+
+.title {
+	color: var(--text);
+	font-size: 25px;
+	font-weight: 900;
+}
+
+.link {
+	transition: all 0.3s ease 0s;
+
+	&:hover {
+		color: var(--orange);
+	}
+}
+
+.btn {
+	background-color: var(--orange);
+	color: #fff;
+	line-height: 1.1;
+}
+
+/* Modal */
+
+.modal {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-color: rgba(0, 0, 0, 0.3);
+		backdrop-filter: blur(5px);
+		z-index: 1;
+	}
+}
+.modal__title {
+}
+.modal__form {
+}
+.modal__label {
+}
+.modal__input {
+}
+.modal__button {
+}
+.btn {
+}
+
+/* ==================================== */
