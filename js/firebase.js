@@ -1,5 +1,5 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js'
-import { getDatabase, ref, set, get } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js'
+import { get, getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCmqaLqRNuNFPa610SdqidREV9nJTSLAJE',
@@ -15,6 +15,8 @@ const app = initializeApp(firebaseConfig)
 const db = getDatabase(app)
 
 /* ================================================ */
+
+/* TEST FIREBASE */
 
 const createUserObject = () => {
 	const usernameInput = document.getElementById('username')
