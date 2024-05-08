@@ -116,6 +116,15 @@ body {
 	background-color: var(--orange);
 	color: #fff;
 	line-height: 1.1;
+	transition: all 0.3s ease 0s;
+    
+	&:hover {
+		background-color: #d86501;
+		transform: scale(1.1);
+	}
+	&:active {
+		transform: scale(0.9);
+	}
 }
 
 /* Modal */
@@ -194,9 +203,6 @@ body {
 	margin-top: 50px;
 	padding-block: 22px;
 	font-weight: 700;
-}
-
-.btn {
 }
 
 /* ==================================== */
