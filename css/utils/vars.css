@@ -135,7 +135,7 @@ body {
 
 	.modal-open & {
 		width: 100dvw;
-		height: 100dvh;
+		height: 110dvh;
 		inset: 0;
 		border-radius: 0;
 		transform: scale(1);
@@ -182,6 +182,7 @@ body {
 	border: 1px solid #cecece;
 	padding: 18px 10px;
 	&::placeholder {
+		font-family: var(--crimson);
 		padding-left: 52px;
 		font-size: 19px;
 		line-height: 25px;

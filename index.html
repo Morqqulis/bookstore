@@ -263,10 +263,10 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" type="text" placeholder='Full name'>
+                        <input class="modal__input" id='username' type="text" placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" type="email" placeholder='Email'>
+                        <input class="modal__input" id='user-email' type="email" placeholder='Email' required>
                     </label>
                     <button class="modal__button btn" type="button" title="modal button">Join</button>
                 </form>
@@ -274,6 +274,9 @@
         </div>
 
     </div>
+
+
+    <script src="./js/firebase.js" type='module'></script>
     <script src="./js/global.js"></script>
     <script src="./js/home.js"></script>
 </body>

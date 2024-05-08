@@ -1,5 +1,5 @@
 'use strict'
-
+/* Modals */
 const html = document.documentElement
 
 html.addEventListener('click', e => {
@@ -24,3 +24,4 @@ const handleCloseModalByEsc = e => {
 }
 
 document.addEventListener('keydown', handleCloseModalByEsc)
+/* ===================================================================== */
