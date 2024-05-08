@@ -117,9 +117,9 @@ body {
 	color: #fff;
 	line-height: 1.1;
 	transition: all 0.3s ease 0s;
-    
+
 	&:hover {
-		background-color: #d86501;
+		background-color: #c25c03;
 		transform: scale(1.1);
 	}
 	&:active {
