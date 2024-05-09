@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link rel="stylesheet" href="./css/pages/search.css">
     <title>Search Page</title>
 </head>
@@ -68,32 +69,32 @@
 
         <main>
 
-          <section class="search">
-            <div class="container">
-                <div class="row mt-5">
-                    <div class="col-md-4">
-                        <!-- input and button column -->
-                        <div class="search-title h2 font-weight-bold">Search</div>
-                        <div class="search-form mt-4">
-                            <div class="form-group d-flex flex-column position-relative">
-                                <div class="position-absolute">
-                                    <img src="" class="mt-3 ml-3" alt="">
+            <section class="search">
+                <div class="container">
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <!-- input and button column -->
+                            <div class="search-title h2 font-weight-bold">Search</div>
+                            <div class="search-form mt-4">
+                                <div class="form-group d-flex flex-column position-relative">
+                                    <div class="position-absolute">
+                                        <img src="" class="mt-3 ml-3" alt="">
+                                    </div>
+                                    <input type="text" id="searchBook" placeholder="Enter Book Name" class="form-control form-control-lg px-5 rounded" aria-describedby="helpId">
+                                    <button id="searchBookBtn" class="btn bg-orange rounded mt-4 btn-lg text-white">Search</button>
                                 </div>
-                                <input type="text" id="searchBook" placeholder="Enter Book Name" class="form-control form-control-lg px-5 rounded" aria-describedby="helpId">
-                                <button id="searchBookBtn" class="btn bg-orange rounded mt-4 btn-lg text-white">Search</button>
+                            </div>
+                        </div>
+                        <div class="col-md-8" id="searchContent" style="display:none;">
+                            <!--  result column -->
+                            <div class="search-content mt-5">
+                                <img src="" id="bookCover" class="book-cover" alt="Book Cover">
+                                <div id="bookInfo" class="book-info book-details"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8" id="searchContent" style="display:none;">
-                        <!--  result column -->
-                        <div class="search-content mt-5">
-                            <img src="" id="bookCover" class="book-cover" alt="Book Cover">
-                            <div id="bookInfo" class="book-info book-details"></div>
-                        </div>
-                    </div>
                 </div>
-            </div>
-</section>
+            </section>
 
             <section class="follow">
                 <div class="follow__container">
