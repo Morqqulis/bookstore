@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/pages/catalog.css">
     <title>Catalog Page</title>
 </head>
@@ -68,6 +69,87 @@
         <main class='transition-fade' id="swup">
 
             <!-- Elave kod bura daxil olsun -->
+            <section class="catalog">
+                <div class="catalog__container">
+
+                    <div class='catalog__wrapper'>
+                        <div class='catalog__heading'>
+                            <h1 class="catalog__main-title title">All Books</h1>
+                            <ul class="catalog__genres">
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Detective</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Fantasy</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Horror</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Romance</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Thriller</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Mystery</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Poetry</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="catalog__first-slider slider">
+                            <div class="swiper-wrapper">
+
+                            </div>
+
+                            <div class="swiper-button-prev">
+
+                            </div>
+                            <div class="swiper-button-next">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class='catalog__wrapper'>
+                        <h3 class="catalog__title">Bestseller</h3>
+                        <div class="catalog__second-slider slider">
+                            <div class="swiper-wrapper">
+
+                            </div>
+
+                            <div class="swiper-button-prev">
+
+                            </div>
+                            <div class="swiper-button-next">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='catalog__wrapper'>
+                        <h3 class="catalog__title">New releases</h3>
+                        <div class="catalog__third-slider slider">
+                            <div class="swiper-wrapper">
+
+                            </div>
+
+                            <div class="swiper-button-prev">
+
+                            </div>
+                            <div class="swiper-button-next">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
 
 
             <section class="follow">
@@ -210,8 +292,7 @@
     </div>
 
 
-    
-    <script src="https://unpkg.com/@swup/head-plugin@2"></script>
+
     <script src="./js/global.js" type='module'></script>
     <script src="./js/catalog.js"></script>
 </body>
