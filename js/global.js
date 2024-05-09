@@ -46,7 +46,8 @@ html.addEventListener('click', e => {
 	}
 })
 
-/* ========================Close Modal by Esc============================= */
+/* ====================================================== */
+/* Close Modal by Esc */
 const handleCloseModalByEsc = e => {
 	if (e.key === 'Escape') {
 		const modal = document.getElementById('modal')
