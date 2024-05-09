@@ -52,7 +52,7 @@ body {
 }
 
 .login__input input {
-    width: 500px;
+    /* max-width: 500px; */
     width: calc(100% - 60px);
     padding: 20px 30px;
 
@@ -100,3 +100,10 @@ body {
 .welcome__login__btn__link:hover {
     color: #E16A00;
 } */
+
+/* ---------Responsive------------ */
+@media screen and (max-width: 660px) {
+    .welcome__login {
+        width: fit-content;
+    }
+}
