@@ -1,7 +1,9 @@
 'use strict'
 
 /* ======================================================================== */
-localStorage.setItem('genre', 'Frontend')
+if (!localStorage.getItem('genre')) {
+	localStorage.setItem('genre', 'Frontend')
+}
 /* Modal */
 const html = document.documentElement
 
