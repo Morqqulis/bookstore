@@ -24,7 +24,8 @@ html.addEventListener('click', e => {
 
 	/* Active navigation */
 	if (e.target.closest('.header__menu-link')) {
-		navLinks.forEach(link => link.classList.remove('header__menu-link_active'))
+		navLinks.forEach((link, index) => link.classList.remove('header__menu-link_active'))
+
 		e.target.classList.add('header__menu-link_active')
 	}
 
@@ -56,6 +57,17 @@ const handleCloseModalByEsc = e => {
 
 document.addEventListener('keydown', handleCloseModalByEsc)
 
+/* ===================================================================== */
+/* Active navigation */
+const navLinks = document.querySelectorAll('.header__menu-link')
+const currentLocation = window.location.href
+
+navLinks.forEach(link => {
+	if (link.href === currentLocation) {
+		navLinks.forEach(link => link.classList.remove('header__menu-link_active'))
+		link.classList.add('header__menu-link_active')
+	}
+})
 /* ===================================================================== */
 /* Sliders */
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
@@ -123,7 +135,6 @@ if (localStorage.getItem('genre')) {
 const firstSlider = new Swiper('.catalog__first-slider', {
 	slidesPerView: 5,
 	spaceBetween: 60,
-	loop: true,
 	navigation: {
 		nextEl: '.swiper-button-next',
 		prevEl: '.swiper-button-prev',
@@ -133,8 +144,7 @@ const firstSlider = new Swiper('.catalog__first-slider', {
 const secondSlider = new Swiper('.catalog__second-slider', {
 	slidesPerView: 5,
 	spaceBetween: 60,
-	loop: true,
-	Autoplay: {},
+
 	navigation: {
 		nextEl: '.swiper-button-next',
 		prevEl: '.swiper-button-prev',
@@ -144,11 +154,6 @@ const secondSlider = new Swiper('.catalog__second-slider', {
 const thirdSlider = new Swiper('.catalog__third-slider', {
 	slidesPerView: 5,
 	spaceBetween: 60,
-	loop: true,
-
-	Autoplay: {
-		delay: 3000,
-	},
 
 	navigation: {
 		nextEl: '.swiper-button-next',
