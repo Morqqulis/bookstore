@@ -15,6 +15,7 @@ body {
 	color: var(--text);
 	line-height: 196.19%;
 	font-optical-sizing: auto;
+
 	.modal-open & {
 		overflow: hidden;
 	}
@@ -56,6 +57,18 @@ body {
 
 	&:hover {
 		transform: scale(1.1);
+		svg {
+			fill: var(--orange);
+			transform: rotate(360deg);
+		}
+		.logo__heading {
+			color: var(--orange);
+			border-color: var(--orange);
+		}
+
+		.logo__text {
+			color: var(--orange);
+		}
 	}
 
 	.logo__content {
@@ -71,12 +84,16 @@ body {
 		line-height: 17px;
 		border-bottom: 1px solid rgba(255, 255, 255, 0.39);
 		color: #fff;
+		transition: 0.3s ease 0s;
+		transition-property: color border-color;
 	}
 
 	.logo__text {
 		font-size: 13px;
 		font-weight: 400;
 		padding-left: 2.5px;
+		transition: 0.3s ease 0s;
+		transition-property: color;
 	}
 
 	&.logo_red {
@@ -91,10 +108,24 @@ body {
 			color: var(--red);
 			border-color: rgba(0, 0, 0, 0.59);
 		}
+
+		&:hover {
+			svg {
+				fill: var(--orange);
+				transform: rotate(360deg);
+			}
+
+			.logo__heading {
+				color: var(--orange);
+				border-color: var(--orange);
+			}
+		}
 	}
 
 	svg {
 		fill: #fff;
+		transition: 0.3s ease 0s;
+		transition-property: fill transform;
 	}
 }
 
@@ -144,7 +175,7 @@ body {
 
 	.modal-open & {
 		width: 100dvw;
-		height: 110dvh;
+		height: 100dvh;
 		inset: 0;
 		border-radius: 0;
 		transform: scale(1);

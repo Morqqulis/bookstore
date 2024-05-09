@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="./css/pages/contact.css">
     <title>Contact Page</title>
 </head>
@@ -72,12 +73,12 @@
                     <h1 class="contactUs">Contact Us</h1>
                     <div class="inputContainer">
                         <div class="inputIn">
-                            <input class="fullName text" type="text" placeholder="Full Name">
-                            <input class="email text" type="text" placeholder="Email">
+                            <input class="fullName text" type="text" name='Full Name' autocomplete='name' placeholder="Full Name">
+                            <input class="email text" type="text" name='Email' autocomplete='email' placeholder="Email">
                         </div>
                         <div class="inputIn">
-                            <input class="adress text" type="text" placeholder="Adress">
-                            <input class="phone text" type="text" placeholder="Phone">
+                            <input class="adress text" type="text" name='Address' autocomplete='address-level1' placeholder="Adress">
+                            <input class="phone text" type="text" name='Phone' autocomplete='tel' placeholder="Phone">
                         </div>
                         <div class="inputBottom">
                             <textarea class="note" name="" id="" cols="30" rows="10" placeholder="Note"></textarea>
@@ -221,10 +222,10 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" type="text" placeholder='Full name' required>
+                        <input class="modal__input" type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" type="email" placeholder='Email' required>
+                        <input class="modal__input" type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
                     <button class="modal__button btn" type="button" title="modal button">Join</button>
                 </form>
@@ -232,7 +233,8 @@
         </div>
     </div>
 
-    <script src="./js/global.js"></script>
+
+    <script src="./js/global.js" type='module'></script>
     <script src="./js/contact.js"></script>
 </body>
 

@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/pages/catalog.css">
     <title>Catalog Page</title>
 </head>
@@ -68,6 +70,87 @@
         <main>
 
             <!-- Elave kod bura daxil olsun -->
+            <section class="catalog">
+                <div class="catalog__container">
+
+                    <div class='catalog__wrapper'>
+                        <div class='catalog__heading'>
+                            <h1 class="catalog__main-title title">All Books</h1>
+                            <ul class="catalog__genres">
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Detective</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Fantasy</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Horror</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Romance</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Thriller</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Mystery</button>
+                                </li>
+                                <li class="catalog__genres-item">
+                                    <button class="catalog__genres-btn" type="button" title="genre">Poetry</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="catalog__first-slider slider">
+                            <div class="swiper-wrapper">
+
+                            </div>
+
+                            <div class="swiper-button-prev">
+
+                            </div>
+                            <div class="swiper-button-next">
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class='catalog__wrapper'>
+                        <h3 class="catalog__title">Bestseller</h3>
+                        <div class="catalog__second-slider slider">
+                            <div class="swiper-wrapper">
+
+                            </div>
+
+                            <div class="swiper-button-prev">
+
+                            </div>
+                            <div class="swiper-button-next">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='catalog__wrapper'>
+                        <h3 class="catalog__title">New releases</h3>
+                        <div class="catalog__third-slider slider">
+                            <div class="swiper-wrapper">
+
+                            </div>
+
+                            <div class="swiper-button-prev">
+
+                            </div>
+                            <div class="swiper-button-next">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
 
 
             <section class="follow">
@@ -112,6 +195,7 @@
             </section>
 
         </main>
+
         <footer class='footer'>
             <div class="footer__container">
                 <div class="footer__top">
@@ -198,18 +282,21 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" type="text" placeholder='Full name' required>
+                        <input class="modal__input" type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" type="email" placeholder='Email' required>
+                        <input class="modal__input" type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
                     <button class="modal__button btn" type="button" title="modal button">Join</button>
                 </form>
             </dialog>
         </div>
+
     </div>
 
-    <script src="./js/global.js"></script>
+
+
+    <script src="./js/global.js" type='module'></script>
     <script src="./js/catalog.js"></script>
 </body>
 

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="./css/pages/home.css">
     <title>Home | Library Book store</title>
 </head>
@@ -73,7 +74,7 @@
                             <h1 class="hero__title">Books from A to Z</h1>
                             <p class="hero__text">In our store you can find a book for every taste. A large assortment.
                                 Nice prices. Interesting stories.</p>
-                            <a class="hero__link" href='#'>Go to catalog</a>
+                            <a class="hero__link" href='catalog.html'>Go to catalog</a>
                         </div>
                         <img class="hero__image" src="./images/home/hero-img.jpeg" alt="Hero section image" width='691' height='488'>
                     </div>
@@ -84,15 +85,15 @@
                 <div class="catalog__container">
                     <h2 class="catalog__title title">Catalog</h2>
                     <div class="catalog__actions">
-                        <a class="catalog__link" href="#">Books</a>
-                        <a class="catalog__link" href="#">Electronic books</a>
-                        <a class="catalog__link" href="#">Audiobooks</a>
-                        <a class="catalog__link" href="#">Toys, creativity</a>
-                        <a class="catalog__link" href="#">Book accessories</a>
-                        <a class="catalog__link" href="#">Notepads</a>
-                        <a class="catalog__link" href="#">Board games</a>
-                        <a class="catalog__link" href="#">Present</a>
-                        <a class="catalog__link" href="#">Stock</a>
+                        <a class="catalog__link" href="./catalog.html">Books</a>
+                        <a class="catalog__link" href="./catalog.html">Electronic books</a>
+                        <a class="catalog__link" href="./catalog.html">Audiobooks</a>
+                        <a class="catalog__link" href="./catalog.html">Toys, creativity</a>
+                        <a class="catalog__link" href="./catalog.html">Book accessories</a>
+                        <a class="catalog__link" href="./catalog.html">Notepads</a>
+                        <a class="catalog__link" href="./catalog.html">Board games</a>
+                        <a class="catalog__link" href="./catalog.html">Present</a>
+                        <a class="catalog__link" href="./catalog.html">Stock</a>
                     </div>
                 </div>
             </section>
@@ -267,10 +268,10 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" id='username' type="text" placeholder='Full name' required>
+                        <input class="modal__input" type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" id='user-email' type="email" placeholder='Email' required>
+                        <input class="modal__input" type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
                     <button class="modal__button btn" type="button" title="modal button">Join</button>
                 </form>
@@ -281,8 +282,8 @@
 
 
     <script src="./js/firebase.js" type='module'></script>
-    <script src="./js/global.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="./js/global.js" type='module'></script>
+    <script src="./js/home.js" type='module'></script>
 </body>
 
 </html>
