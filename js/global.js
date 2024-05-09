@@ -1,7 +1,8 @@
 'use strict'
 
 /* ======================================================================== */
-if (!localStorage.getItem('genre')) {
+const localGenre = localStorage.getItem('genre')
+if (!localGenre) {
 	localStorage.setItem('genre', 'Frontend')
 }
 /* Modal */
