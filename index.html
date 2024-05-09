@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="./css/pages/home.css">
     <title>Home | Library Book store</title>
 </head>
@@ -64,7 +65,7 @@
                 </nav>
             </div>
         </header>
-        <main class='transition-fade' id="swup">
+        <main>
 
             <section class="hero">
                 <div class="hero__container">
@@ -267,10 +268,10 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" id='username' type="text" placeholder='Full name' required>
+                        <input class="modal__input" type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" id='user-email' type="email" placeholder='Email' required>
+                        <input class="modal__input" type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
                     <button class="modal__button btn" type="button" title="modal button">Join</button>
                 </form>
