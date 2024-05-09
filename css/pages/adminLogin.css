@@ -55,6 +55,8 @@ body {
     width: 500px;
     width: calc(100% - 60px);
     padding: 20px 30px;
+
+    font-size: 15px;
 }
 
 .welcome__login__btn__wrapper {
@@ -87,3 +89,14 @@ body {
     background-color: #ccc;
     color: #E16A00;
 }
+
+.welcome__login__btn__link {
+    text-decoration: none;
+    /* color: #fff; */
+    height: 100%;
+    width: 100%;
+}
+/* 
+.welcome__login__btn__link:hover {
+    color: #E16A00;
+} */
