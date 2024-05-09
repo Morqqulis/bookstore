@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="./css/pages/home.css">
     <title>Home | Library Book store</title>
 </head>
@@ -36,16 +37,16 @@
                             <a class="header__menu-link header__menu-link_active link" href="index.html">Home</a>
                         </li>
                         <li class="header__menu-item">
-                            <a class="header__menu-link link" href="/html/catalog.html">Catalog</a>
+                            <a class="header__menu-link link" href="./catalog.html">Catalog</a>
                         </li>
                         <li class="header__menu-item">
-                            <a class="header__menu-link link" href="/html/about.html">About Store</a>
+                            <a class="header__menu-link link" href="./about.html">About Store</a>
                         </li>
                         <li class="header__menu-item">
-                            <a class="c" href="/html/contact.html">Contact Us</a>
+                            <a class="header__menu-link link" href="./contact.html">Contact Us</a>
                         </li>
                         <li class="header__menu-item">
-                            <a class="header__menu-link link" href="/html/search.html">Search</a>
+                            <a class="header__menu-link link" href="./search.html">Search</a>
                         </li>
                     </ul>
 
@@ -73,7 +74,7 @@
                             <h1 class="hero__title">Books from A to Z</h1>
                             <p class="hero__text">In our store you can find a book for every taste. A large assortment.
                                 Nice prices. Interesting stories.</p>
-                            <a class="hero__link" href='#'>Go to catalog</a>
+                            <a class="hero__link" href='catalog.html'>Go to catalog</a>
                         </div>
                         <img class="hero__image" src="./images/home/hero-img.jpeg" alt="Hero section image" width='691' height='488'>
                     </div>
@@ -84,15 +85,15 @@
                 <div class="catalog__container">
                     <h2 class="catalog__title title">Catalog</h2>
                     <div class="catalog__actions">
-                        <a class="catalog__link" href="#">Books</a>
-                        <a class="catalog__link" href="#">Electronic books</a>
-                        <a class="catalog__link" href="#">Audiobooks</a>
-                        <a class="catalog__link" href="#">Toys, creativity</a>
-                        <a class="catalog__link" href="#">Book accessories</a>
-                        <a class="catalog__link" href="#">Notepads</a>
-                        <a class="catalog__link" href="#">Board games</a>
-                        <a class="catalog__link" href="#">Present</a>
-                        <a class="catalog__link" href="#">Stock</a>
+                        <a class="catalog__link" href="./catalog.html">Books</a>
+                        <a class="catalog__link" href="./catalog.html">Electronic books</a>
+                        <a class="catalog__link" href="./catalog.html">Audiobooks</a>
+                        <a class="catalog__link" href="./catalog.html">Toys, creativity</a>
+                        <a class="catalog__link" href="./catalog.html">Book accessories</a>
+                        <a class="catalog__link" href="./catalog.html">Notepads</a>
+                        <a class="catalog__link" href="./catalog.html">Board games</a>
+                        <a class="catalog__link" href="./catalog.html">Present</a>
+                        <a class="catalog__link" href="./catalog.html">Stock</a>
                     </div>
                 </div>
             </section>
@@ -207,16 +208,16 @@
                             <h6 class="footer__category-name">Popular</h6>
                             <ul class="footer__list">
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Programming</a>
+                                    <a class="footer__list-link link" href="#">Programming</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Books for children</a>
+                                    <a class="footer__list-link link" href="#">Books for children</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Psychology</a>
+                                    <a class="footer__list-link link" href="#">Psychology</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Business</a>
+                                    <a class="footer__list-link link" href="#">Business</a>
                                 </li>
                             </ul>
                         </div>
@@ -224,13 +225,13 @@
                             <h6 class="footer__category-name">Cash</h6>
                             <ul class="footer__list">
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Delivery</a>
+                                    <a class="footer__list-link link" href="#">Delivery</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Payment</a>
+                                    <a class="footer__list-link link" href="#">Payment</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">About the store</a>
+                                    <a class="footer__list-link link" href="#">About the store</a>
                                 </li>
                             </ul>
                         </div>
@@ -238,13 +239,13 @@
                             <h6 class="footer__category-name">Help</h6>
                             <ul class="footer__list">
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Contacts</a>
+                                    <a class="footer__list-link link" href="#">Contacts</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Purchase returns</a>
+                                    <a class="footer__list-link link" href="#">Purchase returns</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Buyer help</a>
+                                    <a class="footer__list-link link" href="#">Buyer help</a>
                                 </li>
                             </ul>
                         </div>
@@ -267,10 +268,10 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" id='username' type="text" placeholder='Full name' required>
+                        <input class="modal__input" type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" id='user-email' type="email" placeholder='Email' required>
+                        <input class="modal__input" type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
                     <button class="modal__button btn" type="button" title="modal button">Join</button>
                 </form>
@@ -281,8 +282,8 @@
 
 
     <script src="./js/firebase.js" type='module'></script>
-    <script src="./js/global.js"></script>
-    <script src="./js/home.js"></script>
+    <script src="./js/global.js" type='module'></script>
+    <script src="./js/home.js" type='module'></script>
 </body>
 
 </html>
