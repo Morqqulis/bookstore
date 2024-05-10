@@ -10,14 +10,16 @@
     padding-top: 110px;
     padding-bottom: 330px;
 }
+
 *{
     font-family: Montserrat, sans-serif;
 }
 
 .flex-container{
+    display: flex; 
    justify-content: space-between;
    gap: 20px;
-display: flex; 
+
 
 }
 
