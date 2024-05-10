@@ -1,4 +1,3 @@
-
 body {
     margin: 0;
     padding: 0;
@@ -11,7 +10,7 @@ body {
     /* height: 1200px; */
 }
 
-.admin__welcome__header{
+.admin__welcome__header {
     padding: 60px 26px 0 26px;
     margin-bottom: 70px;
 }
@@ -96,6 +95,7 @@ body {
     height: 100%;
     width: 100%;
 }
+
 /* 
 .welcome__login__btn__link:hover {
     color: #E16A00;
