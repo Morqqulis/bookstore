@@ -2,31 +2,20 @@
 @import '../utils/reset.css';
 
 /* ==================================== */
-* {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
 
-body {
-  padding: 0;
-  margin: 0;
-}
-
+/* -----------Container Css--------- */
 .myContainer {
   display: flex;
   /* flex-wrap: wrap; */
 }
-
+/* ---------------------Side bar Css--------- */
 .side-bar {
   background-color: #720418;
   color: #fff;
-  width: 355px;
-  /* min-height: 100vh; */
+  width: 320px;
+  min-height: 100vh;
   padding-top: 20px;
-  height: 3575px;
+min-height: 100vh;
 }
 
 .headerAdminPanel {
@@ -49,7 +38,7 @@ body {
   margin-left: 15px;
   padding: 12px;
 }
-
+/* -------------------Section Content Css----------- */
 .content-section {
   flex: 1;
   padding: 20px;
@@ -111,7 +100,7 @@ body {
 
 #searchBook {
   padding: 12px 10px !important;
-  /* margin-bottom: 50px; */
+  margin-bottom: 50px;
   width: 300px;
   text-indent: 20px;
   color: rgb(118, 117, 117);
@@ -166,7 +155,7 @@ body {
     width: 100px;
   }
 }
-/* -------------Join Us, Books, Contact------------------ */
+/* -------------Join Us, Books, Contact for table css------------------ */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -176,29 +165,32 @@ table .headTr{
   color:#fff;
 }
 tr th {
-  padding: 10px;
-  border: 1px solid #ddd;
-  text-align: left;
+ padding: 10px;
 font-size: 14px;
 font-weight: 400;
 line-height: 16px;
 letter-spacing: 0.01em;
-text-align: center;
-
+text-align: left;
 }
+
 [class*="class"] {
   margin: 20px;
+  margin-top: 150px;
 }
 h2 {
   margin-top: 0;
 }
-/* For responsive */
+
+table{
+  margin-top: 25px;
+}
+/*-----------Table For responsive */
 @media screen and (max-width: 768px) {
   table {
       overflow-x: auto;
   }
 }
-.classJoinUs, .classBooks, .classContact table {
-  box-shadow: 0px 10px 30px 0px #9EA8BD4F;
-}
+
+
+
 
