@@ -23,7 +23,6 @@
 }
 .footer__category-name {
 	font-size: 18px;
-	font-weight: 400;
 }
 .footer__list {
 }
@@ -31,7 +30,6 @@
 }
 .footer__lint-link {
 	font-size: 13px;
-	font-weight: 400;
 }
 .link {
 }
@@ -42,4 +40,20 @@
 .footer__copyright {
 	font-size: 12px;
 	line-height: 196.19%;
+}
+
+.footer__call {
+	display: grid;
+	gap: 12px;
+}
+.footer__call-link {
+	font-weight: 900;
+}
+.footer__call-btn {
+	border: 1px solid var(--orange);
+	text-align: left;
+	padding: 4px 7px;
+	font-weight: 14px;
+	font-weight: 500;
+	color: var(--orange);
 }

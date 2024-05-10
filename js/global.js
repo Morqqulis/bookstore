@@ -1,11 +1,51 @@
 'use strict'
-/* Modals */
+/* ================================================ */
+/* FIREBASE SETTINGS */
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js'
+import { get, getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js'
+
+const firebaseConfig = {
+	apiKey: 'AIzaSyCmqaLqRNuNFPa610SdqidREV9nJTSLAJE',
+	authDomain: 'bookstore-15c2d.firebaseapp.com',
+	databaseURL: 'https://bookstore-15c2d-default-rtdb.europe-west1.firebasedatabase.app',
+	projectId: 'bookstore-15c2d',
+	storageBucket: 'bookstore-15c2d.appspot.com',
+	messagingSenderId: '610199393566',
+	appId: '1:610199393566:web:caad5c49151a984655650f',
+	measurementId: 'G-JHX0N9BE3M',
+}
+const app = initializeApp(firebaseConfig)
+const db = getDatabase(app)
+
+/* ================================================ */
+/* FIREBASE SET & GET FUNCTIONS */
+export const setDBData = (path, data) => set(ref(db, path), data)
+
+export const getDBData = path => get(ref(db, path)).then(snapshot => console.log(snapshot.val()))
+
+/* ======================================================================== */
+/* Get data from API */
+
+export const getBooks = async (genre = '', id = '') => {
+	const URL = 'https://www.googleapis.com/books/v1/volumes'
+	const res = await fetch(genre ? `${URL}?q=${genre}` : id ? `${URL}?q=${id}` : `${URL}?q=Frontend`)
+
+	if (!res.ok) {
+		throw new Error(`Error: ${res.status}`)
+	}
+
+	return await res.json()
+}
+
+/* ====================================================== */
+/* Open || Close Modal */
 const html = document.documentElement
 
 html.addEventListener('click', e => {
 	const modalTrigger = e.target.closest('.header__action')
 	const modal = document.getElementById('modal')
 
+	/* Open || Close Modal */
 	if (e.target == modalTrigger) {
 		modal.show()
 		html.classList.add('modal-open')
@@ -13,8 +53,13 @@ html.addEventListener('click', e => {
 		modal.close()
 		html.classList.remove('modal-open')
 	}
+
+	/* Set active genre */
+	if (e.target.closest('.catalog__link')) localStorage.setItem('genre', e.target.textContent)
 })
 
+/* ====================================================== */
+/* Close Modal by Esc */
 const handleCloseModalByEsc = e => {
 	if (e.key === 'Escape') {
 		const modal = document.getElementById('modal')
@@ -24,4 +69,38 @@ const handleCloseModalByEsc = e => {
 }
 
 document.addEventListener('keydown', handleCloseModalByEsc)
+
+/* ===================================================================== */
+/* Add joined user */
+const addJoinedUser = () => {
+	const nameValue = document.getElementById('join-name').value
+	const emailValue = document.getElementById('join-email').value
+	const submitBtn = document.querySelector('.modal__button')
+
+	if (nameValue === '' || emailValue === '') return
+
+	setDBData('/users', {
+		name: nameValue,
+		email: emailValue,
+		id: Date.now(),
+		role: 'user',
+	})
+}
+
+document.querySelector('.modal__button').addEventListener('click', e => {
+	e.preventDefault()
+	addJoinedUser()
+	getDBData('/users')
+})
+
+/* ===================================================================== */
+/* Active navigation */
+const navLinks = document.querySelectorAll('.header__menu-link')
+
+navLinks.forEach(link => {
+	if (link.href === window.location.href) {
+		navLinks.forEach(link => link.classList.remove('header__menu-link_active'))
+		link.classList.add('header__menu-link_active')
+	}
+})
 /* ===================================================================== */

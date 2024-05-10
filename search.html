@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/pages/contact.css">
-    <title>Contact Page</title>
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./css/pages/search.css">
+    <title>Search Page</title>
 </head>
 
 <body>
@@ -13,7 +15,7 @@
         <header class='header'>
             <div class='header__container'>
                 <nav class="header__nav">
-                    <a class="header__logo logo logo_red" href="../index.html">
+                    <a class="header__logo logo logo_red" href="index.html">
                         <svg class='logo__icon' width="42.000000" height="42.000000" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <clipPath id="clip1_245">
                                 <rect id="books-stack-of-three 2" width="42.000000" height="42.000000" transform="translate(0.000000 -0.999878)" fill="white" fill-opacity="0" />
@@ -33,10 +35,10 @@
                     </a>
                     <ul class="header__menu">
                         <li class="header__menu-item">
-                            <a class="header__menu-link header__menu-link_active link" href="#">Home</a>
+                            <a class="header__menu-link header__menu-link_active link" href="index.html">Home</a>
                         </li>
                         <li class="header__menu-item">
-                            <a class="header__menu-link link" href="./contact.html">Catalog</a>
+                            <a class="header__menu-link link" href="./catalog.html">Catalog</a>
                         </li>
                         <li class="header__menu-item">
                             <a class="header__menu-link link" href="./about.html">About Store</a>
@@ -50,7 +52,7 @@
                     </ul>
 
                     <div class="header__actions">
-                        <button class="header__action" type='button' type="action title" title="action button">
+                        <button class="header__action" type='button' title="button">
                             <svg class='header__action-icon' width="17.000000" height="21.000000" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <defs />
@@ -64,11 +66,35 @@
                 </nav>
             </div>
         </header>
+
         <main>
-            <!-- Elave kod bura daxil olsun -->
 
-
-
+            <section class="search">
+                <div class="container">
+                    <div class="row mt-5">
+                        <div class="col-md-4">
+                            <!-- input and button column -->
+                            <div class="search-title h2 font-weight-bold">Search</div>
+                            <div class="search-form mt-4">
+                                <div class="form-group d-flex flex-column position-relative">
+                                    <div class="position-absolute">
+                                        <img src="" class="mt-3 ml-3" alt="">
+                                    </div>
+                                    <input type="text" id="searchBook" placeholder="Enter Book Name" class="form-control form-control-lg px-5 rounded" aria-describedby="helpId">
+                                    <button id="searchBookBtn" class="btn bg-orange rounded mt-4 btn-lg text-white">Search</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8" id="searchContent" style="display:none;">
+                            <!--  result column -->
+                            <div class="search-content mt-5">
+                                <img src="" id="bookCover" class="book-cover" alt="Book Cover">
+                                <div id="bookInfo" class="book-info book-details"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <section class="follow">
                 <div class="follow__container">
@@ -111,11 +137,13 @@
                 </div>
             </section>
 
+
         </main>
+
         <footer class='footer'>
             <div class="footer__container">
                 <div class="footer__top">
-                    <a class="footer__logo logo" href="../index.html">
+                    <a class="footer__logo logo" href="#">
                         <svg class='logo__icon' width="42.000000" height="42.000000" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                             <clipPath id="clip1_245">
                                 <rect id="books-stack-of-three 2" width="42.000000" height="42.000000" transform="translate(0.000000 -0.999878)" fill="white" fill-opacity="0" />
@@ -138,16 +166,16 @@
                             <h6 class="footer__category-name">Popular</h6>
                             <ul class="footer__list">
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Programming</a>
+                                    <a class="footer__list-link link" href="#">Programming</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Books for children</a>
+                                    <a class="footer__list-link link" href="#">Books for children</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Psychology</a>
+                                    <a class="footer__list-link link" href="#">Psychology</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Business</a>
+                                    <a class="footer__list-link link" href="#">Business</a>
                                 </li>
                             </ul>
                         </div>
@@ -155,13 +183,13 @@
                             <h6 class="footer__category-name">Cash</h6>
                             <ul class="footer__list">
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Delivery</a>
+                                    <a class="footer__list-link link" href="#">Delivery</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Payment</a>
+                                    <a class="footer__list-link link" href="#">Payment</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">About the store</a>
+                                    <a class="footer__list-link link" href="#">About the store</a>
                                 </li>
                             </ul>
                         </div>
@@ -169,16 +197,20 @@
                             <h6 class="footer__category-name">Help</h6>
                             <ul class="footer__list">
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Contacts</a>
+                                    <a class="footer__list-link link" href="#">Contacts</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Purchase returns</a>
+                                    <a class="footer__list-link link" href="#">Purchase returns</a>
                                 </li>
                                 <li class="footer__list-item">
-                                    <a class="footer__lint-link link" href="#">Buyer help</a>
+                                    <a class="footer__list-link link" href="#">Buyer help</a>
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                    <div class="footer__call">
+                        <a class="footer__call-link link" href="tel:+380713391626">+38 (071) 339-16-26</a>
+                        <button class="footer__call-btn" type="button" title='call'>Request a call</button>
                     </div>
                 </div>
                 <div class="footer__bottom">
@@ -195,19 +227,21 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" type="text" placeholder='Full name' required>
+                        <input class="modal__input" id='join-name' type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" type="email" placeholder='Email' required>
+                        <input class="modal__input" id='join-email' type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
-                    <button class="modal__button btn" type="button" title="modal button">Join</button>
+                    <button class="modal__button btn" type="button" title="modal button" disabled>Join</button>
                 </form>
             </dialog>
         </div>
     </div>
 
-    <script src="../js/global.js"></script>
-    <script src="../js/contact.js"></script>
+
+
+    <script src="./js/global.js" type='module'></script>
+    <script src="./js/search.js" type='module'></script>
 </body>
 
 </html>
