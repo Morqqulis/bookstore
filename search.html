@@ -227,12 +227,12 @@
                 <h3 class="modal__title">Join Us</h3>
                 <form class="modal__form" action="#">
                     <label class="modal__label">
-                        <input class="modal__input" type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
+                        <input class="modal__input" id='join-name' type="text" name='FullName' autocomplete='name' placeholder='Full name' required>
                     </label>
                     <label class="modal__label">
-                        <input class="modal__input" type="email" name='Email' autocomplete='email' placeholder='Email' required>
+                        <input class="modal__input" id='join-email' type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
-                    <button class="modal__button btn" type="button" title="modal button">Join</button>
+                    <button class="modal__button btn" type="button" title="modal button" disabled>Join</button>
                 </form>
             </dialog>
         </div>
@@ -241,7 +241,7 @@
 
 
     <script src="./js/global.js" type='module'></script>
-    <script src="./js/search.js"></script>
+    <script src="./js/search.js" type='module'></script>
 </body>
 
 </html>
