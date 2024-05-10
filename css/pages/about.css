@@ -17,8 +17,8 @@
 .flex-container{
    justify-content: space-between;
    gap: 20px;
-    display: flex;
-  
+display: flex; 
+
 }
 
 .flex-child-left {   
@@ -28,7 +28,7 @@
 }
 
 h1{
-    size: 36px;
+    font-size: 36px;
     line-height:2px;
     font-weight: 900;
     }
