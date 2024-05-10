@@ -18,56 +18,30 @@ const db = getDatabase(app)
 
 /* TEST FIREBASE */
 
-const createUserObject = () => {
-	const usernameInput = document.getElementById('username')
-	const emailInput = document.getElementById('user-email')
+const addJoinedUser = () => {
+	const nameValue = document.getElementById('join-name').value
+	const emailValue = document.getElementById('join-email').value
+    const submitBtn = document.querySelector('.modal__button')
+    
+	if (nameValue === '' || emailValue === '') return
 
-	const username = usernameInput.value.trim()
-	const email = emailInput.value.trim()
 
-	if (!username || !email) {
-		console.error('Username or email cannot be empty.')
-		return null
-	}
 
-	return {
-		username,
-		email,
+	setDBData('/users', {
+		name: nameValue,
+		email: emailValue,
+		id: Date.now(),
 		role: 'user',
-	}
+	})
 }
 
 document.querySelector('.modal__button').addEventListener('click', e => {
-	e.preventDefault()
+	// e.preventDefault()
+	addJoinedUser()
 
-	const user = createUserObject()
-	if (!user) return
-
-	set(ref(db, 'users/'), user)
-		.then(() => {
-			console.log('User data written successfully!')
-			usernameInput.value = ''
-			emailInput.value = ''
-		})
-		.catch(error => {
-			console.error('Error writing data:', error)
-		})
+	getDBData('/users')
 })
 
-const getData = () => {
-	let users = []
+export const setDBData = (path, data) => set(ref(db, path), data)
 
-	get(ref(db, 'users/'))
-		.then(snapshot => {
-			if (snapshot.exists()) {
-				users.push(snapshot.val())
-				console.log(users)
-			} else {
-				console.log('No data available')
-			}
-		})
-		.catch(error => {
-			console.error(error)
-		})
-}
-// getData()
+export const getDBData = path => get(ref(db, path)).then(snapshot => console.log(snapshot.val()))
