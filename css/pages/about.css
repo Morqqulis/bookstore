@@ -5,27 +5,28 @@
 @import '../layout/footer.css';
 /* ==================================== */
 
+
+.about {
+    padding-top: 110px;
+    padding-bottom: 330px;
+}
 *{
     font-family: Montserrat, sans-serif;
 }
 
 .flex-container{
-    margin-top: 90px;
-    margin-left: 275px;
-    margin-right: 57px;
-    margin-bottom: 300px;
+   justify-content: space-between;
+   gap: 20px;
     display: flex;
   
 }
 
-.flex-child-left{
-    flex: 1;
-    
+.flex-child-left {   
 }
-.flex-child-right{
-    margin-right: 180px;
-    margin-top: 40px;
+
+.flex-child-right {
 }
+
 h1{
     size: 36px;
     line-height:2px;
