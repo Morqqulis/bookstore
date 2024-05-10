@@ -59,7 +59,7 @@ body {
   background-color: #FFFAF5;
 }
 
-.content-section__header {
+.content-section__admin {
   display: flex;
   justify-content: end;
 }
@@ -101,7 +101,6 @@ body {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-
   box-shadow: 0px 4px 18px 0px #9EA8BD4F;
 }
 
@@ -126,7 +125,7 @@ body {
 }
 
 .buttonDiv button {
-  cursor: pointer;      
+  cursor: pointer;
   padding: 6px 18px;
   border-radius: 16px;
   background-color: #FF8B00;
@@ -153,7 +152,6 @@ body {
   color: #fff;
   padding: 12px 24px;
   border-radius: 10px;
-
   transition: all .2s linear;
 }
 
@@ -164,7 +162,43 @@ body {
 
 /* ---------Responsive------------ */
 @media screen and (max-width: 700px) {
- .headerAdminPanel svg {
+  .headerAdminPanel svg {
     width: 100px;
- }
+  }
 }
+/* -------------Join Us, Books, Contact------------------ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table .headTr{
+  background-color: #720418;
+  color:#fff;
+}
+tr th {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+font-size: 14px;
+font-weight: 400;
+line-height: 16px;
+letter-spacing: 0.01em;
+text-align: center;
+
+}
+[class*="class"] {
+  margin: 20px;
+}
+h2 {
+  margin-top: 0;
+}
+/* For responsive */
+@media screen and (max-width: 768px) {
+  table {
+      overflow-x: auto;
+  }
+}
+.classJoinUs, .classBooks, .classContact table {
+  box-shadow: 0px 10px 30px 0px #9EA8BD4F;
+}
+

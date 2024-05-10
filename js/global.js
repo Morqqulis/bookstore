@@ -1,16 +1,49 @@
 'use strict'
+/* ================================================ */
+/* FIREBASE SETTINGS */
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js'
+import { get, getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js'
+
+const firebaseConfig = {
+	apiKey: 'AIzaSyCmqaLqRNuNFPa610SdqidREV9nJTSLAJE',
+	authDomain: 'bookstore-15c2d.firebaseapp.com',
+	databaseURL: 'https://bookstore-15c2d-default-rtdb.europe-west1.firebasedatabase.app',
+	projectId: 'bookstore-15c2d',
+	storageBucket: 'bookstore-15c2d.appspot.com',
+	messagingSenderId: '610199393566',
+	appId: '1:610199393566:web:caad5c49151a984655650f',
+	measurementId: 'G-JHX0N9BE3M',
+}
+const app = initializeApp(firebaseConfig)
+const db = getDatabase(app)
+
+/* ================================================ */
+/* FIREBASE SET & GET FUNCTIONS */
+export const setDBData = (path, data) => set(ref(db, path), data)
+
+export const getDBData = path => get(ref(db, path)).then(snapshot => console.log(snapshot.val()))
 
 /* ======================================================================== */
-if (!localStorage.getItem('genre')) {
-	localStorage.setItem('genre', 'Frontend')
+/* Get data from API */
+
+export const getBooks = async (genre = '', id = '') => {
+	const URL = 'https://www.googleapis.com/books/v1/volumes'
+	const res = await fetch(genre ? `${URL}?q=${genre}` : id ? `${URL}?q=${id}` : `${URL}?q=Frontend`)
+
+	if (!res.ok) {
+		throw new Error(`Error: ${res.status}`)
+	}
+
+	return await res.json()
 }
-/* Modal */
+
+/* ====================================================== */
+/* Open || Close Modal */
 const html = document.documentElement
 
 html.addEventListener('click', e => {
 	const modalTrigger = e.target.closest('.header__action')
 	const modal = document.getElementById('modal')
-	const genreButtons = document.querySelectorAll('.catalog__genres-btn')
 
 	/* Open || Close Modal */
 	if (e.target == modalTrigger) {
@@ -22,20 +55,7 @@ html.addEventListener('click', e => {
 	}
 
 	/* Set active genre */
-	if (e.target.closest('.catalog__link')) {
-		localStorage.setItem('genre', e.target.textContent)
-	}
-
-	if (e.target.closest('.catalog__genres-btn')) {
-		genreButtons.forEach(button => button.classList.remove('catalog__genres-btn_active'))
-		e.target.classList.add('catalog__genres-btn_active')
-		localStorage.setItem('genre', e.target.textContent)
-
-		appendSliderItems()
-		firstSlider.update()
-		secondSlider.update()
-		thirdSlider.update()
-	}
+	if (e.target.closest('.catalog__link')) localStorage.setItem('genre', e.target.textContent)
 })
 
 /* ====================================================== */
@@ -51,6 +71,29 @@ const handleCloseModalByEsc = e => {
 document.addEventListener('keydown', handleCloseModalByEsc)
 
 /* ===================================================================== */
+/* Add joined user */
+const addJoinedUser = () => {
+	const nameValue = document.getElementById('join-name').value
+	const emailValue = document.getElementById('join-email').value
+	const submitBtn = document.querySelector('.modal__button')
+
+	if (nameValue === '' || emailValue === '') return
+
+	setDBData('/users', {
+		name: nameValue,
+		email: emailValue,
+		id: Date.now(),
+		role: 'user',
+	})
+}
+
+document.querySelector('.modal__button').addEventListener('click', e => {
+	e.preventDefault()
+	addJoinedUser()
+	getDBData('/users')
+})
+
+/* ===================================================================== */
 /* Active navigation */
 const navLinks = document.querySelectorAll('.header__menu-link')
 
@@ -60,98 +103,4 @@ navLinks.forEach(link => {
 		link.classList.add('header__menu-link_active')
 	}
 })
-/* ===================================================================== */
-/* Sliders */
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
-const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
-
-const getBooks = async genre => {
-	const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${genre}`)
-
-	if (!res.ok) {
-		throw new Error(`Error: ${res.status}`)
-	}
-
-	const booksData = await res.json()
-
-	return booksData
-}
-
-const appendGenre = genre => {
-	const genreList = document.querySelector('.catalog__genres')
-	genreList.insertAdjacentHTML(
-		'afterbegin',
-		`
-        <li class="catalog__genres-item">
-            <button class="catalog__genres-btn catalog__genres-btn_active" type="button" title="genre">${genre}</button>
-        </li>
-    `
-	)
-}
-
-const appendSliderItems = () => {
-	getBooks(localStorage.getItem('genre')).then(data => {
-		data?.items.forEach(item => {
-			if (item.volumeInfo.imageLinks) {
-				swiperWrappers.forEach(swiperWrapper => {
-					swiperWrapper.insertAdjacentHTML(
-						'afterbegin',
-						`
-                            <div class="swiper-slide catalog__slide">
-                                <div class="catalog__card">
-                                    <img class="catalog__card-img" src="${item.volumeInfo.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
-                                    <div class="catalog__card-info">
-                                        <span class="catalog__card-name">${item.volumeInfo.title}</span>
-                                        <span class="catalog__card-author">${item.volumeInfo.authors}</span>
-                                        <button class="catalog__card-btn btn" type="button" title="read">READ MORE</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `
-					)
-				})
-			}
-		})
-	})
-
-	swiperWrappers.forEach(wrapper => (wrapper.innerHTML = ''))
-}
-
-if (document.querySelector('.catalog__genres')) {
-	appendGenre(localStorage.getItem('genre'))
-}
-
-if (localStorage.getItem('genre')) {
-	appendSliderItems()
-}
-
-const firstSlider = new Swiper('.catalog__first-slider', {
-	slidesPerView: 5,
-	spaceBetween: 60,
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-})
-
-const secondSlider = new Swiper('.catalog__second-slider', {
-	slidesPerView: 5,
-	spaceBetween: 60,
-
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-})
-
-const thirdSlider = new Swiper('.catalog__third-slider', {
-	slidesPerView: 5,
-	spaceBetween: 60,
-
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-})
-
 /* ===================================================================== */

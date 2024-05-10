@@ -3,3 +3,38 @@
 @import '../layout/header.css';
 @import '../layout/footer.css';
 /* ==================================== */
+
+.about {
+	padding-top: 110px;
+	padding-bottom: 330px;
+}
+
+.flex-container {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.flex-child-left {
+}
+
+.flex-child-right {
+}
+
+.about__title {
+	font-size: 36px;
+	line-height: 2px;
+	font-weight: 900;
+	margin-bottom: 11px;
+}
+
+.leftside {
+	font-weight: 400;
+	max-width: 686px;
+	word-wrap: break-word;
+	font-size: 18px;
+	font-weight: 400px;
+	line-height: 35.31px;
+	font-family: Montserrat;
+	background: #fffaf5;
+}

@@ -234,6 +234,12 @@ body {
 	margin-top: 50px;
 	padding-block: 22px;
 	font-weight: 700;
+	/* &:hover {
+		transform: scale(1);
+		color: #d16302;
+		color: #fff;
+	} */
+
 }
 
 /* ==================================== */
