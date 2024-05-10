@@ -1,5 +1,8 @@
 'use strict'
 
+import { getBooks } from './global.js'
+/* ================================================ */
+
 const html = document.documentElement
 
 html.addEventListener('click', e => {
@@ -24,18 +27,6 @@ html.addEventListener('click', e => {
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
 const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
 
-const getBooks = async genre => {
-	const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${genre}`)
-
-	if (!res.ok) {
-		throw new Error(`Error: ${res.status}`)
-	}
-
-	const booksData = await res.json()
-
-	return booksData
-}
-
 const appendGenre = genre => {
 	const genreList = document.querySelector('.catalog__genres')
 	genreList.insertAdjacentHTML(
@@ -48,10 +39,20 @@ const appendGenre = genre => {
 	)
 }
 
+// Определение функции setBookId
+window.setBookId = function (id) {
+	localStorage.setItem('bookId', id)
+	window.location.href = 'book.html'
+}
+
+// Ваша функция appendSliderItems
 const appendSliderItems = () => {
+	const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
+
 	getBooks(localStorage.getItem('genre')).then(data => {
 		data?.items.forEach(item => {
 			if (item.volumeInfo.imageLinks) {
+				/* Append Sliders */
 				swiperWrappers.forEach(swiperWrapper => {
 					swiperWrapper.insertAdjacentHTML(
 						'afterbegin',
@@ -62,7 +63,7 @@ const appendSliderItems = () => {
                                     <div class="catalog__card-info">
                                         <span class="catalog__card-name">${item.volumeInfo.title}</span>
                                         <span class="catalog__card-author">${item.volumeInfo.authors}</span>
-                                        <button class="catalog__card-btn btn" type="button" title="read">READ MORE</button>
+                                        <button class="catalog__card-btn btn" onclick="setBookId('${item.id}')" type="button" title="read">READ MORE</button>
                                     </div>
                                 </div>
                             </div>
@@ -72,9 +73,10 @@ const appendSliderItems = () => {
 			}
 		})
 	})
-
 	swiperWrappers.forEach(wrapper => (wrapper.innerHTML = ''))
 }
+
+// Здесь можно вызвать appendSliderItems или другие функции, которые могут использовать setBookId
 
 if (document.querySelector('.catalog__genres')) {
 	appendGenre(localStorage.getItem('genre'))

@@ -24,10 +24,17 @@ export const setDBData = (path, data) => set(ref(db, path), data)
 export const getDBData = path => get(ref(db, path)).then(snapshot => console.log(snapshot.val()))
 
 /* ======================================================================== */
+/* Get data from API */
 
-/* Set default genre */
-if (!localStorage.getItem('genre')) {
-	localStorage.setItem('genre', 'Frontend')
+export const getBooks = async (genre = '', id = '') => {
+	const URL = 'https://www.googleapis.com/books/v1/volumes'
+	const res = await fetch(genre ? `${URL}?q=${genre}` : id ? `${URL}?q=${id}` : `${URL}?q=Frontend`)
+
+	if (!res.ok) {
+		throw new Error(`Error: ${res.status}`)
+	}
+
+	return await res.json()
 }
 
 /* ====================================================== */
@@ -37,7 +44,6 @@ const html = document.documentElement
 html.addEventListener('click', e => {
 	const modalTrigger = e.target.closest('.header__action')
 	const modal = document.getElementById('modal')
-	
 
 	/* Open || Close Modal */
 	if (e.target == modalTrigger) {
