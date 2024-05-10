@@ -2,3 +2,169 @@
 @import '../utils/reset.css';
 
 /* ==================================== */
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.myContainer {
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+.side-bar {
+  background-color: #720418;
+  color: #fff;
+  width: 355px;
+  /* min-height: 100vh; */
+  padding-top: 20px;
+  height: 3575px;
+}
+
+.headerAdminPanel {
+  /* margin-top: 93px;
+  margin-left: 32px; */
+  text-align: center;
+}
+
+.side-bar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-bar li {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  gap: 10px;
+  margin-left: 15px;
+  padding: 12px;
+}
+
+.content-section {
+  flex: 1;
+  padding: 20px;
+  margin-right: 20px;
+  background-color: #fffaf5;
+  margin-bottom: 100px;
+  background-color: #FFFAF5;
+}
+
+.content-section__header {
+  display: flex;
+  justify-content: end;
+}
+
+.adminUser {
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.search__book__body {
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  box-shadow: 0px 4px 18px 0px #9EA8BD4F;
+}
+
+.search-button {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+#searchBook {
+  padding: 12px 10px !important;
+  /* margin-bottom: 50px; */
+  width: 300px;
+  text-indent: 20px;
+  color: rgb(118, 117, 117);
+  border-radius: 15px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(186, 178, 178);
+  border-image: initial;
+  padding: 3px;
+  outline: none;
+}
+
+.buttonDiv button {
+  cursor: pointer;      
+  padding: 6px 18px;
+  border-radius: 16px;
+  background-color: #FF8B00;
+  transition: all .2s linear;
+}
+
+.buttonDiv button:hover {
+  background-color: #dd7b04;
+}
+
+.buttonDiv button svg {
+  width: 17px;
+  height: 23.11px;
+}
+
+.add__book__form {
+  background-color: #fff;
+  padding: 16px 30px 30px 30px;
+}
+
+.addBookddDatabase {
+  width: 100%;
+  background-color: #FF8B00;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+
+  transition: all .2s linear;
+}
+
+.addBookddDatabase:hover {
+  background-color: #dd7b04;
+  color: #fff;
+}
+
+/* ---------Responsive------------ */
+@media screen and (max-width: 700px) {
+ .headerAdminPanel svg {
+    width: 100px;
+ }
+}
