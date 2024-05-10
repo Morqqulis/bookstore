@@ -1,8 +1,7 @@
 'use strict'
 
 /* ======================================================================== */
-const localGenre = localStorage.getItem('genre')
-if (!localGenre) {
+if (!localStorage.getItem('genre')) {
 	localStorage.setItem('genre', 'Frontend')
 }
 /* Modal */
@@ -20,13 +19,6 @@ html.addEventListener('click', e => {
 	} else if (!e.target.closest('.modal__content') && html.classList.contains('modal-open')) {
 		modal.close()
 		html.classList.remove('modal-open')
-	}
-
-	/* Active navigation */
-	if (e.target.closest('.header__menu-link')) {
-		navLinks.forEach((link, index) => link.classList.remove('header__menu-link_active'))
-
-		e.target.classList.add('header__menu-link_active')
 	}
 
 	/* Set active genre */
@@ -61,10 +53,9 @@ document.addEventListener('keydown', handleCloseModalByEsc)
 /* ===================================================================== */
 /* Active navigation */
 const navLinks = document.querySelectorAll('.header__menu-link')
-const currentLocation = window.location.href
 
 navLinks.forEach(link => {
-	if (link.href === currentLocation) {
+	if (link.href === window.location.href) {
 		navLinks.forEach(link => link.classList.remove('header__menu-link_active'))
 		link.classList.add('header__menu-link_active')
 	}
@@ -75,12 +66,13 @@ import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs
 const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
 
 const getBooks = async genre => {
-	const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${genre}`)
+	const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${genre}`)
 
-	if (!response.ok) {
-		throw new Error(`Error: ${response.status}`)
+	if (!res.ok) {
+		throw new Error(`Error: ${res.status}`)
 	}
-	const booksData = await response.json()
+
+	const booksData = await res.json()
 
 	return booksData
 }
@@ -99,7 +91,7 @@ const appendGenre = genre => {
 
 const appendSliderItems = () => {
 	getBooks(localStorage.getItem('genre')).then(data => {
-		data.items.forEach(item => {
+		data?.items.forEach(item => {
 			if (item.volumeInfo.imageLinks) {
 				swiperWrappers.forEach(swiperWrapper => {
 					swiperWrapper.insertAdjacentHTML(
