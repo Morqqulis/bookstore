@@ -10,8 +10,11 @@
 
 <body>
     <div class="wrapper">
+
         <main>
+
             <div class="myContainer">
+                 <!--Side Bar-->
                 <div class="side-bar">
                     <div class='side-bar__pages'>
                         <div class="headerAdminPanel">
@@ -57,8 +60,7 @@
                         </ul>
                     </div>
                 </div>
-
-
+                           <!--Main Content-->
                 <section class='main-section'>
                     <div class="content-section__admin">
                         <div class="adminUser">
@@ -67,7 +69,6 @@
                         </div>
                     </div>
                     <div class="content-section">
-
                         <h2 class="title add-book__title">Add Book</h2>
                         <span class="search-heading">Search Book</h3>
 
@@ -93,6 +94,7 @@
                             </div>
 
 
+                            <!--Add Book Form-->
                             <section class="formDiv">
                                 <h2 class="title formDiv__title">Book Form</h2>
                                 <form class="add__book__form" onsubmit="submitForm(event)">
@@ -111,7 +113,7 @@
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea name="textarea" id="description"
-                                                  placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                                            placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="book-type">Book Type</label>
@@ -121,12 +123,7 @@
                                 </form>
                             </section>
 
-
-
-
-
-
-                            <!-- about store starts-->
+                            <!-- About Store Starts-->
                             <section class='about-store'>
                                 <h3 class='about-store__title title'>About Store</h3>
 
@@ -134,19 +131,21 @@
 
                                     <label class='about-store__label'>
                                         Title
-                                        <input class='about-store__input' type="text" id="aboutStore" placeholder="About Store">
+                                        <input class='about-store__input' type="text" id="aboutStore"
+                                            placeholder="About Store">
                                     </label>
 
                                     <label class='about-store__label' for="bookImageUrl">
                                         Book Image Url
-                                        <input class='about-store__input' type="text" id="bookImageUrl" placeholder="https://image:url/">
+                                        <input class='about-store__input' type="text" id="bookImageUrl"
+                                            placeholder="https://image:url/">
                                     </label>
 
 
                                     <label class='about-store__label' for="descriptionFor">
                                         Description
                                         <textarea class='about-store__textarea' name="" id="descriptionFor"
-                                                  placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                                            placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
                                     </label>
 
                                     <button class='about-store__button' id="addInfoButton">About info add</button>
@@ -154,9 +153,7 @@
                                 </form>
                             </section>
 
-
-
-                            <!-- about store ends-->
+                             <!--Join Us-->
                             <section class="join-us">
                                 <h3 class="join-us__title title">Join Us</h3>
                                 <div class="join-us__content admin-flex-content">
@@ -190,7 +187,7 @@
                                 </div>
                             </section>
 
-
+                            <!--Books-->
                             <section class="books">
                                 <h3 class="books__title title">Books</h3>
                                 <div class="book__content admin-flex-content">
@@ -203,7 +200,7 @@
                                     <div class="book__column">
                                         <span class="admin-heading-red">Title</span>
                                         <ul class="admin-list admin-list__title">
-
+                                           <li></li>
                                         </ul>
                                     </div>
                                     <div class="book__column">
@@ -227,45 +224,45 @@
                                 </div>
                             </section>
 
-                            <!-- <div id="idContact" class="classContact">
-                                <h2>Contact Us</h2>
-                                <table>
-                                    <thead>
-                                        <tr class="headTr">
-                                            <th>#</th>
-                                            <th>Full Name</th>
-                                            <th>Address</th>
-                                            <th>Email Address</th>
-                                            <th>Phone Number</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="contactDatabase">
-                                        <tr>
-                                            <th>1</th>
-                                            <th>Audrey Mckinney</th>
-                                            <th>1473 Ranchview Dr undefined San Jose</th>
-                                            <th>lisa.watson@example.com</th>
-                                            <th>(209) 555-0104</th>
-                                        </tr>
-                                        <tr>
-                                            <th>2</th>
-                                            <th>Savannah Howard</th>
-                                            <th>8445 Railroad St undefined Tampa</th>
-                                            <th>jeff.brown@example.com</th>
-                                            <th>(201) 555-0124</th>
-                                        </tr>
-                                        <tr>
-                                            <th>3</th>
-                                            <th>Morris Cooper</th>
-                                            <th>8584 W Sherman Dr undefined Desoto</th>
-                                            <th>terra.hamilton@example.com</th>
-                                            <th>(505) 555-0125</th>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> -->
-                    </div>
+                                     <!--Contact Us-->
+                            <section class="contacts">
+                                <h3 class="contacts__title title">Contact Us</h3>
+                                <div class="contact__content admin-flex-content">
+                                    <div class="contact__column">
+                                        <span class="admin-heading-red">#</span>
+                                        <ul class="admin-list admin-list__number">
+                                            <li>1</li>
+                                        </ul>
+                                    </div>
+                                    <div class="contact__column">
+                                        <span class="admin-heading-red">Full Name</span>
+                                        <ul class="admin-list admin-list__title">
+                                            <li>Audrey Mckinney</li>
+                                        </ul>
+                                    </div>
+                                    <div class="contact__column">
+                                        <span class="admin-heading-red">Address</span>
+                                        <ul class="admin-list admin-list__description">
+                                            <li>1473 Ranchview Dr undefined San Jose</li>
+                                        </ul>
+                                    </div>
+                                    <div class="contact__column">
+                                        <span class="admin-heading-red">Email Address</span>
+                                        <ul class="admin-list admin-list__category">
+                                            <li>lisa.watson@example.com</li>
+                                        </ul>
+                                    </div>
+                                    <div class="contact__column">
+                                        <span class="admin-heading-red">Phone Number</span>
+                                        <ul class="admin-list admin-list__author">
+                                            <li>(209) 555-0104</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
                 </section class='main-section'>
+
             </div>
 
         </main>
