@@ -21,7 +21,7 @@ const db = getDatabase(app)
 /* FIREBASE SET & GET FUNCTIONS */
 export const setDBData = (path, data) => set(ref(db, path), data)
 
-export const getDBData = path => get(ref(db, path)).then(snapshot => console.log(snapshot.val()))
+export const getDBData = path => get(ref(db, path))
 
 /* ======================================================================== */
 /* Get data from API */
@@ -87,7 +87,6 @@ document.addEventListener('keydown', handleCloseModalByEsc)
 html.addEventListener('click', e => {
 	const modalTrigger = e.target.closest('.header__action')
 	const modal = document.getElementById('modal')
-	console.log(e.target)
 	/* Open || Close Modal */
 	if (e.target == modalTrigger) {
 		modal.show()
@@ -106,6 +105,9 @@ html.addEventListener('click', e => {
 	}
 })
 
-document.querySelector('.modal').addEventListener('input', e => {
-	checkInputs()
-})
+const modal = document.querySelector('.modal')
+if (modal) {
+	addEventListener('input', e => {
+		checkInputs()
+	})
+}

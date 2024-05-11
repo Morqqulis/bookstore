@@ -3,9 +3,41 @@
 
 /* ==================================== */
 
+/* Global */
+
+.admin-heading-red {
+	width: 100%;
+	display: flex;
+	box-shadow: inset 0px -1px 0px 0px rgb(230, 231, 233);
+	background-color: rgb(114, 4, 24);
+	color: #fff;
+	justify-content: center;
+	align-items: center;
+	padding: 16px 22.5px;
+	font-size: 14px;
+}
+/* minmax(54px, fit-content) 200px minmax(259px, 426px) 259px 229px */
+.admin-flex-content {
+	display: grid;
+	grid-template-columns: 0.1fr 0.5fr 1fr 0.5fr 0.3fr;
+
+	text-align: center;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.admin-list {
+	background-color: #fff;
+	color: rgb(5, 17, 26);
+	font-size: 14px;
+	line-height: 115%;
+	width: 100%;
+}
+
 /* -----------Container Css--------- */
 .myContainer {
 	display: flex;
+	min-height: 100vh;
 	/* flex-wrap: wrap; */
 }
 /* ---------------------Side bar Css--------- */
@@ -13,15 +45,27 @@
 	background-color: #720418;
 	color: #fff;
 	width: 320px;
-	min-height: 100vh;
 	padding-top: 20px;
-	min-height: 100vh;
+	position: relative;
+}
+.side-bar__pages {
+	position: fixed;
+	left: 0;
+	top: 0;
+	padding-left: 35px;
+	padding-top: 93px;
+
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
 }
 
 .headerAdminPanel {
-	/* margin-top: 93px;
-  margin-left: 32px; */
 	text-align: center;
+	margin-bottom: 8px;
+	padding: 10px 0;
 }
 
 .side-bar ul {
@@ -35,20 +79,19 @@
 	font-size: 18px;
 	font-weight: 400;
 	gap: 10px;
-	margin-left: 15px;
-	padding: 12px;
 }
 /* -------------------Section Content Css----------- */
-.content-section {
+.main-section {
 	flex: 1;
-	padding: 20px;
-	margin-right: 20px;
-	background-color: #fffaf5;
-	margin-bottom: 100px;
+	padding: 48px 90px 100px 33px;
 	background-color: #fffaf5;
 }
 
+.content-section {
+}
+
 .content-section__admin {
+	margin-bottom: 48px;
 	display: flex;
 	justify-content: end;
 }
@@ -62,16 +105,42 @@
 
 .title {
 	font-size: 24px;
-	margin-top: 60px;
-	margin-bottom: 20px;
 	font-weight: 600;
+}
+/* -------------------Add Book Css----------- */
+.formDiv {
+	margin-bottom: 160px;
+	padding-block: 30px;
+}
+.formDiv__title {
+	margin-bottom: 18px;
+}
+.add-book__title {
+	margin-bottom: 26px;
 }
 
 .search__book__body {
-	height: fit-content;
 	display: flex;
 	justify-content: flex-start;
 	gap: 8px;
+	svg {
+		transition: stroke 0.3s ease 0s;
+		stroke: #f2f2f2;
+	}
+	button {
+		height: 40px;
+		width: 63px;
+		border-radius: 50px;
+		background-color: #ff8b00;
+		transition: all 0.3s ease 0s;
+		&:hover {
+			background-color: #adadad;
+			transform: scale(1.1);
+			svg {
+				stroke: var(--red);
+			}
+		}
+	}
 }
 
 .form-group {
@@ -81,6 +150,7 @@
 .form-group label {
 	display: block;
 	margin-bottom: 5px;
+	font-size: 16px;
 }
 
 .form-group input,
@@ -102,7 +172,7 @@
 
 .page__button {
 	font-size: 18px;
-	padding: 0 10px;
+	padding: 7px 0 18px 0;
 	display: flex;
 	align-items: center;
 	gap: 12px;
@@ -126,6 +196,14 @@
 	border-image: initial;
 	padding: 3px;
 	outline: none;
+	transition: all 0.3s ease 0s;
+	&:focus {
+		border: 1px solid #ff8b00;
+		background-color: rgb(199, 199, 199);
+		&::placeholder {
+			color: rgb(255, 0, 0);
+		}
+	}
 }
 
 .buttonDiv button {
@@ -179,29 +257,104 @@ table .headTr {
 	background-color: #720418;
 	color: #fff;
 }
-tr th {
-	padding: 10px;
-	font-size: 14px;
-	font-weight: 400;
-	line-height: 16px;
-	letter-spacing: 0.01em;
-	text-align: left;
-}
 
-[class*='class'] {
-	margin: 20px;
-	margin-top: 150px;
-}
-h2 {
-	margin-top: 0;
-}
-
-table {
-	margin-top: 25px;
-}
 /*-----------Table For responsive */
 @media screen and (max-width: 768px) {
 	table {
 		overflow-x: auto;
 	}
+}
+
+/* =================================================== */
+textarea {
+	min-height: 90px;
+}
+/* About Store */
+.about-store {
+}
+.about-store__title {
+	margin-bottom: 17px;
+}
+.about-store__form {
+	padding: 30px;
+	padding-top: 15px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	background: #fff;
+	border-radius: 20px;
+	margin-bottom: 126px;
+}
+.about-store__label {
+	font-size: 16px;
+	line-height: 19px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.about-store__input {
+	padding: 12px 10px;
+	border: 1px solid rgb(226, 230, 238);
+	border-radius: 10px;
+	box-shadow: 0px 4px 18px 0px rgba(158, 168, 189, 0.31);
+	background: #fff;
+}
+.about-store__textarea {
+	padding: 12px 10px;
+	border: 1px solid rgb(226, 230, 238);
+	border-radius: 10px;
+	box-shadow: 0px 4px 18px 0px rgba(158, 168, 189, 0.31);
+	background: #fff;
+	min-height: 38px;
+}
+.about-store__button {
+	font-size: 14px;
+	background-color: #ff8b00;
+	width: 100%;
+	padding-block: 12px;
+	border-radius: 10px;
+	color: #fff;
+	transition: all 0.3s ease 0s;
+	&:hover {
+		background-color: #dd7b04;
+	}
+}
+
+/* =====================Join-us============================== */
+
+.join-us {
+	margin-bottom: 136px;
+}
+
+.join-us__title {
+	margin-bottom: 5px;
+	font-size: 30px;
+	font-weight: 600;
+	line-height: 196%;
+}
+
+.join-us__content {
+	max-width: 512px;
+}
+
+.join-us__column {
+	width: 100%;
+}
+
+.join-us__column-name {
+}
+
+.join-us__list {
+}
+
+.join-us__list-item {
+	padding: 16px 44px;
+	border-bottom: 2px solid #ccc;
+}
+
+.books__box {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
 }
