@@ -53,15 +53,16 @@ const handleCloseModalByEsc = e => {
 
 /* ===================================================================== */
 /* Add joined user */
-
+const modalInputs = document.querySelectorAll('.modal__input')
 const checkInputs = () => {
 	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
 	document.getElementById('join-submit').disabled = !(nameValue && emailValue)
 }
 
-document.getElementById('join-name').addEventListener('input', checkInputs)
-document.getElementById('join-email').addEventListener('input', checkInputs)
-
+if (modalInputs) {
+	document.getElementById('join-name').addEventListener('input', checkInputs)
+	document.getElementById('join-email').addEventListener('input', checkInputs)
+}
 const addJoinedUser = () => {
 	const modal = document.getElementById('modal')
 	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())

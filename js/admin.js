@@ -21,8 +21,11 @@ const setBookInfo = () => {
 	const listCategory = document.querySelector('.admin-list__category')
 	const listAuthor = document.querySelector('.admin-list__author')
 
+	// Data elde etmek:
 	getDBData('/books').then(snapshot => {
 		const data = snapshot.val()
+		// data = firebasedeki books.
+
 		const arr = Object.values(data)
 
 		listNumber.innerHTML = ''
@@ -63,3 +66,26 @@ const setAboutStoreToDB = () => {
 }
 
 document.querySelector('.about-store__button').addEventListener('click', setAboutStoreToDB)
+
+// Data elde etmek:  Istifade qaydasi
+// '/aboutStore' = yani firebase deki 'aboutStore'
+// data - yani firebasedeki 'aboutStore'-un melumati.
+
+// getDBData('/aboutStore').then(snapshot => {
+// 	const data = snapshot.val()
+// 	console.log(data)
+// })
+
+// Data elave etmek: Istifade qaydasi
+// '/books' = yani firebasede  'books' yaratmag.
+
+// const kitab = {
+//     title: 'Frontend',
+//     description: 'text',
+//     category: 'Frontend',
+//     image: './images/admin_Images/books/1.jpg',
+//     author: 'Jon Snow',
+// }
+
+
+// setDBData('/books', kitab)
