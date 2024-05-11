@@ -53,16 +53,19 @@ const handleCloseModalByEsc = e => {
 
 /* ===================================================================== */
 /* Add joined user */
-const modalInputs = document.querySelectorAll('.modal__input')
+
 const checkInputs = () => {
 	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
 	document.getElementById('join-submit').disabled = !(nameValue && emailValue)
 }
 
+<<<<<<< HEAD
 // if (modalInputs) {
 // 	document.getElementById('join-name').addEventListener('input', checkInputs)
 // 	document.getElementById('join-email').addEventListener('input', checkInputs)
 // }
+=======
+>>>>>>> 5d41aa6cceb09b392a08d3e9b76ffa81659944b8
 const addJoinedUser = () => {
 	const modal = document.getElementById('modal')
 	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
@@ -117,5 +120,12 @@ html.addEventListener('click', e => {
 	/* Add joined user */
 	if (e.target.closest('#join-submit')) {
 		addJoinedUser()
+	}
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+	if (html.classList.contains('.modal-open')) {
+		document.getElementById('join-name').addEventListener('input', checkInputs)
+		document.getElementById('join-email').addEventListener('input', checkInputs)
 	}
 })
