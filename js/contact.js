@@ -1,4 +1,5 @@
 import { setDBData } from "./global.js";
+const contactsData = []
 
 const setContactsData = () => {
     const name = document.querySelector('.fullName').value 
@@ -16,4 +17,10 @@ const setContactsData = () => {
         phone,
         note
     }
+    
+    contactsData.push(userContactData)
+
+    setDBData('/contacts', contactsData)
 }
+
+document.querySelector('.sendButton').addEventListener('click', setContactsData)
