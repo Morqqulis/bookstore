@@ -21,7 +21,7 @@ const db = getDatabase(app)
 /* FIREBASE SET & GET FUNCTIONS */
 export const setDBData = (path, data) => set(ref(db, path), data)
 
-export const getDBData = path => get(ref(db, path)).then(snapshot => console.log(snapshot.val()))
+export const getDBData = path => get(ref(db, path))
 
 /* ======================================================================== */
 /* Get data from API */
@@ -38,60 +38,37 @@ export const getBooks = async (genre = '', id = '') => {
 }
 
 /* ====================================================== */
-/* Open || Close Modal */
-const html = document.documentElement
-
-html.addEventListener('click', e => {
-	const modalTrigger = e.target.closest('.header__action')
-	const modal = document.getElementById('modal')
-
-	/* Open || Close Modal */
-	if (e.target == modalTrigger) {
-		modal.show()
-		html.classList.add('modal-open')
-	} else if (!e.target.closest('.modal__content') && html.classList.contains('modal-open')) {
-		modal.close()
-		html.classList.remove('modal-open')
-	}
-
-	/* Set active genre */
-	if (e.target.closest('.catalog__link')) localStorage.setItem('genre', e.target.textContent)
-})
 
 /* ====================================================== */
 /* Close Modal by Esc */
 const handleCloseModalByEsc = e => {
-	if (e.key === 'Escape') {
-		const modal = document.getElementById('modal')
-		modal.close()
-		html.classList.remove('modal-open')
+	if (html.classList.contains('modal-open')) {
+		if (e.key === 'Escape') {
+			const modal = document.getElementById('modal')
+			modal.close()
+			html.classList.remove('modal-open')
+		}
 	}
 }
 
-document.addEventListener('keydown', handleCloseModalByEsc)
-
 /* ===================================================================== */
 /* Add joined user */
+const modalNameInput = document.getElementById('join-name')
+const modalEmailInput = document.getElementById('join-email')
+const checkInputs = () => {
+	const submitBtn = document.getElementById('join-submit')
+	submitBtn.disabled = !(modalNameInput.value.trim() && modalEmailInput.value.trim())
+}
+
 const addJoinedUser = () => {
-	const nameValue = document.getElementById('join-name').value
-	const emailValue = document.getElementById('join-email').value
-	const submitBtn = document.querySelector('.modal__button')
-
-	if (nameValue === '' || emailValue === '') return
-
+	const modalNameValue = modalNameInput.value.trim()
+	const emailValue = modalEmailInput.value.trim()
 	setDBData('/users', {
-		name: nameValue,
+		name: modalNameValue,
 		email: emailValue,
-		id: Date.now(),
 		role: 'user',
 	})
 }
-
-document.querySelector('.modal__button').addEventListener('click', e => {
-	e.preventDefault()
-	addJoinedUser()
-	getDBData('/users')
-})
 
 /* ===================================================================== */
 /* Active navigation */
@@ -104,3 +81,33 @@ navLinks.forEach(link => {
 	}
 })
 /* ===================================================================== */
+const html = document.documentElement
+document.addEventListener('keydown', handleCloseModalByEsc)
+
+html.addEventListener('click', e => {
+	const modalTrigger = e.target.closest('.header__action')
+	const modal = document.getElementById('modal')
+	/* Open || Close Modal */
+	if (e.target == modalTrigger) {
+		modal.show()
+		html.classList.add('modal-open')
+	} else if (!e.target.closest('.modal__content') && html.classList.contains('modal-open')) {
+		modal.close()
+		html.classList.remove('modal-open')
+	}
+
+	/* Set active genre */
+	if (e.target.closest('.catalog__link')) localStorage.setItem('genre', e.target.textContent)
+
+	/* Add joined user */
+	if (e.target.closest('#join-submit')) {
+		addJoinedUser()
+	}
+})
+
+const modal = document.querySelector('.modal')
+if (modal) {
+	addEventListener('input', e => {
+		checkInputs()
+	})
+}
