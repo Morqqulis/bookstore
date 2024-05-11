@@ -1,8 +1,7 @@
 import { getDBData, setDBData } from './global.js'
-
+// Misal ! Dataya elave etmek.
 const books = [
 	{
-		id: 1,
 		title: 'Frontend',
 		description: 'text',
 		category: 'Frontend',
@@ -21,7 +20,7 @@ const setBookInfo = () => {
 	const listDesc = document.querySelector('.admin-list__description')
 	const listCategory = document.querySelector('.admin-list__category')
 	const listAuthor = document.querySelector('.admin-list__author')
-    
+
 	getDBData('/books').then(snapshot => {
 		const data = snapshot.val()
 		const arr = Object.values(data)
@@ -47,3 +46,20 @@ const setBookInfo = () => {
 }
 
 setBookInfo()
+
+// About Store
+const setAboutStoreToDB = () => {
+	const aboutStoreTitleInput = document.getElementById('aboutStore')
+	const aboutStoreImageInput = document.getElementById('bookImageUrl')
+	const aboutStoreDescriptionInput = document.getElementById('descriptionFor')
+
+	const aboutStoreData = {
+		title: aboutStoreTitleInput.value,
+		image: aboutStoreImageInput.value,
+		description: aboutStoreDescriptionInput.value,
+	}
+
+	setDBData('/aboutStore', aboutStoreData)
+}
+
+document.querySelector('.about-store__button').addEventListener('click', setAboutStoreToDB)
