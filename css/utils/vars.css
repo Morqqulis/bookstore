@@ -156,6 +156,13 @@ body {
 	&:active {
 		transform: scale(0.9);
 	}
+
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+		cursor: not-allowed;
+		background-color: grey;
+	}
 }
 
 /* Modal */
@@ -239,7 +246,6 @@ body {
 		color: #d16302;
 		color: #fff;
 	} */
-
 }
 
 /* ==================================== */

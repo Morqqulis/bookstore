@@ -18,31 +18,44 @@
                     </div>
                     <ul>
                         <li>
-                            <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
-                            Home
+                            <button class='page__button' type='button' title='page title'>
+                                <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
+                                Home
+                            </button>
                         </li>
                         <li>
-                            <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
-                            Books
+                            <button class='page__button' type='button' title='page title'>
+                                <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
+                                Books
+                            </button>
                         </li>
                         <li>
-                            <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
-                            About
+                            <button class='page__button' type='button' title='page title'>
+                                <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
+                                About
+                            </button>
                         </li>
                         <li>
-                            <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
-                            Join Us
+                            <button class='page__button' type='button' title='page title'>
+                                <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
+                                Join Us
+                            </button>
                         </li>
                         <li>
-                            <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
-                            Contact
+                            <button class='page__button' type='button' title='page title'>
+                                <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
+                                Contact
+                            </button>
                         </li>
                         <li>
-                            <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
-                            Logout
+                            <button class='page__button' type='button' title='page title'>
+                                <img src="./images/admin_Images/adminLinkImage.png" alt="adminLinkImg">
+                                Logout
+                            </button>
                         </li>
                     </ul>
                 </div>
+
                 <div class="content-section">
                     <div class="content-section__admin">
                         <div class="adminUser">
@@ -51,158 +64,164 @@
                         </div>
                     </div>
                     <h2 class="title">Add Book</h2>
-                    <h3 class="search-button">Search Book</h3>
-                    <div class="search__book__body">
-                        <input type="text" id="searchBook" placeholder="Search Book" autocomplete="" />
-                        <div class="buttonDiv">
-                            <button>
-                                <img src="./images/admin_Images/adminSearchIcon.png" alt="adminSearchIcon">
-                            </button>
+                    <span class="search-heading">Search Book</h3>
+
+                        <div class="search__book__body">
+                            <input type="text" id="searchBook" placeholder="Search Book" autocomplete="" />
+                            <div class="buttonDiv">
+                                <button>
+                                    <img src="./images/admin_Images/adminSearchIcon.png" alt="adminSearchIcon">
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div class="formDiv">
-                        <h2 class="title">Book Form</h2>
-                        <form class="add__book__form" onsubmit="submitForm(event)">
-                            <div class="form-group">
-                                <label for="book-name">Book Name</label>
-                                <input type="text" id="book-name" placeholder="Angels" />
-                            </div>
-                            <div class="form-group">
-                                <label for="author-name">Author Name</label>
-                                <input type="text" id="author-name" placeholder="Dan Brown" />
-                            </div>
-                            <div class="form-group">
-                                <label for="image-url">Book Image URL</label>
-                                <input type="text" id="image-url" placeholder="Alex Smith" autocomplete="" />
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <textarea id="description" rows="4">
-We work without holidays and weekends! Resident...We work without holidays and weekends! Resident...We work without holidays and weekends! Resident...
+
+                        <div class="formDiv">
+                            <h2 class="title">Book Form</h2>
+                            <form class="add__book__form" onsubmit="submitForm(event)">
+                                <div class="form-group">
+                                    <label for="book-name">Book Name</label>
+                                    <input type="text" id="book-name" placeholder="Angels" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="author-name">Author Name</label>
+                                    <input type="text" id="author-name" placeholder="Dan Brown" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="image-url">Book Image URL</label>
+                                    <input type="text" id="image-url" placeholder="Alex Smith" autocomplete="" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea id="description" rows="4">
+                                        We work without holidays and weekends! Resident...We work without holidays and weekends! Resident...We work without holidays and weekends! Resident...
                                </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="book-type">Book Type</label>
+                                    <input type="text" id="book-type" placeholder="Fantastic" />
+                                </div>
+                                <button class="addBookddDatabase">Add</button>
+                            </form>
+                        </div>
+                        <!-- about store starts-->
+                        <span>About Store</span>
+
+                        <form action="">
+                            <div class="titleMain">
+                                <label for="aboutStore">Title</label>
+                                <input type="text" id="aboutStore" placeholder="About Store">
                             </div>
-                            <div class="form-group">
-                                <label for="book-type">Book Type</label>
-                                <input type="text" id="book-type" placeholder="Fantastic" />
+                            <div id="bookImage">
+                                <label for="bookImageUrl">Book Image Url</label>
+                                <input type="text" id="bookImageUrl" placeholder="https://image:url/">
                             </div>
-                            <button class="addBookddDatabase">Add</button>
+                            <div id="description">
+                                <label for="descriptionFor">Description</label>
+                                <textarea name="" id="descriptionFor"
+                                          placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                            </div>
+                            <div class="confirmButton">
+                                <button>About info add</button>
+                            </div>
                         </form>
-                    </div>
-                    <!-- about store starts-->
-                    <span>About Store</span>
-                    <form action="">
-                        <div class="titleMain">
-                            <label for="aboutStore">Title</label>
-                            <input type="text" id="aboutStore" placeholder="About Store">
+                        <!-- about store ends-->
+                        <div id="idJoinUs" class="classJoinUs">
+                            <h2>Join Us</h2>
+                            <table>
+                                <thead>
+                                    <tr class="headTr">
+                                        <th>#</th>
+                                        <th>Full Name</th>
+                                        <th>Email Address</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="joinUsDatabase">
+                                    <tr>
+                                        <th>1</th>
+                                        <th>Audrey Mckinney</th>
+                                        <th>lisa.watson@example.com</th>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <th>Savannah Howard</th>
+                                        <th>jeff.brown@example.com</th>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <th>Morris Cooper</th>
+                                        <th>terra.hamilton@example.com</th>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div id="bookImage">
-                            <label for="bookImageUrl">Book Image Url</label>
-                            <input type="text" id="bookImageUrl" placeholder="https://image:url/">
+
+                        <div id="idBooks" class="classBooks">
+                            <h2>Books</h2>
+                            <table>
+                                <thead>
+                                    <tr class="headTr">
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Category</th>
+                                        <th>Author</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="booksDatabase">
+                                    <tr>
+                                        <th>1</th>
+                                        <th>
+                                            <img src="./images/admin_Images/booksImage.png" alt="">
+                                            Angels
+                                        </th>
+                                        <th>Lorem ipsum test...</th>
+                                        <th>Dedectiv</th>
+                                        <th>Dan Brown</th>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div id="description">
-                            <label for="descriptionFor">Description</label>
-                            <textarea name="" id="descriptionFor"
-                                placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+
+                        <div id="idContact" class="classContact">
+                            <h2>Contact Us</h2>
+                            <table>
+                                <thead>
+                                    <tr class="headTr">
+                                        <th>#</th>
+                                        <th>Full Name</th>
+                                        <th>Address</th>
+                                        <th>Email Address</th>
+                                        <th>Phone Number</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="contactDatabase">
+                                    <tr>
+                                        <th>1</th>
+                                        <th>Audrey Mckinney</th>
+                                        <th>1473 Ranchview Dr undefined San Jose</th>
+                                        <th>lisa.watson@example.com</th>
+                                        <th>(209) 555-0104</th>
+                                    </tr>
+                                    <tr>
+                                        <th>2</th>
+                                        <th>Savannah Howard</th>
+                                        <th>8445 Railroad St undefined Tampa</th>
+                                        <th>jeff.brown@example.com</th>
+                                        <th>(201) 555-0124</th>
+                                    </tr>
+                                    <tr>
+                                        <th>3</th>
+                                        <th>Morris Cooper</th>
+                                        <th>8584 W Sherman Dr undefined Desoto</th>
+                                        <th>terra.hamilton@example.com</th>
+                                        <th>(505) 555-0125</th>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="confirmButton">
-                            <button>About info add</button>
-                        </div>
-                    </form>
-                    <!-- about store ends-->
-                    <div id="idJoinUs" class="classJoinUs" style="width: 450px ;">
-                        <h2>Join Us</h2>
-                        <table>
-                            <thead>
-                                <tr class="headTr">
-                                    <th>#</th>
-                                    <th>Full Name</th>
-                                    <th>Email Address</th>
-                                </tr>
-                            </thead>
-                            <tbody class="joinUsDatabase">
-                                <tr>
-                                    <th>1</th>
-                                    <th>Audrey Mckinney</th>
-                                    <th>lisa.watson@example.com</th>
-                                </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <th>Savannah Howard</th>
-                                    <th>jeff.brown@example.com</th>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <th>Morris Cooper</th>
-                                    <th>terra.hamilton@example.com</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="idBooks" class="classBooks">
-                        <h2>Books</h2>
-                        <table>
-                            <thead>
-                                <tr class="headTr">
-                                    <th>#</th>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th>Category</th>
-                                    <th>Author</th>
-                                </tr>
-                            </thead>
-                            <tbody class="booksDatabase">
-                                <tr>
-                                    <th>1</th>
-                                    <th>
-                                        <img src="./images/admin_Images/booksImage.png" alt="">
-                                        Angels
-                                    </th>
-                                    <th>Lorem ipsum test...</th>
-                                    <th>Dedectiv</th>
-                                    <th>Dan Brown</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="idContact" class="classContact">
-                        <h2>Contact Us</h2>
-                        <table>
-                            <thead>
-                                <tr class="headTr">
-                                    <th>#</th>
-                                    <th>Full Name</th>
-                                    <th>Address</th>
-                                    <th>Email Address</th>
-                                    <th>Phone Number</th>
-                                </tr>
-                            </thead>
-                            <tbody class="contactDatabase">
-                                <tr>
-                                    <th>1</th>
-                                    <th>Audrey Mckinney</th>
-                                    <th>1473 Ranchview Dr undefined San Jose</th>
-                                    <th>lisa.watson@example.com</th>
-                                    <th>(209) 555-0104</th>
-                                </tr>
-                                <tr>
-                                    <th>2</th>
-                                    <th>Savannah Howard</th>
-                                    <th>8445 Railroad St undefined Tampa</th>
-                                    <th>jeff.brown@example.com</th>
-                                    <th>(201) 555-0124</th>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <th>Morris Cooper</th>
-                                    <th>8584 W Sherman Dr undefined Desoto</th>
-                                    <th>terra.hamilton@example.com</th>
-                                    <th>(505) 555-0125</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
+
         </main>
 
         <div class="modal">
@@ -221,6 +240,7 @@ We work without holidays and weekends! Resident...We work without holidays and w
                 </form>
             </dialog>
         </div>
+
     </div>
 
     <script src=""></script>
