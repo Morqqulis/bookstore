@@ -53,20 +53,35 @@ const handleCloseModalByEsc = e => {
 
 /* ===================================================================== */
 /* Add joined user */
-const modalNameInput = document.getElementById('join-name')
-const modalEmailInput = document.getElementById('join-email')
+const modalInputs = document.querySelectorAll('.modal__input')
 const checkInputs = () => {
-	const submitBtn = document.getElementById('join-submit')
-	submitBtn.disabled = !(modalNameInput.value.trim() && modalEmailInput.value.trim())
+	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
+	document.getElementById('join-submit').disabled = !(nameValue && emailValue)
 }
 
+if (modalInputs) {
+	document.getElementById('join-name').addEventListener('input', checkInputs)
+	document.getElementById('join-email').addEventListener('input', checkInputs)
+}
 const addJoinedUser = () => {
-	const modalNameValue = modalNameInput.value.trim()
-	const emailValue = modalEmailInput.value.trim()
-	setDBData('/users', {
-		name: modalNameValue,
-		email: emailValue,
-		role: 'user',
+	const modal = document.getElementById('modal')
+	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
+	if (!nameValue || !emailValue) return
+
+	getDBData('/users').then(snapshot => {
+		let users = snapshot.val() || []
+		const newUser = {
+			name: nameValue,
+			email: emailValue,
+			role: 'user',
+		}
+
+		users.push(newUser)
+
+		setDBData('/users', users)
+
+		modal.close()
+		html.classList.remove('modal-open')
 	})
 }
 
@@ -104,10 +119,3 @@ html.addEventListener('click', e => {
 		addJoinedUser()
 	}
 })
-
-const modal = document.querySelector('.modal')
-if (modal) {
-	addEventListener('input', e => {
-		checkInputs()
-	})
-}

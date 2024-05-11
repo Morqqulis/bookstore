@@ -21,8 +21,11 @@ const setBookInfo = () => {
 	const listCategory = document.querySelector('.admin-list__category')
 	const listAuthor = document.querySelector('.admin-list__author')
 
+	// Data elde etmek:
 	getDBData('/books').then(snapshot => {
 		const data = snapshot.val()
+		// data = firebasedeki books.
+
 		const arr = Object.values(data)
 
 		listNumber.innerHTML = ''
@@ -46,3 +49,20 @@ const setBookInfo = () => {
 }
 
 setBookInfo()
+
+// About Store
+const setAboutStoreToDB = () => {
+	const aboutStoreTitleInput = document.getElementById('aboutStore')
+	const aboutStoreImageInput = document.getElementById('bookImageUrl')
+	const aboutStoreDescriptionInput = document.getElementById('descriptionFor')
+
+	const aboutStoreData = {
+		title: aboutStoreTitleInput.value,
+		image: aboutStoreImageInput.value,
+		description: aboutStoreDescriptionInput.value,
+	}
+
+	setDBData('/aboutStore', aboutStoreData)
+}
+
+document.querySelector('.about-store__button').addEventListener('click', setAboutStoreToDB)
