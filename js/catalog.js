@@ -39,13 +39,11 @@ const appendGenre = genre => {
 	)
 }
 
-// Определение функции setBookId
 window.setBookId = function (id) {
 	localStorage.setItem('bookId', id)
 	window.location.href = 'book.html'
 }
 
-// Ваша функция appendSliderItems
 const appendSliderItems = () => {
 	const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
 
@@ -76,7 +74,6 @@ const appendSliderItems = () => {
 	swiperWrappers.forEach(wrapper => (wrapper.innerHTML = ''))
 }
 
-// Здесь можно вызвать appendSliderItems или другие функции, которые могут использовать setBookId
 
 if (document.querySelector('.catalog__genres')) {
 	appendGenre(localStorage.getItem('genre'))

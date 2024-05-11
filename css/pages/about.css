@@ -21,15 +21,16 @@
 .flex-child-right {
 }
 
-h1 {
+.about__title {
 	font-size: 36px;
 	line-height: 2px;
 	font-weight: 900;
+	margin-bottom: 11px;
 }
 
 .leftside {
 	font-weight: 400;
-	width: 686px;
+	max-width: 686px;
 	word-wrap: break-word;
 	font-size: 18px;
 	font-weight: 400px;
