@@ -3,3 +3,77 @@
 @import '../layout/header.css';
 @import '../layout/footer.css';
 /* ==================================== */
+
+.contact {
+	padding: 100px 0;
+}
+.contactUs {
+	font-weight: 900;
+	font-size: 36px;
+	padding-left: 11px;
+	margin-bottom: 28px;
+}
+.inputContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.inputIn {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	gap: 35px;
+}
+.text {
+	height: 55px;
+	width: 400px;
+	padding-left: 20px;
+	margin-block: 12px;
+}
+
+.inputIn input {
+	border: 1px solid #bdbdbd;
+	width: 100%;
+}
+.inputBottom {
+	display: flex;
+	width: 830px;
+	width: 100%;
+	margin-top: 15px;
+}
+.note {
+	width: 100%;
+	height: 150px;
+	box-sizing: border-box;
+	resize: none;
+	padding: 20px;
+	border: 1px solid #bebebe;
+}
+.buttonMain {
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+.sendButton {
+	max-width: 400px;
+	width: 100%;
+	height: 55px;
+	background-color: var(--orange);
+	color: white;
+	border: 1px solid #cecece;
+	font-family: var(--crimson);
+	font-size: 30px;
+	line-height: 39px;
+}
+.inputBottom input {
+	border: 1px solid #ac14ed;
+}
+input:hover {
+	border-color: blue;
+}
+input:focus {
+	border-color: rgb(234, 210, 133);
+}
