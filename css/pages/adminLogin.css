@@ -83,6 +83,7 @@
 }
 
 .welcome__login__btn__link {
+	text-align: center;
 	text-decoration: none;
 	/* color: #fff; */
 	height: 100%;

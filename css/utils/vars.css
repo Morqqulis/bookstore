@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Preahvihear&display=swap');
 
 :root {
 	--red: #720418;
@@ -7,6 +7,7 @@
 	--orange: #e16a00;
 	--crimson: 'Crimson Text';
 	--mont: 'Montserrat';
+	--preah: 'Preahvihear';
 }
 
 body {
@@ -19,6 +20,10 @@ body {
 	.modal-open & {
 		overflow: hidden;
 	}
+}
+
+textarea {
+	resize: none;
 }
 
 [class*='__container'] {
