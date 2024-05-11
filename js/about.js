@@ -24,7 +24,7 @@ const getData = () => {
                 about.push(snapshot.val())
                                 document.getElementById('title').innerText = about[0].title;
                                 document.getElementById('description').innerText = about[0].description;
-                                document.getElementById("main-image").src = about[0].image;
+                                document.getElementById("main-image").src = about[0].image
 				console.log(about)
 				// about.push(snapshot.val())
                 //                 document.getElementById('description').innerText = about[0].description;
