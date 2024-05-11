@@ -6,7 +6,7 @@ const setContactsData = () => {
     const email = document.querySelector('.email').value 
     const address = document.querySelector('.adress').value
     const phone = document.querySelector('.phone').value
-    const note = documetn.querySelector('.note').value
+    const note = document.querySelector('.note').value
 
     if (!name && !email && !address && !phone && !note ) return
 
