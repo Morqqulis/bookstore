@@ -13,15 +13,12 @@
 	color: #fff;
 	justify-content: center;
 	align-items: center;
-	padding: 16px 22.5px;
+	padding: 14px 22.5px;
 	font-size: 14px;
 }
-
-/* minmax(54px, fit-content) 200px minmax(259px, 426px) 259px 229px */
 .admin-flex-content {
 	display: grid;
 	grid-template-columns: 0.1fr 0.5fr 1fr 0.5fr 0.3fr;
-
 	text-align: center;
 	white-space: nowrap;
 	width: 100%;
@@ -112,6 +109,7 @@
 }
 
 /* -------------------Add Book Css----------- */
+/* ===================== Add Book Form ============================== */
 .formDiv {
 	margin-bottom: 160px;
 	padding-block: 30px;
@@ -284,6 +282,7 @@
 }
 
 /* -------------Join Us, Books, Contact for table css------------------ */
+/* ===================== Join Us, Books, Contact for table ============================== */
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -294,7 +293,7 @@ table .headTr {
 	color: #fff;
 }
 
-/*-----------Table For responsive */
+/* ===================== Table for responsive ============================== */
 @media screen and (max-width: 768px) {
 	table {
 		overflow-x: auto;
@@ -363,7 +362,7 @@ textarea {
 	}
 }
 
-/* =====================Join-us============================== */
+/* =====================Admin Join-us============================== */
 
 .join-us {
 	margin-bottom: 136px;
@@ -392,10 +391,44 @@ textarea {
 	padding: 16px 44px;
 	border-bottom: 2px solid #ccc;
 }
-
+/* =====================Admin Books============================== */
 .books__box {
 	display: flex;
 	align-items: center;
 	gap: 8px;
 	justify-content: center;
 }
+
+.books{
+	margin-bottom: 136px;
+}
+.books__title{
+	margin-bottom: 5px;
+	font-size: 30px;
+	font-weight: 600;
+	
+ }
+.book__content{
+	max-width: 10864px;
+	min-height: 240px;
+ }
+.book__column{
+	width: 100%;
+ }
+/* =====================Admin Contact-us============================== */
+.contacts{
+	margin-bottom: 136px;
+}
+.contacts__title{
+	margin-bottom: 5px;
+	font-size: 29px;
+	font-weight: 600;
+	
+ }
+.contact__content{
+	max-width: 10864px;
+	min-height: 240px;
+ }
+.contact__column{
+	width: 100%;
+ }
