@@ -21,6 +21,7 @@ const setBookInfo = () => {
 	const listDesc = document.querySelector('.admin-list__description')
 	const listCategory = document.querySelector('.admin-list__category')
 	const listAuthor = document.querySelector('.admin-list__author')
+    
 	getDBData('/books').then(snapshot => {
 		const data = snapshot.val()
 		const arr = Object.values(data)
