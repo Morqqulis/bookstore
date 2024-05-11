@@ -105,12 +105,14 @@ function addCommentToDOM(comment) {
 
     commentsContainer.insertBefore(newDiv, commentsContainer.firstChild);
 }
+
 // -Function delete  comment-
 // function deleteComment(commentId) {
 //     const savedComments = JSON.parse(localStorage.getItem(commentsKey)) || [];
 //     const updatedComments = savedComments.filter(comment => comment.id !== commentId);
 //     localStorage.setItem(commentsKey, JSON.stringify(updatedComments));
 // }
+
 function generateId() {
     return Math.random().toString();
 }
