@@ -393,8 +393,14 @@ textarea {
 }
 
 .join-us__list-item {
-  padding: 16px 44px;
+  padding: 5px 44px;
   border-bottom: 2px solid #ccc;
+  min-height: 48px;
+}
+.join-us__list-item_flex{
+  display: flex;
+  align-items: center;
+  gap:5px;
 }
 /* =====================Admin Books============================== */
 .books__box {
