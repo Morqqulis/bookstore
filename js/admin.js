@@ -1,4 +1,4 @@
-import { getDBData, setDBData } from "./global.js";
+import { getDBData, setDBData } from "./global.js"
 
 const search = document.querySelector("#searchBook");
 const infos = document.querySelector("#infos");
@@ -58,6 +58,7 @@ btnSearch.addEventListener("click", () => {
 });
 
 // fill book form starts
+
 async function fillInfo(text) {
   let request = await fetch(
     `https://www.googleapis.com/books/v1/volumes?q=${text}`
@@ -108,32 +109,24 @@ async function fillInfo(text) {
 const books = [];
 
 const setBookInDB = () => {
-  const bookInfo = {
-    title: bookName.value,
-    description: description.value,
-    category: bookType.value,
-    image: imageUrl.value,
-    author: author.value,
-  };
+	const bookInfo = {
+		title: bookName.value,
+		description: description.value,
+		category: bookType.value,
+		image: imageUrl.value,
+		author: author.value,
+	}
 
-  if (
-    bookInfo.title.length > 0 &&
-    bookInfo.description.length > 0 &&
-    bookInfo.category.length > 0 &&
-    bookInfo.image.length > 0 &&
-    bookInfo.author.length > 0
-  ) {
-    books.push(bookInfo);
-  }
+	books.push(bookInfo)
 
-  setDBData("/books", books);
+	setDBData('/books', books)
 
-  bookName.value = "";
-  author.value = "";
-  imageUrl.value = "";
-  description.value = "";
-  bookType.value = "";
-};
+	bookName.value = ''
+	author.value = ''
+	imageUrl.value = ''
+	description.value = ''
+	bookType.value = ''
+}
 
 document.querySelector(".addBookddDatabase").addEventListener("click", (e) => {
   e.preventDefault();
@@ -153,30 +146,30 @@ document.querySelector(".addBookddDatabase").addEventListener("click", (e) => {
 //       const data = snapshot.val();
 //       // data = firebasedeki books.
 
-//       const arr = Object.values(data);
+// 			const arr = Object.values(data)
 
-//       listNumber.innerHTML = "";
-//       listTitle.innerHTML = "";
-//       listDesc.innerHTML = "";
-//       listCategory.innerHTML = "";
-//       listAuthor.innerHTML = "";
+// 			listNumber.innerHTML = ''
+// 			listTitle.innerHTML = ''
+// 			listDesc.innerHTML = ''
+// 			listCategory.innerHTML = ''
+// 			listAuthor.innerHTML = ''
 
-//       arr.forEach((book) => {
-//         listNumber.innerHTML += `<li>${arr.length}</li>`;
-//         listTitle.innerHTML += `
+// 			arr.forEach(book => {
+// 				listNumber.innerHTML += `<li>${arr.length}</li>`
+// 				listTitle.innerHTML += `
 //                     <li class="books__box">
 //                         <img class='books__image' src="${book.image}" alt="book name" width='27' height='36'>
 //                         <span class='books__name'>${book.title}</span>
-//                     </li>`;
-//         listDesc.innerHTML += `<li>${book.description}</li>`;
-//         listCategory.innerHTML += `<li>${book.category}</li>`;
-//         listAuthor.innerHTML += `<li>${book.author}</li>`;
-//       });
-//     });
-//   }
-// };
+//                     </li>`
+// 				listDesc.innerHTML += `<li>${book.description}</li>`
+// 				listCategory.innerHTML += `<li>${book.category}</li>`
+// 				listAuthor.innerHTML += `<li>${book.author}</li>`
+// 			})
+// 		})
+// 	}
+// }
 
-// setBookInfo();
+// setBookInfoIntoHTML()
 
 // About Store
 const setAboutStoreToDB = () => {
