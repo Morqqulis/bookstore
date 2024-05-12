@@ -1,15 +1,18 @@
 .header {
-	padding-top: 30px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 100;
 	transition: all 0.3s ease 0s;
+	border-bottom: 1px solid #ccc;
 }
 .header_scrolled {
 	background-color: #0f0f0f;
 	color: #fff;
+
 	.header__action-icon {
 		fill: #fff;
 	}
