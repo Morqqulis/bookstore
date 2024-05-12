@@ -14,7 +14,7 @@
         <main>
 
             <div class="myContainer">
-                 <!--Side Bar-->
+                <!--Side Bar-->
                 <div class="side-bar">
                     <div class='side-bar__pages'>
                         <div class="headerAdminPanel">
@@ -60,7 +60,7 @@
                         </ul>
                     </div>
                 </div>
-                           <!--Main Content-->
+                <!--Main Content-->
                 <section class='main-section'>
                     <div class="content-section__admin">
                         <div class="adminUser">
@@ -97,7 +97,7 @@
                             <!--Add Book Form-->
                             <section class="formDiv">
                                 <h2 class="title formDiv__title">Book Form</h2>
-                                <form class="add__book__form" onsubmit="submitForm(event)">
+                                <form class="add__book__form" action='#'>
                                     <div class="form-group">
                                         <label for="book-name">Book Name</label>
                                         <input type="text" id="book-name" placeholder="Angels" />
@@ -113,13 +113,13 @@
                                     <div class="form-group">
                                         <label for="description">Description</label>
                                         <textarea name="textarea" id="description"
-                                            placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                                                  placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="book-type">Book Type</label>
                                         <input type="text" id="book-type" placeholder="Fantastic" />
                                     </div>
-                                    <button class="addBookddDatabase" id="addButton">Add</button>
+                                    <button class="addBookddDatabase" type='submit' id="addButton">Add</button>
                                 </form>
                             </section>
 
@@ -131,21 +131,19 @@
 
                                     <label class='about-store__label'>
                                         Title
-                                        <input class='about-store__input' type="text" id="aboutStore"
-                                            placeholder="About Store">
+                                        <input class='about-store__input' type="text" id="aboutStore" placeholder="About Store">
                                     </label>
 
                                     <label class='about-store__label' for="bookImageUrl">
                                         Book Image Url
-                                        <input class='about-store__input' type="text" id="bookImageUrl"
-                                            placeholder="https://image:url/">
+                                        <input class='about-store__input' type="text" id="bookImageUrl" placeholder="https://image:url/">
                                     </label>
 
 
                                     <label class='about-store__label' for="descriptionFor">
                                         Description
                                         <textarea class='about-store__textarea' name="" id="descriptionFor"
-                                            placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                                                  placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
                                     </label>
 
                                     <button class='about-store__button' id="addInfoButton">About info add</button>
@@ -153,7 +151,7 @@
                                 </form>
                             </section>
 
-                             <!--Join Us-->
+                            <!--Join Us-->
                             <section class="join-us">
                                 <h3 class="join-us__title title">Join Us</h3>
                                 <div class="join-us__content admin-flex-content">
@@ -200,7 +198,7 @@
                                     <div class="book__column">
                                         <span class="admin-heading-red">Title</span>
                                         <ul class="admin-list admin-list__title">
-                                           <li></li>
+                                            <li></li>
                                         </ul>
                                     </div>
                                     <div class="book__column">
@@ -224,7 +222,7 @@
                                 </div>
                             </section>
 
-                                     <!--Contact Us-->
+                            <!--Contact Us-->
                             <section class="contacts">
                                 <h3 class="contacts__title title">Contact Us</h3>
                                 <div class="contact__content admin-flex-content">

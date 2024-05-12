@@ -60,7 +60,7 @@ async function fillInfo(text) {
 	let request = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${text}`)
 	let response = await request.json()
 	let arr = response.items
-	console.log(arr)
+
 	if (Array.isArray(arr)) {
 		bookName.value = arr[0].volumeInfo.title
 		for (let i = 0; i < arr[0].volumeInfo.authors.length; i++) {
@@ -101,18 +101,33 @@ async function fillInfo(text) {
 // fill book form ends
 
 // Misal ! Dataya elave etmek.
-const books = [
-	{
-		title: 'Frontend',
-		description: 'text',
-		category: 'Frontend',
-		image: './images/admin_Images/books/1.jpg',
-		author: 'Jon Snow',
-	},
-]
+const books = []
 
-document.querySelector('.addBookddDatabase').addEventListener('click', () => {
+const setBookInDB = () => {
+	const bookInfo = {
+		title: bookName.value,
+		description: description.value,
+		category: bookType.value,
+		image: imageUrl.value,
+		author: author.value,
+	}
+
+	if (bookInfo.title.length > 0 && bookInfo.description.length > 0 && bookInfo.category.length > 0 && bookInfo.image.length > 0 && bookInfo.author.length > 0) {
+		books.push(bookInfo)
+	}
+
 	setDBData('/books', books)
+
+	bookName.value = ''
+	author.value = ''
+	imageUrl.value = ''
+	description.value = ''
+	bookType.value = ''
+}
+
+document.querySelector('.addBookddDatabase').addEventListener('click', e => {
+	e.preventDefault()
+	setBookInDB()
 })
 
 const setBookInfo = () => {

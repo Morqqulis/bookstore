@@ -44,7 +44,7 @@ getBooks('', localStorage.getItem('bookId'))
 		}
 	})
 	.catch(error => {
-		console.log(error)
+		console.log(error.message)
 	})
 
 const commentInput = document.querySelector('.commentInput')
