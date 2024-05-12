@@ -138,3 +138,22 @@ html.addEventListener('click', e => {
 		addJoinedUser()
 	}
 })
+const header = document.querySelector('.header')
+if (header) {
+	window.addEventListener('scroll', e => {
+		header.classList.toggle('header_scrolled', window.scrollY > 100)
+	})
+}
+
+const checkAuth = () => {
+	const authInfo = sessionStorage.getItem('adminAuthenticated')
+	if (!authInfo || authInfo !== 'true') {
+		window.location.href = 'adminLogin.html'
+	}
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+	if (window.location.pathname.includes('admin.html')) {
+		checkAuth()
+	}
+})

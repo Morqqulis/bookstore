@@ -11,7 +11,8 @@ const checkAdminCredentials = async () => {
 		const { login, password } = data
 
 		if (username === login && userPassword === password) {
-			window.location.href = './admin.html'
+			sessionStorage.setItem('adminAuthenticated', 'true')
+			window.location.href = 'admin.html'
 		} else {
 			alert('Wrong username or password')
 		}
