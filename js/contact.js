@@ -2,11 +2,17 @@ import { setDBData } from './global.js'
 const contactsData = []
 
 const setContactsData = () => {
-	const name = document.querySelector('.fullName').value
-	const email = document.querySelector('.email').value
-	const address = document.querySelector('.adress').value
-	const phone = document.querySelector('.phone').value
-	const note = document.querySelector('.note').value
+	const nameInput = document.querySelector('.fullName')
+	const emailInput = document.querySelector('.email')
+	const addressInput = document.querySelector('.adress')
+	const phoneInput = document.querySelector('.phone')
+	const noteInput = document.querySelector('.note')
+
+	const name = nameInput.value
+	const email = emailInput.value
+	const address = addressInput.value
+	const phone = phoneInput.value
+	const note = noteInput.value
 
 	if (!name && !email && !address && !phone && !note) return
 
@@ -22,11 +28,11 @@ const setContactsData = () => {
 
 	setDBData('/contacts', contactsData)
 
-	name = ''
-	email = ''
-	address = ''
-	phone = ''
-	note = ''
+	nameInput.value = ''
+	emailInput.value = ''
+	addressInput.value = ''
+	phoneInput.value = ''
+	noteInput.value = ''
 }
 
 document.querySelector('.sendButton').addEventListener('click', setContactsData)

@@ -38,7 +38,7 @@ async function loadInformation(text) {
 
 function chooseBook() {
 	const buttons = document.querySelectorAll('#infos button')
-
+	console.log(buttons)
 	buttons.forEach(button => {
 		button.addEventListener('click', () => {
 			search.value = button.textContent
@@ -56,22 +56,19 @@ btnSearch.addEventListener('click', () => {
 })
 
 // fill book form starts
+
 async function fillInfo(text) {
 	let request = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${text}`)
 	let response = await request.json()
 	let arr = response.items
 
-	if (Array.isArray(arr)) {
+	if (Array.isArray(arr) && arr[0].volumeInfo.imageLinks.thumbnail && arr[0].volumeInfo.description) {
 		bookName.value = arr[0].volumeInfo.title
-		for (let i = 0; i < arr[0].volumeInfo.authors.length; i++) {
-			author.value = arr[0].volumeInfo.authors[i] + ' '
-		}
+		author.value = arr[0].volumeInfo.authors[0]
 		imageUrl.value = arr[0].volumeInfo.imageLinks.thumbnail
 		description.value = arr[0].volumeInfo.description
+		bookType.value = arr[0].volumeInfo.categories[0]
 
-		for (let i = 0; i < arr[0].volumeInfo.categories.length; i++) {
-			bookType.value = arr[0].volumeInfo.categories[i] + ' '
-		}
 		// about store
 		title.value = arr[0].volumeInfo.title
 		descriptionForStore.value = arr[0].volumeInfo.description
@@ -112,9 +109,7 @@ const setBookInDB = () => {
 		author: author.value,
 	}
 
-	if (bookInfo.title.length > 0 && bookInfo.description.length > 0 && bookInfo.category.length > 0 && bookInfo.image.length > 0 && bookInfo.author.length > 0) {
-		books.push(bookInfo)
-	}
+	books.push(bookInfo)
 
 	setDBData('/books', books)
 
@@ -130,43 +125,43 @@ document.querySelector('.addBookddDatabase').addEventListener('click', e => {
 	setBookInDB()
 })
 
-const setBookInfo = () => {
-	if (window.location.href === 'admin.html') {
-		const listNumber = document.querySelector('.admin-list__number')
-		const listTitle = document.querySelector('.admin-list__title')
-		const listDesc = document.querySelector('.admin-list__description')
-		const listCategory = document.querySelector('.admin-list__category')
-		const listAuthor = document.querySelector('.admin-list__author')
+// const setBookInfoIntoHTML = () => {
+// 	if (window.location.href === 'admin.html') {
+// 		const listNumber = document.querySelector('.admin-list__number')
+// 		const listTitle = document.querySelector('.admin-list__title')
+// 		const listDesc = document.querySelector('.admin-list__description')
+// 		const listCategory = document.querySelector('.admin-list__category')
+// 		const listAuthor = document.querySelector('.admin-list__author')
 
-		// Data elde etmek:
-		getDBData('/books').then(snapshot => {
-			const data = snapshot.val()
-			// data = firebasedeki books.
+// 		// Data elde etmek:
+// 		getDBData('/books').then(snapshot => {
+// 			const data = snapshot.val()
+// 			// data = firebasedeki books.
 
-			const arr = Object.values(data)
+// 			const arr = Object.values(data)
 
-			listNumber.innerHTML = ''
-			listTitle.innerHTML = ''
-			listDesc.innerHTML = ''
-			listCategory.innerHTML = ''
-			listAuthor.innerHTML = ''
+// 			listNumber.innerHTML = ''
+// 			listTitle.innerHTML = ''
+// 			listDesc.innerHTML = ''
+// 			listCategory.innerHTML = ''
+// 			listAuthor.innerHTML = ''
 
-			arr.forEach(book => {
-				listNumber.innerHTML += `<li>${arr.length}</li>`
-				listTitle.innerHTML += `
-                    <li class="books__box">
-                        <img class='books__image' src="${book.image}" alt="book name" width='27' height='36'>
-                        <span class='books__name'>${book.title}</span>
-                    </li>`
-				listDesc.innerHTML += `<li>${book.description}</li>`
-				listCategory.innerHTML += `<li>${book.category}</li>`
-				listAuthor.innerHTML += `<li>${book.author}</li>`
-			})
-		})
-	}
-}
+// 			arr.forEach(book => {
+// 				listNumber.innerHTML += `<li>${arr.length}</li>`
+// 				listTitle.innerHTML += `
+//                     <li class="books__box">
+//                         <img class='books__image' src="${book.image}" alt="book name" width='27' height='36'>
+//                         <span class='books__name'>${book.title}</span>
+//                     </li>`
+// 				listDesc.innerHTML += `<li>${book.description}</li>`
+// 				listCategory.innerHTML += `<li>${book.category}</li>`
+// 				listAuthor.innerHTML += `<li>${book.author}</li>`
+// 			})
+// 		})
+// 	}
+// }
 
-setBookInfo()
+// setBookInfoIntoHTML()
 
 // About Store
 const setAboutStoreToDB = () => {
