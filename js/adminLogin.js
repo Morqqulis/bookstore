@@ -1,24 +1,25 @@
 import { getDBData } from './global.js'
 
-const checkAdminCredentials = e => {
-	e.preventDefault()
-
+const checkAdminCredentials = async () => {
 	const usernameInput = document.getElementById('login__username')
 	const passwordInput = document.getElementById('login__password')
 
 	const username = usernameInput.value.trim()
-	const pass = passwordInput.value.trim()
+	const userPassword = passwordInput.value.trim()
 
-	getDBData('/admins').then(snapshot => {
-		const data = snapshot.val()
+	await getDBData('/admins').then(data => {
 		const { login, password } = data
 
-		if (username === login && pass === password) {
-			window.location.href = './admin.html'
+		if (username === login && userPassword === password) {
+			sessionStorage.setItem('adminAuthenticated', 'true')
+			window.location.href = 'admin.html'
 		} else {
 			alert('Wrong username or password')
 		}
 	})
 }
 
-document.querySelector('.welcome__login').addEventListener('submit', checkAdminCredentials)
+document.querySelector('#admin-join').addEventListener('click', async e => {
+	e.preventDefault()
+	await checkAdminCredentials()
+})

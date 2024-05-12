@@ -1,6 +1,6 @@
 'use strict'
 
-import { getBooks } from './global.js'
+import { getBooks, getDBData } from './global.js'
 /* ================================================ */
 
 const html = document.documentElement
@@ -39,50 +39,84 @@ const appendGenre = genre => {
 	)
 }
 
-// Определение функции setBookId
 window.setBookId = function (id) {
 	localStorage.setItem('bookId', id)
 	window.location.href = 'book.html'
 }
 
-// Ваша функция appendSliderItems
 const appendSliderItems = () => {
 	const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
-
 	getBooks(localStorage.getItem('genre')).then(data => {
-		data?.items.forEach(item => {
+		let randomSlider = Math.floor(Math.random() * data.items.length)
+		data?.items.forEach((item, i) => {
 			if (item.volumeInfo.imageLinks) {
-				/* Append Sliders */
-				swiperWrappers.forEach(swiperWrapper => {
-					swiperWrapper.insertAdjacentHTML(
-						'afterbegin',
-						`
-                            <div class="swiper-slide catalog__slide">
-                                <div class="catalog__card">
-                                    <img class="catalog__card-img" src="${item.volumeInfo.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
-                                    <div class="catalog__card-info">
-                                        <span class="catalog__card-name">${item.volumeInfo.title}</span>
-                                        <span class="catalog__card-author">${item.volumeInfo.authors}</span>
-                                        <button class="catalog__card-btn btn" onclick="setBookId('${item.id}')" type="button" title="read">READ MORE</button>
-                                    </div>
+				swiperWrappers[0].insertAdjacentHTML(
+					'afterbegin',
+					`
+                        <div class="swiper-slide catalog__slide">
+                            <div class="catalog__card ${i === randomSlider ? 'catalog__card_new' : ''}">
+                                <img class="catalog__card-img" src="${item.volumeInfo.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
+                                <div class="catalog__card-info">
+                                    <span class="catalog__card-name">${item.volumeInfo.title}</span>
+                                    <span class="catalog__card-author">${item.volumeInfo?.authors}</span>
+                                    <button class="catalog__card-btn btn" onclick="setBookId('${item.id}')" type="button" title="read">READ MORE</button>
                                 </div>
                             </div>
-                        `
-					)
-				})
+                        </div>
+                    `
+				)
 			}
 		})
 	})
+
+	getDBData('/bestsellers').then(data => {
+		const books = Object.values(data)
+		let randomSlider = Math.floor(Math.random() * books.length)
+		books.forEach((book, i) => {
+			swiperWrappers[1].innerHTML += `
+                <div class="swiper-slide catalog__slide">
+                    <div class="catalog__card ${i === randomSlider ? 'catalog__card_new' : ''}">
+                        <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
+                        <div class="catalog__card-info">
+                            <span class="catalog__card-name">${book.title}</span>
+                            <span class="catalog__card-author">${book.author}</span>
+                            <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+            `
+		})
+	})
+
+	getDBData('/new').then(data => {
+		const books = Object.values(data)
+		let randomSlider = Math.floor(Math.random() * books.length)
+		books.forEach(book => {
+			swiperWrappers[2].innerHTML += `
+                <div class="swiper-slide catalog__slide">
+                    <div class="catalog__card catalog__card_new">
+                        <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
+                        <div class="catalog__card-info">
+                            <span class="catalog__card-name">${book.title}</span>
+                            <span class="catalog__card-author">${book.author}</span>
+                            <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+            `
+		})
+	})
+
 	swiperWrappers.forEach(wrapper => (wrapper.innerHTML = ''))
 }
 
-// Здесь можно вызвать appendSliderItems или другие функции, которые могут использовать setBookId
+const bookGenre = localStorage.getItem('genre')
 
 if (document.querySelector('.catalog__genres')) {
-	appendGenre(localStorage.getItem('genre'))
+	appendGenre(bookGenre)
 }
 
-if (localStorage.getItem('genre')) {
+if (bookGenre) {
 	appendSliderItems()
 }
 

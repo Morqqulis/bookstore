@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./favicon.ico">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/pages/search.css">
     <title>Search Page</title>
 </head>
@@ -71,10 +72,10 @@
 
             <section class="search">
                 <div class="container">
-                    <div class="row mt-5">
-                        <div class="col-md-4">
+                    <div class="search__inner row mt-5">
+                        <div class="search__column col-md-4">
                             <!-- input and button column -->
-                            <div class="search-title h2 font-weight-bold">Search</div>
+                            <h1 class="search-title h2 font-weight-bold">Search</h1>
                             <div class="search-form mt-4">
                                 <div class="form-group d-flex flex-column position-relative">
                                     <div class="position-absolute">
@@ -85,16 +86,33 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-8" id="searchContent" style="display:none;">
-                            <!--  result column -->
-                            <div class="search-content mt-5">
+                        <div class="search__column col-md-8" id="searchContent">
+                            <div class="swiper">
+                                <!-- Additional required wrapper -->
+                                <div class="swiper-wrapper">
+                                    <!-- Slides -->
+                                    <!-- <div class="swiper-slide"></div> -->
+                                </div>
+
+
+                            </div>
+                            <div class="swiper-button-prev swiper-arrow"></div>
+                            <div class="swiper-button-next swiper-arrow"></div>
+                            <!-- <div class="search-content mt-5">
                                 <img src="" id="bookCover" class="book-cover" alt="Book Cover">
                                 <div id="bookInfo" class="book-info book-details"></div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </section>
+
+
+
+
+
+
+
 
             <section class="follow">
                 <div class="follow__container">
@@ -139,6 +157,14 @@
 
 
         </main>
+
+
+
+
+
+
+
+
 
         <footer class='footer'>
             <div class="footer__container">
@@ -232,14 +258,14 @@
                     <label class="modal__label">
                         <input class="modal__input" id='join-email' type="email" name='Email' autocomplete='email' placeholder='Email' required>
                     </label>
-                    <button class="modal__button btn" type="button" title="modal button" disabled>Join</button>
+                    <button class="modal__button btn" id='join-submit' type="button" title="modal button">Join</button>
                 </form>
             </dialog>
         </div>
     </div>
 
 
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/global.js" type='module'></script>
     <script src="./js/search.js" type='module'></script>
 </body>

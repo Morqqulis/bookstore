@@ -6,15 +6,22 @@
 
 .about {
 	padding-top: 110px;
-	padding-bottom: 330px;
+	padding-bottom: 130px;
 }
 
 .flex-container {
 	display: flex;
 	justify-content: space-between;
 	gap: 20px;
+	align-items: center;
 }
-
+.about__content {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(90vh - 72px);
+	justify-content: center;
+	align-items: center;
+}
 .flex-child-left {
 }
 
@@ -22,10 +29,10 @@
 }
 
 .about__title {
+	color: rgb(36, 20, 0);
 	font-size: 36px;
-	line-height: 2px;
 	font-weight: 900;
-	margin-bottom: 11px;
+	margin-bottom: 25px;
 }
 
 .leftside {
@@ -35,6 +42,6 @@
 	font-size: 18px;
 	font-weight: 400px;
 	line-height: 35.31px;
-	font-family: Montserrat;
 	background: #fffaf5;
+    transform: translate(0px,-25px);
 }

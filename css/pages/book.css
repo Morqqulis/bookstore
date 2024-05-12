@@ -5,3 +5,170 @@
 /* ==================================== */
 
 /* Cod bur yazilacaq */
+
+  body {
+    background-color: #fffaf5;
+  }
+  
+  .container {
+    margin-top: 150px;
+    padding: 0 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .detailSection {
+    display: flex;
+    align-items: center;
+    gap: 150px;
+    .right {
+      z-index: -9;
+    }
+    .backButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100px;
+      height: 29px;
+      background-color: #e16a00;
+      box-shadow: 0px 3px 8px 0px #e16a0030;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 13px;
+      color: #ffffff;
+      border-radius: 4px;
+      margin-bottom: 80px;
+    }
+  
+    .bookName {
+      font-size: 35px;
+      font-weight: 700;
+      color: #241400;
+      margin: 10px 0 5px 0;
+    }
+  
+    .bookAddDate {
+      font-size: 16px;
+      font-weight: 700;
+      color: #241400;
+    }
+    .bookCategory{
+        font-size: 16px;
+        font-weight: 700;
+        color: #241400;
+    }
+    .bookAuthor {
+      font-size: 22px;
+      font-weight: 400;
+      color: #241400;
+      margin: 10px 0;
+    }
+  
+    .bookAbout {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 35px;
+      max-width: 686px;
+    }
+    img {
+      max-width: 300px;
+      min-width: 100px;
+    }
+  }
+    .image {
+      position: relative;
+  
+      img {
+        max-width: 300px;
+        min-width: 100px;
+      }
+  }
+      .new {
+        position: absolute;
+        right: 0;
+        top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 94px;
+        height: 28px;
+        background-color: #eb5757;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 900;
+        border-radius: 4px;
+      }
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .commentSection {
+    margin-top: 150px;
+  
+    .commentComponents {
+      display: flex;
+      align-items: center;
+      height: 80px;
+  
+      .commentInput {
+        height: 60px;
+        width: 686px;
+        font-size: 16px;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 10px 1px #00000026;
+        border: none;
+        border-radius: 4px;
+        outline: none;
+      }
+  
+      .commentButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px;
+        min-height: 60px;
+        border: none;
+        border-radius: 4px;
+        background-color: #e16a00;
+        cursor: pointer;
+      }
+    }
+  
+    .commentsContainer div {
+      background-color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      width: 746px;
+      padding: 20px;
+      margin: 40px 0;
+      box-shadow: 0px 0px 10px 0px #0000001a;
+      border-radius: 4px;
+      gap: 20px;
+    }
+  }
+  .bookDate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 69px;
+    height: 23px;
+    background-color: #2f80ed;
+    box-shadow: 0px 3px 8px 0px #2f80ed30;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 900;
+  }
+  .bookImage{
+  width: 379px;
+  height: 529px;
+  top: 246px;
+  left: 1039px;
+  }
