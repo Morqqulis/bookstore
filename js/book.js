@@ -3,9 +3,6 @@
 import { getBooks } from './global.js'
 
 /* ================================================ */
-// getBooks('', localStorage.getItem('bookId')).then(data => {
-// 	console.log(data.items[0].volumeInfo)
-// })
 
 const bookDate = document.querySelector('.bookDate')
 const bookName = document.querySelector('.bookName')
@@ -18,7 +15,7 @@ const bookCategory = document.querySelector('.bookCategory')
 getBooks('', localStorage.getItem('bookId'))
 	.then(data => {
 		const book = data.items[0].volumeInfo
-		console.log(book)
+		// console.log(book)
 
 		if (data) {
 			if (book.publishedDate) {

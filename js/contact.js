@@ -1,7 +1,7 @@
-import { setDBData } from './global.js'
+import { getDBData, pushDBData, setDBData,  } from './global.js'
 const contactsData = []
 
-const setContactsData = () => {
+const setContactsData = async () => {
 	const nameInput = document.querySelector('.fullName')
 	const emailInput = document.querySelector('.email')
 	const addressInput = document.querySelector('.adress')
@@ -24,9 +24,11 @@ const setContactsData = () => {
 		note,
 	}
 
-	contactsData.push(userContactData)
-
-	setDBData('/contacts', contactsData)
+	try {
+		await pushDBData('/contacts', userContactData)
+	} catch (error) {
+		console.error('Error writing contact data to the database:', error)
+	}
 
 	nameInput.value = ''
 	emailInput.value = ''
@@ -35,4 +37,11 @@ const setContactsData = () => {
 	noteInput.value = ''
 }
 
-document.querySelector('.sendButton').addEventListener('click', setContactsData)
+document.querySelector('.sendButton').addEventListener('click', async e => {
+	e.preventDefault()
+	await setContactsData()
+})
+
+getDBData('/contacts').then(data => {
+	console.log(data)
+})

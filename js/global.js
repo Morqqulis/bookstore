@@ -2,7 +2,7 @@
 /* ================================================ */
 /* FIREBASE SETTINGS */
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js'
-import { get, getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js'
+import { get, getDatabase, ref, set, push } from 'https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyCmqaLqRNuNFPa610SdqidREV9nJTSLAJE',
@@ -19,9 +19,37 @@ const db = getDatabase(app)
 
 /* ================================================ */
 /* FIREBASE SET & GET FUNCTIONS */
-export const setDBData = (path, data) => set(ref(db, path), data)
+export const setDBData = async (path, data) => {
+	try {
+		await set(ref(db, path), data)
+		console.log('Data successfully written to the database')
+	} catch (error) {
+		console.error('Error writing data to the database:', error)
+	}
+}
 
-export const getDBData = path => get(ref(db, path))
+export const pushDBData = async (path, data) => {
+	try {
+		await push(ref(db, path), data)
+		console.log('Data successfully written to the database')
+	} catch (error) {
+		console.error('Error writing data to the database:', error)
+	}
+}
+
+export const getDBData = async path => {
+	try {
+		const snapshot = await get(ref(db, path))
+		if (snapshot.exists()) {
+			return snapshot.val()
+		} else {
+			return null
+		}
+	} catch (error) {
+		console.error('Error getting data from the database:', error)
+		return null
+	}
+}
 
 /* ======================================================================== */
 /* Get data from API */
@@ -54,35 +82,25 @@ const handleCloseModalByEsc = e => {
 /* ===================================================================== */
 /* Add joined user */
 
-const checkInputs = () => {
-	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
-	document.getElementById('join-submit').disabled = !(nameValue && emailValue)
-}
-
 const addJoinedUser = () => {
 	const modal = document.getElementById('modal')
 	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
 	// if (!nameValue || !emailValue) return
 
-	getDBData('/users').then(snapshot => {
-		let users = snapshot.val() || []
+	getDBData('/users').then(users => {
 		const newUser = {
 			name: nameValue,
 			email: emailValue,
 			role: 'user',
 		}
 
-		users.push(newUser)
-
-		setDBData('/users', users)
+		pushDBData('/users', newUser)
 
 		modal.close()
 		html.classList.remove('modal-open')
 
 		document.getElementById('join-name').value = ''
 		document.getElementById('join-email').value = ''
-
-		checkInputs()
 	})
 }
 
@@ -120,6 +138,3 @@ html.addEventListener('click', e => {
 		addJoinedUser()
 	}
 })
-
-// document.getElementById('join-name').addEventListener('input', checkInputs)
-// document.getElementById('join-email').addEventListener('input', checkInputs)
