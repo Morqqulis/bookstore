@@ -2,7 +2,6 @@
 
 const search = document.querySelector("#searchBook");
 const infos = document.querySelector("#infos");
-const btnSearch = document.querySelector("#btn-search");
 const bookName = document.querySelector("#book-name");
 const author = document.querySelector("#author-name");
 const imageUrl = document.querySelector("#image-url");
@@ -50,18 +49,10 @@ function chooseBook() {
 		button.addEventListener("click", () => {
 			search.value = button.textContent;
 			fillInfo(button.textContent.trim());
-			// infos.innerHTML = "";
 			infos.classList.add("changeVisibility");
 		})
 	})
 }
-
-btnSearch.addEventListener("click", () => {
-	const searchValue = search.value;
-	if (searchValue.trim().length > 0) {
-		fillInfo(searchValue.trim());
-	}
-})
 
 // fill book form starts
 async function fillInfo(text) {
