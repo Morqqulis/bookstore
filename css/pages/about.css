@@ -6,7 +6,7 @@
 
 .about {
 	padding-top: 110px;
-	padding-bottom: 330px;
+	padding-bottom: 130px;
 }
 
 .flex-container {
@@ -14,7 +14,13 @@
 	justify-content: space-between;
 	gap: 20px;
 }
-
+.about__content {
+	display: flex;
+	flex-direction: column;
+	min-height: calc(90vh - 72px);
+	justify-content: center;
+	align-items: center;
+}
 .flex-child-left {
 }
 

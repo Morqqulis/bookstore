@@ -6,14 +6,15 @@
 
 /* Hero Section */
 .hero {
+	padding: 100px 0;
 }
 .hero__container {
-	min-height: calc(100vh - 72px);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 .hero__inner {
+	min-height: calc(100vh - 72px);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -150,5 +151,3 @@
 }
 
 /* ==================================== */
-
-
