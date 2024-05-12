@@ -66,7 +66,7 @@ const checkInputs = () => {
 const addJoinedUser = () => {
 	const modal = document.getElementById('modal')
 	const [nameValue, emailValue] = ['join-name', 'join-email'].map(id => document.getElementById(id).value.trim())
-	if (!nameValue || !emailValue) return
+	// if (!nameValue || !emailValue) return
 
 	getDBData('/users').then(snapshot => {
 		let users = snapshot.val() || []
@@ -82,6 +82,11 @@ const addJoinedUser = () => {
 
 		modal.close()
 		html.classList.remove('modal-open')
+
+		document.getElementById('join-name').value = ''
+		document.getElementById('join-email').value = ''
+
+		checkInputs()
 	})
 }
 

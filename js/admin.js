@@ -1,4 +1,4 @@
-// import { getDBData, setDBData } from './global.js'
+import { getDBData, setDBData } from "./global.js"
 
 const search = document.querySelector("#searchBook");
 const infos = document.querySelector("#infos");
@@ -43,7 +43,7 @@ async function loadInformation(text) {
 }
 
 function chooseBook() {
-	const buttons = document.querySelectorAll("#infos button");
+  const buttons = document.querySelectorAll("#infos button");
 
 	buttons.forEach((button) => {
 		button.addEventListener("click", () => {
@@ -55,18 +55,21 @@ function chooseBook() {
 }
 
 // fill book form starts
+
 async function fillInfo(text) {
-	let request = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${text}`);
-	let response = await request.json();
-	let arr = response.items;
-	console.log(arr)
-	if (Array.isArray(arr)) {
-		bookName.value = arr[0].volumeInfo.title;
-		for (let i = 0; i < arr[0].volumeInfo.authors.length; i++) {
-			author.value = arr[0].volumeInfo.authors[i] + " ";
-		}
-		imageUrl.value = arr[0].volumeInfo.imageLinks.thumbnail;
-		description.value = arr[0].volumeInfo.description;
+  let request = await fetch(
+    `https://www.googleapis.com/books/v1/volumes?q=${text}`
+  );
+  let response = await request.json();
+  let arr = response.items;
+
+  if (Array.isArray(arr)) {
+    bookName.value = arr[0].volumeInfo.title;
+    for (let i = 0; i < arr[0].volumeInfo.authors.length; i++) {
+      author.value = arr[0].volumeInfo.authors[i] + " ";
+    }
+    imageUrl.value = arr[0].volumeInfo.imageLinks.thumbnail;
+    description.value = arr[0].volumeInfo.description;
 
 		for (let i = 0; i < arr[0].volumeInfo.categories.length; i++) {
 			bookType.value = arr[0].volumeInfo.categories[i] + " ";
