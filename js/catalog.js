@@ -88,11 +88,11 @@ const appendSliderItems = () => {
 		})
 	})
 
-    getDBData('/new').then(data => {
-        const books = Object.values(data)
-        let randomSlider = Math.floor(Math.random() * books.length)
-        books.forEach(book => {
-            swiperWrappers[2].innerHTML += `
+	getDBData('/new').then(data => {
+		const books = Object.values(data)
+		let randomSlider = Math.floor(Math.random() * books.length)
+		books.forEach(book => {
+			swiperWrappers[2].innerHTML += `
                 <div class="swiper-slide catalog__slide">
                     <div class="catalog__card catalog__card_new">
                         <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
@@ -104,8 +104,8 @@ const appendSliderItems = () => {
                     </div>
                 </div>
             `
-        })
-    })
+		})
+	})
 
 	swiperWrappers.forEach(wrapper => (wrapper.innerHTML = ''))
 }
