@@ -1,4 +1,4 @@
-import { getDBData, pushDBData, setDBData,  } from './global.js'
+import { pushDBData } from './global.js'
 const contactsData = []
 
 const setContactsData = async () => {
@@ -42,19 +42,3 @@ document.querySelector('.sendButton').addEventListener('click', async e => {
 	await setContactsData()
 })
 
-getDBData('/contacts').then(data => {
-	console.log(data)
-})
-
-
-const headerLogo = document.querySelector(".header__logo");
-const headerMenu = document.querySelector(".header__menu")
-
-headerLogo.addEventListener('mouseenter',() =>{
-    headerMenu.classList.toggle("active")
-})
-
-
-headerMenu.addEventListener('mouseleave',() =>{
-    headerMenu.classList.remove("active")
-})
