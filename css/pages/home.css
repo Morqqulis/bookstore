@@ -53,8 +53,7 @@
 		background-color: #b45400;
 	}
 }
-.hero__image {
-}
+
 
 /* ==================================== */
 
@@ -63,8 +62,7 @@
 .catalog {
 	padding-bottom: 136px;
 }
-.catalog__container {
-}
+
 .catalog__title {
 	text-align: center;
 	margin-bottom: 50px;
@@ -106,8 +104,7 @@
 .about {
 	padding-bottom: 160px;
 }
-.about__container {
-}
+
 .about__title {
 	margin-bottom: 32px;
 	text-align: center;
@@ -139,13 +136,11 @@
 	text-align: center;
 	padding-bottom: 135px;
 }
-.delivery__container {
-}
+
 .delivery__title {
 	margin-bottom: 45px;
 }
-.title {
-}
+
 .delivery__text {
 	font-size: 12px;
 }
