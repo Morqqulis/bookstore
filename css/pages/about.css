@@ -22,11 +22,7 @@
 	justify-content: center;
 	align-items: center;
 }
-.flex-child-left {
-}
 
-.flex-child-right {
-}
 
 .about__title {
 	color: rgb(36, 20, 0);
@@ -44,4 +40,17 @@
 	line-height: 35.31px;
 	background: #fffaf5;
     transform: translate(0px,-25px);
+}
+
+
+
+@media  screen and (max-width: 480px) {
+
+   .flex-container {
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: space-between;
+		gap: 20px;
+		align-items: center;
+	}
 }

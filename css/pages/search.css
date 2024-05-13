@@ -190,8 +190,7 @@
 	height: auto;
 	width: 100%;
 }
-.card-body {
-}
+
 .card-title {
 	font-size: 24px;
 	font-weight: 700;
@@ -204,8 +203,7 @@
 	position: relative;
 }
 /* swiper */
-.swiper {
-}
+
 .swiper-arrow {
 	position: absolute !important;
 	top: 50%;
@@ -223,4 +221,26 @@
 }
 .swiper-button-next {
 	right: -50px;
+}
+
+
+
+@media  screen and (max-width: 480px){
+	.search__inner{
+		display: flex;
+		flex-direction: column;
+	    gap: 100px;
+	}
+
+.search-form{
+	width: max-content;
+}
+
+.swiper-arrow{
+	display: none;
+}
+
+
+
+
 }
