@@ -44,27 +44,29 @@ window.setBookId = function (id) {
 	window.location.href = 'book.html'
 }
 
+const generateBookHTML = (book, isNew) => {
+	return `
+        <div class="swiper-slide catalog__slide">
+            <div class="catalog__card ${isNew ? 'catalog__card_new' : ''}">
+                <img class="catalog__card-img" src="${book.image || book.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
+                <div class="catalog__card-info">
+                    <span class="catalog__card-name">${book.title}</span>
+                    <span class="catalog__card-author">${book.author}</span>
+                    <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
+                </div>
+            </div>
+        </div>
+    `
+}
+
 const appendSliderItems = () => {
 	const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
+
 	getBooks(localStorage.getItem('genre')).then(data => {
 		let randomSlider = Math.floor(Math.random() * data.items.length)
 		data?.items.forEach((item, i) => {
 			if (item.volumeInfo.imageLinks) {
-				swiperWrappers[0].insertAdjacentHTML(
-					'afterbegin',
-					`
-                        <div class="swiper-slide catalog__slide">
-                            <div class="catalog__card ${i === randomSlider ? 'catalog__card_new' : ''}">
-                                <img class="catalog__card-img" src="${item.volumeInfo.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
-                                <div class="catalog__card-info">
-                                    <span class="catalog__card-name">${item.volumeInfo.title}</span>
-                                    <span class="catalog__card-author">${item.volumeInfo?.authors}</span>
-                                    <button class="catalog__card-btn btn" onclick="setBookId('${item.id}')" type="button" title="read">READ MORE</button>
-                                </div>
-                            </div>
-                        </div>
-                    `
-				)
+				swiperWrappers[0].insertAdjacentHTML('afterbegin', generateBookHTML(item.volumeInfo, i === randomSlider))
 			}
 		})
 	})
@@ -73,18 +75,7 @@ const appendSliderItems = () => {
 		const books = Object.values(data)
 		let randomSlider = Math.floor(Math.random() * books.length)
 		books.forEach((book, i) => {
-			swiperWrappers[1].innerHTML += `
-                <div class="swiper-slide catalog__slide">
-                    <div class="catalog__card ${i === randomSlider ? 'catalog__card_new' : ''}">
-                        <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
-                        <div class="catalog__card-info">
-                            <span class="catalog__card-name">${book.title}</span>
-                            <span class="catalog__card-author">${book.author}</span>
-                            <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
-                        </div>
-                    </div>
-                </div>
-            `
+			swiperWrappers[1].innerHTML += generateBookHTML(book, i === randomSlider)
 		})
 	})
 
@@ -92,18 +83,7 @@ const appendSliderItems = () => {
 		const books = Object.values(data)
 		let randomSlider = Math.floor(Math.random() * books.length)
 		books.forEach(book => {
-			swiperWrappers[2].innerHTML += `
-                <div class="swiper-slide catalog__slide">
-                    <div class="catalog__card catalog__card_new">
-                        <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
-                        <div class="catalog__card-info">
-                            <span class="catalog__card-name">${book.title}</span>
-                            <span class="catalog__card-author">${book.author}</span>
-                            <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
-                        </div>
-                    </div>
-                </div>
-            `
+			swiperWrappers[2].innerHTML += generateBookHTML(book, true)
 		})
 	})
 
@@ -150,14 +130,13 @@ const thirdSlider = new Swiper('.catalog__third-slider', {
 })
 
 /* ===================================================================== */
-const headerLogo = document.querySelector(".header__logo");
-const headerMenu = document.querySelector(".header__menu")
+const headerLogo = document.querySelector('.header__logo')
+const headerMenu = document.querySelector('.header__menu')
 
-headerLogo.addEventListener('mouseenter',() =>{
-    headerMenu.classList.toggle("active")
+headerLogo.addEventListener('mouseenter', () => {
+	headerMenu.classList.toggle('active')
 })
 
-
-headerMenu.addEventListener('mouseleave',() =>{
-    headerMenu.classList.remove("active")
+headerMenu.addEventListener('mouseleave', () => {
+	headerMenu.classList.remove('active')
 })
