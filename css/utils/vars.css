@@ -292,3 +292,24 @@ textarea {
 }
 
 /* ==================================== */
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+	border-radius: 50%;
+	display: block;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--orange);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
