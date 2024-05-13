@@ -155,7 +155,7 @@
 		position: absolute;
 		top: 83px;
 		left: 0;
-		width: 200px;
+		width: 100%;
 		height: 300px;
 		padding-top: 30px;
 		text-align: center;
@@ -163,14 +163,37 @@
 		color: #fff;
 		transform: translateX(-150%);
 		transition: 0.5s ease-in-out;
-
-		
+	}
+	
+    .header__menu.active{
+		transform: translateY(0);
 	}
 
-	
+	.hero__container {
+		margin-top: 45px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 
-	.header__menu.active{
-		transform: translateY(0);
+	.hero__title {
+		font-size: 30px;
+		font-weight: 900;
+	}
+
+	.hero__inner {
+		min-height: calc(100vh - 72px);
+		display: flex;
+		flex-direction: column-reverse;
+		gap: 25px;
+		line-height: 196.19%;
+	}
+
+	.about__content {
+		padding-block: 30px;
+		display: flex;
+		flex-direction: column;
+		gap: 50px;
 	}
 
 	
