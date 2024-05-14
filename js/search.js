@@ -61,15 +61,14 @@ document.addEventListener('DOMContentLoaded', () => {
 	renderBooks()
 })
 
+/*Mobile view*/ 
 
-const headerLogo = document.querySelector(".header__logo");
+
+const menuBtn = document.querySelector(".menuBtn");
 const headerMenu = document.querySelector(".header__menu")
 
-headerLogo.addEventListener('mouseenter',() =>{
+menuBtn.addEventListener('click',() =>{
     headerMenu.classList.toggle("active")
 })
 
 
-headerMenu.addEventListener('mouseleave',() =>{
-    headerMenu.classList.remove("active")
-})

@@ -150,14 +150,14 @@ const thirdSlider = new Swiper('.catalog__third-slider', {
 })
 
 /* ===================================================================== */
-const headerLogo = document.querySelector(".header__logo");
+
+/*Mobile view*/ 
+
+const menuBtn = document.querySelector(".menuBtn");
 const headerMenu = document.querySelector(".header__menu")
 
-headerLogo.addEventListener('mouseenter',() =>{
+menuBtn.addEventListener('click',() =>{
     headerMenu.classList.toggle("active")
 })
 
 
-headerMenu.addEventListener('mouseleave',() =>{
-    headerMenu.classList.remove("active")
-})

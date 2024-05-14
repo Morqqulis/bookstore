@@ -45,8 +45,7 @@
 	padding-inline: 20px;
 	padding-bottom: 10px;
 }
-.catalog__genres-item {
-}
+
 .catalog__genres-btn {
 	transition: 0.3s ease 0s;
 	transition-property: color transform;
@@ -64,11 +63,9 @@
 		color: var(--orange);
 	}
 }
-.catalog__third-slider {
-}
 
-.catalog__slide {
-}
+
+
 .catalog__card {
 	display: grid;
 	padding: 25px 25px 15px 25px;

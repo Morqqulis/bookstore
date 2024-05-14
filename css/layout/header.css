@@ -18,22 +18,19 @@
 	}
 }
 
-.header__container {
-}
+
 .header__nav {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 }
-.header__logo {
-}
+
 
 .header__menu {
 	display: flex;
 	gap: 16px;
 }
-.header__menu-item {
-}
+
 .header__menu-link {
 	font-size: 14px;
 	font-weight: 400;
@@ -87,12 +84,40 @@
 	transition: fill 0.3s ease 0s;
 }
 
+.menuBtn{
+	display: none;
+}
+
+
+
+/*----------Mobile view--------------- */
+
 @media  screen and (max-width: 480px) {
+
+    
+
+	.header__logo{
+		margin: auto;
+		text-align: center;
+	}
+
+	.logo__icon{
+		display: none;
+	}
+
+	.menuBtn{
+		position: absolute;
+		top: 30%;
+		left: 10px;
+		font-size: 30px;
+		display: block;
+	}
+
 .header__menu{
 	display: flex;
 	flex-direction: column;
 	position: absolute;
-	top: 83px;
+	top: 74px;
 	left: 0;
 	width: 100%;
 	height: 300px;
