@@ -209,7 +209,7 @@ getDBData('/books').then(data => {
 
 	books.forEach((book, index) => {
 		let title = book?.title?.length > 20 ? book.title.slice(0, 20) + '...' : book.title
-		let description = book?.description?.length > 20 ? book.description.slice(0, 20) + '...' : book.description
+		let description = book?.description?.length > 30 ? book.description.slice(0, 30) + '...' : book.description
 		booksNumbers.innerHTML += `
             <li class="join-us__list-item join-us__list-item_flex">${index + 1}</li>
         `
