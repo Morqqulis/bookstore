@@ -88,9 +88,9 @@
 
 /* -------------------Section Content Css----------- */
 .main-section {
-	flex: 1;
-	padding: 48px 90px 100px 33px;
-	background-color: #fffaf5;
+  flex: 1;
+  padding: 48px 30px 100px 33px;
+  background-color: #fffaf5;
 }
 
 .content-section {
@@ -114,7 +114,6 @@
 	font-weight: 600;
 }
 
-/* -------------------Add Book Css----------- */
 /* ===================== Add Book Form ============================== */
 .formDiv {
 	margin-bottom: 160px;
