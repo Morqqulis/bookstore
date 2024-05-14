@@ -119,7 +119,9 @@
 	margin-bottom: 160px;
 	padding-block: 30px;
 }
-
+ section form div label{
+	font-weight: 600;
+}
 .formDiv__title {
 	margin-bottom: 18px;
 }
