@@ -10,7 +10,7 @@
 	border-bottom: 1px solid #ccc;
 }
 .header_scrolled {
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, 0.9);
 	color: #fff;
 
 	.header__action-icon {
@@ -24,6 +24,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	white-space: nowrap;
 }
 .header__logo {
 }
@@ -31,6 +32,26 @@
 .header__menu {
 	display: flex;
 	gap: 16px;
+
+	@media (max-width: 767.98px) {
+		transition: all 0.3s ease 0s;
+		top: 83px;
+		left: -200%;
+		padding: 50px 120px 100px 20px;
+		height: 100vh;
+		max-width: fit-content;
+		width: 100%;
+		white-space: nowrap;
+		position: absolute;
+		overflow: auto;
+		flex-direction: column;
+		background-color: var(--red);
+		color: #fff;
+	}
+	.menu-open & {
+		left: 0;
+		z-index: 99;
+	}
 }
 .header__menu-item {
 }
@@ -41,6 +62,13 @@
 	display: block;
 	padding: 5px;
 	position: relative;
+
+	@media (max-width: 767.98px) {
+		font-size: 22px;
+	}
+	@media (max-width: 566.98px) {
+		font-size: 18px;
+	}
 
 	&.header__menu-link_active {
 		font-weight: 700;
@@ -73,37 +101,63 @@
 	align-items: center;
 }
 .header__action {
+	transition: all 0.3s ease 0s;
 	&:hover {
-		transition: color 0.3s ease 0s;
 		color: var(--orange);
-
 		svg {
 			fill: var(--orange);
 		}
 	}
 }
+
+.header__action_burger {
+	display: none;
+	position: relative;
+	height: 15px;
+	width: 20px;
+	flex-direction: column;
+	justify-content: space-between;
+	span,
+	&::before,
+	&::after {
+		content: '';
+		height: 2px;
+		width: 100%;
+		transition: all 0.3s ease 0s;
+		position: absolute;
+		background-color: #000;
+		left: 0;
+		display: block;
+	}
+
+	&::before {
+		top: 0;
+	}
+	&::after {
+		bottom: 0;
+	}
+	span {
+		top: calc(50% - 0.5px);
+		transform: translate(0, -50%);
+		.menu-open & {
+			width: 0;
+			transform: scale(0);
+		}
+	}
+	.menu-open &::before {
+		top: calc(50%);
+		transform: translate(0, calc(-50% + 0.5px)) rotate(45deg);
+	}
+	.menu-open &::after {
+		bottom: calc(45%);
+		transform: translate(0, 50%) rotate(-45deg);
+	}
+	@media (max-width: 767.98px) {
+		display: flex;
+	}
+}
+
 .header__action-icon {
 	fill: #000;
 	transition: fill 0.3s ease 0s;
 }
-
-@media  screen and (max-width: 480px) {
-.header__menu{
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	top: 83px;
-	left: 0;
-	width: 100%;
-	height: 300px;
-	padding-top: 30px;
-	text-align: center;
-	background-color:#000 ;
-	color: #fff;
-	transform: translateX(-150%);
-	transition: 0.5s ease-in-out;
-}
-
-.header__menu.active{
-	transform: translateY(0);
-}}

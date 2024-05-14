@@ -1,12 +1,11 @@
 import { pushDBData } from './global.js'
-const contactsData = []
 
-const setContactsData = async () => {
+const pushContactDataToDB = async () => {
 	const nameInput = document.querySelector('.fullName')
 	const emailInput = document.querySelector('.email')
 	const addressInput = document.querySelector('.adress')
 	const phoneInput = document.querySelector('.phone')
-	const noteInput = document.querySelector('.note')
+	const noteInput = document.getElementById('contact-note')
 
 	const name = nameInput.value
 	const email = emailInput.value
@@ -14,7 +13,20 @@ const setContactsData = async () => {
 	const phone = phoneInput.value
 	const note = noteInput.value
 
-	if (!name && !email && !address && !phone && !note) return
+	if (!name || !email || !address || !phone || !note) {
+		alert('All fields are required')
+		return
+	}
+
+	if (!validator.isEmail(email)) {
+		alert('Please enter a valid email address')
+		return
+	}
+
+	if (!validator.isMobilePhone(phone, 'any')) {
+		alert('Please enter a valid phone number')
+		return
+	}
 
 	const userContactData = {
 		name,
@@ -25,7 +37,7 @@ const setContactsData = async () => {
 	}
 
 	try {
-		await pushDBData('/contacts', userContactData)
+		pushDBData('/contacts', userContactData)
 	} catch (error) {
 		console.error('Error writing contact data to the database:', error)
 	}
@@ -39,6 +51,5 @@ const setContactsData = async () => {
 
 document.querySelector('.sendButton').addEventListener('click', async e => {
 	e.preventDefault()
-	await setContactsData()
+	await pushContactDataToDB()
 })
-
