@@ -48,7 +48,7 @@
 .side-bar {
 	background-color: #720418;
 	color: #fff;
-	width: 320px;
+	min-width: 320px;
 	padding-top: 20px;
 	position: relative;
 }

@@ -206,11 +206,11 @@ html.addEventListener('click', e => {
 		removeClassNameFromHTML('modal-open')
 	}
 
-	html.classList.contains('menu-open') && !e.target.closest('.header__menu') && removeClassNameFromHTML('menu-open')
-
 	// Open || Close Menu
 	if (e.target.closest('.header__action_burger')) {
-		addClassNameToHTML('menu-open')
+		html.classList.toggle('menu-open')
+	} else if (html.classList.contains('menu-open') && !e.target.closest('.header__menu')) {
+		removeClassNameFromHTML('menu-open')
 	}
 
 	/* Set active genre for catalog page */
