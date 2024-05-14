@@ -1,6 +1,6 @@
 /* ================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-	new Swiper('.swiper', {
+	const swiper = new Swiper('.swiper', {
 		slidesPerView: 1,
 		effect: 'fade',
 		autoHeight: true,
