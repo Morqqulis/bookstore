@@ -32,13 +32,13 @@ const generateBookHTML = (book, isNew) => {
         <div class="swiper-slide catalog__slide">
             <div class="catalog__card ${isNew ? 'catalog__card_new' : ''} wow animate__zoomIn">
                 <div class="swiper-zoom-container" data-swiper-zoom="5">
-                    <img class="catalog__card-img" src="${image || book.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
+                    <img class="catalog__card-img" src="${image || book?.imageLinks?.thumbnail}" alt="book" width="135" height="180" loading="lazy">
                 </div>
                 <div class="swiper-lazy-preloader"></div>
                 <div class="catalog__card-info">
                     <span class="catalog__card-name">${title}</span>
-                    <span class="catalog__card-author">${author || book.authors[0]}</span>
-                    <button class="catalog__card-btn btn" onclick="setBookId('${author || book.authors[0]}')" type="button" title="read">READ MORE</button>
+                    <span class="catalog__card-author">${author || book?.authors[0]}</span>
+                    <button class="catalog__card-btn btn" onclick="setBookId('${title}')" type="button" title="read">READ MORE</button>
                 </div>
             </div>
         </div>
