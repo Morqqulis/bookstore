@@ -160,7 +160,7 @@ const checkAuth = () => {
 		const adminAuth = sessionStorage.getItem('adminAuthenticated')
 		const signedInAdmin = users.some(user => user.role === 'admin') && adminAuth
 
-		// if (!signedInAdmin) window.location.href = 'adminLogin.html'
+		if (!signedInAdmin) window.location.href = 'adminLogin.html'
 	})
 }
 /* -------------------------------------------------------------- */

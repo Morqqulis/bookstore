@@ -278,11 +278,3 @@ const confirmLogout = e => {
 html.addEventListener('click', confirmLogout)
 
 // ------------------------------------
-
-// getDBData('/users').then(data => {
-// 	const adminNameSelector = document.getElementById('adminUsername')
-// 	const [admin] = Object.values(data).filter(user => user.signedIn)
-// 	adminNameSelector.textContent = admin.name
-// })
-
-
