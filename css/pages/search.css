@@ -148,3 +148,17 @@ padding-right: 40px;
 #searchContent {
     display: none;
 }
+
+
+
+#prevBtn {
+    margin-right: 10px; 
+    width: 120px;
+    height: 40px;
+}
+
+#nextBtn{
+    margin-right: 10px; 
+    width: 120px;
+    height: 40px;
+}
