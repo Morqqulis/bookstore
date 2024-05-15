@@ -1,9 +1,9 @@
-import { getDBData, pushDBData, setDBData } from "./global.js";
+import { getDBData, pushDBData, setDBData } from './global.js'
 
-const html = document.documentElement;
-const logoutModal = document.getElementById("logoutModal");
-const search = document.querySelector("#searchBook");
-const searchResultList = document.querySelector(".search-result__list");
+const html = document.documentElement
+const logoutModal = document.getElementById('logoutModal')
+const search = document.querySelector('#searchBook')
+const searchResultList = document.querySelector('.search-result__list')
 const bookInputs = {
   name: document.getElementById("book-name"),
   author: document.getElementById("author-name"),
@@ -14,18 +14,17 @@ const bookInputs = {
 
 searchResultList.addEventListener("click", handleSearchResultClick);
 
-function handleSearchResultClick(event) {
-  const clickedListItem = event.target.closest(".search-result__list-item");
-  if (!clickedListItem) return;
+function handleSearchResultClick(e) {
+	const clickedListItem = e.target.closest('.search-result__list-item')
+	if (!clickedListItem) return
 
-  const { title, author, imageUrl, description, bookType } =
-    clickedListItem.dataset;
+	const { title, author, imageUrl, description, bookType } = clickedListItem.dataset
 
-  bookInputs.name.value = title || "Unknown Title";
-  bookInputs.author.value = author || "Unknown Author";
-  bookInputs.imageUrl.value = imageUrl || "https://via.placeholder.com/150";
-  bookInputs.description.value = description || "No description available";
-  bookInputs.bookType.value = bookType || "Unknown Category";
+	bookInputs.name.value = title || 'Unknown Title'
+	bookInputs.author.value = author || 'Unknown Author'
+	bookInputs.imageUrl.value = imageUrl || 'https://via.placeholder.com/150'
+	bookInputs.description.value = description || 'No description available'
+	bookInputs.bookType.value = bookType || 'Unknown Category'
 }
 
 const handleSearch = (e) => {
@@ -266,25 +265,37 @@ getDBData("/contacts").then((data) => {
 });
 
 // ----------------Logout-Modal--------------------
+const confirmLogout = e => {
+	switch (e.target.id) {
+		case 'logoutBtn':
+			logoutModal.showModal()
+			html.style.overflow = 'hidden'
+			break
 
-const confirmLogout = (e) => {
-  switch (e.target.id) {
-    case "logoutBtn":
-      logoutModal.showModal();
-      html.style.overflow = "hidden";
-      break;
-    case "logout_no":
-      logoutModal.close();
-      html.style.overflow = "auto";
-      break;
-    case "logout_yes":
-      window.location.href = "adminLogin.html";
-      html.style.overflow = "auto";
-      break;
-    case "logoutModal":
-      logoutModal.close();
-      html.style.overflow = "auto";
-  }
-};
+		case 'no':
+			logoutModal.close()
+			html.style.overflow = 'auto'
+			break
 
-html.addEventListener("click", confirmLogout);
+		case 'yes':
+			window.location.href = 'adminLogin.html'
+			break
+		case 'logoutModal':
+			logoutModal.close()
+			html.style.overflow = 'auto'
+		default:
+			break
+	}
+}
+
+html.addEventListener('click', confirmLogout)
+
+// ------------------------------------
+
+// getDBData('/users').then(data => {
+// 	const adminNameSelector = document.getElementById('adminUsername')
+// 	const [admin] = Object.values(data).filter(user => user.signedIn)
+// 	adminNameSelector.textContent = admin.name
+// })
+
+
