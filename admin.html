@@ -62,12 +62,12 @@
                                 </a>
                             </li>
                             <li>
-                                <a class='page__button wow animate__lightSpeedInLeft' href='./adminLogin.html'
-                                    aria-label='navigation link'>
+                                <button class='page__button wow animate__lightSpeedInLeft' data-href='./adminLogin.html'
+                                    aria-label='navigation link' id="logoutBtn">
                                     <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
                                         width='33' height='36'>
                                     Logout
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -289,7 +289,7 @@
             </div>
 
         </main>
-        <dialog class="logout" open="false">
+        <dialog class="logout" id="logoutModal">
             <p class="logout__text">
                 Are you sure you want to go out?
             </p>
