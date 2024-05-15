@@ -22,38 +22,50 @@
                         </div>
                         <ul>
                             <li>
-                                <a href="./index.html" class='page__button wow animate__lightSpeedInLeft' aria-label='navigation link'>
-                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link" width='33' height='36'>
+                                <a href="#backTo" class='page__button wow animate__lightSpeedInLeft'
+                                    aria-label='navigation link'>
+                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
+                                        width='33' height='36'>
                                     Home
                                 </a>
                             </li>
                             <li>
-                                <a href="#booksId" class='page__button wow animate__lightSpeedInLeft' aria-label='navigation link'>
-                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link" width='33' height='36'>
+                                <a href="#booksId" class='page__button wow animate__lightSpeedInLeft'
+                                    aria-label='navigation link'>
+                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
+                                        width='33' height='36'>
                                     Books
                                 </a>
                             </li>
                             <li>
-                                <a href="#aboutId" class='page__button wow animate__lightSpeedInLeft' aria-label='navigation link'>
-                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link" width='33' height='36'>
+                                <a href="#aboutId" class='page__button wow animate__lightSpeedInLeft'
+                                    aria-label='navigation link'>
+                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
+                                        width='33' height='36'>
                                     About
                                 </a>
                             </li>
                             <li>
-                                <a href="#join_usId" class='page__button wow animate__lightSpeedInLeft' aria-label='navigation link'>
-                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link" width='33' height='36'>
+                                <a href="#join_usId" class='page__button wow animate__lightSpeedInLeft'
+                                    aria-label='navigation link'>
+                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
+                                        width='33' height='36'>
                                     Join Us
                                 </a>
                             </li>
                             <li>
-                                <a href="#contactId" class='page__button wow animate__lightSpeedInLeft' aria-label='navigation link'>
-                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link" width='33' height='36'>
+                                <a href="#contactId" class='page__button wow animate__lightSpeedInLeft'
+                                    aria-label='navigation link'>
+                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
+                                        width='33' height='36'>
                                     Contact
                                 </a>
                             </li>
                             <li>
-                                <a class='page__button wow animate__lightSpeedInLeft' href='./adminLogin.html' aria-label='navigation link'>
-                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link" width='33' height='36'>
+                                <a class='page__button wow animate__lightSpeedInLeft' href='./adminLogin.html'
+                                    aria-label='navigation link'>
+                                    <img src="./images/admin_Images/book-icon.svg" alt="book icon for navigation link"
+                                        width='33' height='36'>
                                     Logout
                                 </a>
                             </li>
@@ -65,11 +77,12 @@
                     <div class="content-section__admin">
                         <div class="adminUser">
                             <img src="./images/admin_Images/adminUserIcon.png" alt="adminUserIcon">
-                            <span>Admin</span>
+                            <span id="adminUsername">Admin</span>
                         </div>
                     </div>
+
                     <div class="content-section">
-                        <h2 class="title add-book__title">Add Book</h2>
+                        <h2 class="title add-book__title" id="backTo">Add Book</h2>
                         <h3 class="search-heading">Search Book</h3>
 
                         <div class="search__book__body">
@@ -78,11 +91,14 @@
                             </div>
                             <div>
                                 <button id="btn-search" class='buttonDiv' type='button' title='Search title'>
-                                    <svg width="20.000000" height="25.000000" viewBox="0 0 20 25" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <svg width="20.000000" height="25.000000" viewBox="0 0 20 25" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                         <defs />
-                                        <path id="Vector" d="M7.8 16.08C4.04 16.08 1 12.58 1 8.26C1 3.94 4.04 0.44 7.8 0.44C11.55 0.44 14.6 3.94 14.6 8.26C14.6 12.58 11.55 16.08 7.8 16.08Z"
-                                              stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" />
-                                        <path id="Vector" d="M18 23.55L13.46 17.53" stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round" />
+                                        <path id="Vector"
+                                            d="M7.8 16.08C4.04 16.08 1 12.58 1 8.26C1 3.94 4.04 0.44 7.8 0.44C11.55 0.44 14.6 3.94 14.6 8.26C14.6 12.58 11.55 16.08 7.8 16.08Z"
+                                            stroke-opacity="1.000000" stroke-width="2.000000" stroke-linejoin="round" />
+                                        <path id="Vector" d="M18 23.55L13.46 17.53" stroke-opacity="1.000000"
+                                            stroke-width="2.000000" stroke-linejoin="round" stroke-linecap="round" />
                                     </svg>
                                 </button>
                             </div>
@@ -96,10 +112,6 @@
                         <div class="search-result">
                             <ul class="search-result__list"></ul>
                         </div>
-
-
-
-
 
                         <!--Add Book Form-->
                         <section class="formDiv">
@@ -120,7 +132,7 @@
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea name="textarea" id="description"
-                                              placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                                        placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="book-type">Book Type</label>
@@ -151,19 +163,21 @@
 
                                 <label class='about-store__label'>
                                     Title
-                                    <input class='about-store__input' type="text" id="aboutStore" placeholder="About Store">
+                                    <input class='about-store__input' type="text" id="aboutStore"
+                                        placeholder="About Store">
                                 </label>
 
                                 <label class='about-store__label' for="bookImageUrl">
                                     Book Image Url
-                                    <input class='about-store__input' type="text" id="bookImageUrl" placeholder="https://image:url/">
+                                    <input class='about-store__input' type="text" id="bookImageUrl"
+                                        placeholder="https://image:url/">
                                 </label>
 
 
                                 <label class='about-store__label' for="descriptionFor">
                                     Description
                                     <textarea class='about-store__textarea' name="" id="descriptionFor"
-                                              placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
+                                        placeholder="We work without holidays and weekends! Resident... We work without holidays and weekends! Resident... We work without holidays and weekends! Resident..."></textarea>
                                 </label>
 
                                 <button class='about-store__button' id="addInfoButton">About info add</button>
@@ -275,6 +289,15 @@
             </div>
 
         </main>
+        <dialog class="logout">
+            <p class="logout__text">
+                Are you sure you want to go out?
+            </p>
+            <div class="logout__buttons">
+                <button class="logout__button" type="button">Yes</button>
+                <button class="logout__button" type="button">No</button>
+            </div>
+        </dialog>
 
     </div>
 
