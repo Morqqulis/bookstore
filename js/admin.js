@@ -248,3 +248,5 @@ getDBData('/contacts').then(data => {
 		contactsPhoneNumber.innerHTML += `<li class="join-us__list-item join-us__list-item_flex"><span>${contact.phone}</span></li>`
 	})
 })
+
+// ----------------Logout-Modal--------------------

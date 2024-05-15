@@ -592,20 +592,46 @@ div .search-result_show {
 } */
 /* ----------------Admin Logout------------------- */
 .logout {
-max-width: 300px;
-min-height: 250px;
-background-color: #1fc342;
-position: absolute;
-inset: 0;
+  display: flex;
+  flex-direction: column;
+  max-width: 662px;
+  min-height: 250px;
+  padding: 70px 35px 30px;
+  background-color: #720418;
+  position: absolute;
+  left: 50vw;
+  top: 35vh;
+  border: none;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  border-radius: 25px;
+  border: 3px solid var(--orange);
+  gap: 20px;
 }
-.logout__text {
 
+.logout__text {
+  flex-grow: 1;
 }
 .logout__buttons {
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  @media (max-width: 567px) {
+    flex-wrap: wrap;
+  }
 }
 .logout__button {
-
+  border: 1px solid var(--orange);
+  border-radius: 10px;
+  max-width: 150px;
+  width: 100%;
+  padding-block: 10px;
+  color: inherit;
+  transition: all 1s ease;
+  &:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #000;
+  }
 }
