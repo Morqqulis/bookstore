@@ -94,16 +94,6 @@ const handleCloseMenuByEsc = e => {
 	}
 }
 /* ---------------------------------------------------------- */
-// Show message with animation
-function showMessage(messageElement, messageText) {
-	messageElement.textContent = messageText
-	messageElement.classList.add('show')
-}
-
-// Hide message with animation
-function hideMessage(messageElement) {
-	messageElement.classList.remove('show')
-}
 
 /* Add joined user to DB */
 const addJoinedUser = async () => {
@@ -236,7 +226,7 @@ const signUpAdmin = () => {
 	}
 
 	getDBData('/users').then(data => {
-		const users = Object.values(data)
+		const users = Object.values(data).filter(user => user.role === 'admin')
 		if (users.some(user => user.email === emailValue)) {
 			setErrorToMessage(emailMessage)
 			return
