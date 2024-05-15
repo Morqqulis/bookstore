@@ -127,12 +127,12 @@ const addJoinedUser = async () => {
 	if (validator.isEmpty(emailValue)) return showError(messages[1], 'Email can not be empty')
 	hideError(messages[1])
 
-	const users = Object.values(getDBData('/users'))
+	const users = Object.values(await getDBData('/users'))
 	if (users.some(user => user.email === emailValue)) return showError(messages[1], 'This email is already joined')
 	hideError(messages[1])
 
-	const newUser = { name: nameValue, email: emailValue, role: 'user' }
-	pushDBData('/users', newUser)
+	const newUser = { name: nameValue, email: emailValue }
+	await pushDBData('/users', newUser)
 	modal.classList.add('modal_closed')
 
 	setTimeout(() => {
@@ -155,13 +155,10 @@ navLinks.forEach(link => {
 /* -------------------------------------------------------------- */
 // Check auth for admin in AdminLogin page
 const checkAuth = () => {
-	getDBData('/users').then(data => {
-		const users = Object.values(data)
-		const adminAuth = sessionStorage.getItem('adminAuthenticated')
-		const signedInAdmin = users.some(user => user.role === 'admin') && adminAuth
-
-		if (!signedInAdmin) window.location.href = 'adminLogin.html'
-	})
+	const authInfo = sessionStorage.getItem('adminAuthenticated')
+	if (!authInfo || authInfo !== 'true') {
+		window.location.href = 'adminLogin.html'
+	}
 }
 /* -------------------------------------------------------------- */
 
