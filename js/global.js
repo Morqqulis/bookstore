@@ -195,61 +195,45 @@ document.addEventListener('keydown', e => {
 	handleCloseMenuByEsc(e)
 })
 
-/* -----------------------SignUp Modal------------------------------------ */
+/* -----------------------SignUp------------------------------------ */
 
-const signUpAdmin = async () => {
-	const loginValue = document.getElementById('signUp-login').value.trim()
-	const emailValue = document.getElementById('signUp-email').value.trim()
+const signUpAdmin = () => {
+	const loginValue = document.getElementById('signUp-login').value
+	const emailValue = document.getElementById('signUp-email').value
 	const passwordValue = document.getElementById('signUp-password').value
+
 	const loginMessage = document.querySelector('.signUp__login-message')
 	const emailMessage = document.querySelector('.signUp__email-message')
 	const passwordMessage = document.querySelector('.signUp__password-message')
 
-	const setErrorToMessage = (selector, message) => {
-		selector.textContent = message
+	const setErrorToMessage = selector => {
 		selector.classList.add('error')
 	}
 
-	const hideError = selector => {
-		selector.textContent = ''
-		selector.classList.remove('error')
-	}
-
 	if (!validator.isEmail(emailValue)) {
-		setErrorToMessage(emailMessage, 'Please enter a valid email address')
-		return
-	} else {
-		hideError(emailMessage)
+		setErrorToMessage(emailMessage)
 	}
-
 	if (loginValue.length < 3) {
-		setErrorToMessage(loginMessage, 'Name must be at least 3 characters long')
-		return
-	} else {
-		hideError(loginMessage)
+		setErrorToMessage(loginMessage)
 	}
 
-	if (!validator.isStrongPassword(passwordValue) || passwordValue.length < 8) {
-		setErrorToMessage(passwordMessage, 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character')
+	if (!validator.isStrongPassword(passwordValue) && passwordValue.length < 8) {
+		setErrorToMessage(passwordMessage)
 		return
-	} else {
-		hideError(passwordMessage)
 	}
 
-	const users = await getDBData('/users')
-	if (users.some(user => user.email === emailValue)) {
-		setErrorToMessage(emailMessage, 'This email is already joined')
-		return
-	} else {
-		hideError(emailMessage)
-	}
+	getDBData('/users').then(data => {
+		const users = Object.values(data)
+		if (users.some(user => user.email === emailValue)) {
+			setErrorToMessage(emailMessage)
+			return
+		}
 
-	if (users.some(user => user.login === loginValue)) {
-		setErrorToMessage(loginMessage, 'This login is already taken')
-		return
-	} else {
-		hideError(loginMessage)
-	}
+		if (users.some(user => user.login === loginValue)) {
+			setErrorToMessage(loginMessage)
+			return
+		}
+	})
 
 	const newUser = {
 		login: loginValue,
@@ -258,7 +242,7 @@ const signUpAdmin = async () => {
 		role: 'admin',
 	}
 
-	await pushDBData('/users', newUser)
+	pushDBData('/users', newUser)
 	signUpModal.classList.add('modal_closed')
 
 	setTimeout(() => {
@@ -287,12 +271,10 @@ html.addEventListener('click', e => {
 		removeClassNameFromHTML('menu-open')
 	}
 
-	/* Open || Close SignUp Modal */
 	if (e.target.closest('#register')) {
 		signUpModal.showModal()
 	}
-
-	if (e.target == signUpModal) {
+	if (e.target === signUpModal) {
 		signUpModal.close()
 	}
 
