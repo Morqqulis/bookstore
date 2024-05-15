@@ -70,6 +70,8 @@ export const getBooks = async (genre = '', id = '') => {
 // Global variables
 const html = document.documentElement
 const modal = document.getElementById('modal')
+const signUpModal = document.getElementById('signUp')
+const signUpSubmit = document.getElementById('signUp-submit')
 const header = document.querySelector('.header')
 const navLinks = document.querySelectorAll('.header__menu-link')
 /* ============Global Functions============ */
@@ -193,6 +195,78 @@ document.addEventListener('keydown', e => {
 	handleCloseMenuByEsc(e)
 })
 
+/* -----------------------SignUp Modal------------------------------------ */
+
+const signUpAdmin = async () => {
+	const loginValue = document.getElementById('signUp-login').value.trim()
+	const emailValue = document.getElementById('signUp-email').value.trim()
+	const passwordValue = document.getElementById('signUp-password').value
+	const loginMessage = document.querySelector('.signUp__login-message')
+	const emailMessage = document.querySelector('.signUp__email-message')
+	const passwordMessage = document.querySelector('.signUp__password-message')
+
+	const setErrorToMessage = (selector, message) => {
+		selector.textContent = message
+		selector.classList.add('error')
+	}
+
+	const hideError = selector => {
+		selector.textContent = ''
+		selector.classList.remove('error')
+	}
+
+	if (!validator.isEmail(emailValue)) {
+		setErrorToMessage(emailMessage, 'Please enter a valid email address')
+		return
+	} else {
+		hideError(emailMessage)
+	}
+
+	if (loginValue.length < 3) {
+		setErrorToMessage(loginMessage, 'Name must be at least 3 characters long')
+		return
+	} else {
+		hideError(loginMessage)
+	}
+
+	if (!validator.isStrongPassword(passwordValue) || passwordValue.length < 8) {
+		setErrorToMessage(passwordMessage, 'Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character')
+		return
+	} else {
+		hideError(passwordMessage)
+	}
+
+	const users = await getDBData('/users')
+	if (users.some(user => user.email === emailValue)) {
+		setErrorToMessage(emailMessage, 'This email is already joined')
+		return
+	} else {
+		hideError(emailMessage)
+	}
+
+	if (users.some(user => user.login === loginValue)) {
+		setErrorToMessage(loginMessage, 'This login is already taken')
+		return
+	} else {
+		hideError(loginMessage)
+	}
+
+	const newUser = {
+		login: loginValue,
+		email: emailValue,
+		password: passwordValue,
+		role: 'admin',
+	}
+
+	await pushDBData('/users', newUser)
+	signUpModal.classList.add('modal_closed')
+
+	setTimeout(() => {
+		signUpModal.close()
+		signUpModal.classList.remove('modal_closed')
+	}, 3000)
+}
+
 /* ----------------------------------------------------------- */
 
 html.addEventListener('click', e => {
@@ -213,12 +287,27 @@ html.addEventListener('click', e => {
 		removeClassNameFromHTML('menu-open')
 	}
 
+	/* Open || Close SignUp Modal */
+	if (e.target.closest('#register')) {
+		signUpModal.showModal()
+	}
+
+	if (e.target == signUpModal) {
+		signUpModal.close()
+	}
+
 	/* Set active genre for catalog page */
 	if (e.target.closest('.catalog__link')) localStorage.setItem('genre', e.target.textContent)
 
 	/* Add joined user */
 	if (e.target.closest('#join-submit')) {
 		addJoinedUser()
+	}
+
+	/* Sign up admin */
+	if (e.target.closest('#signUp-submit')) {
+		e.preventDefault()
+		signUpAdmin()
 	}
 })
 
@@ -243,4 +332,3 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 	wow.init()
 })
-/* ----------------------------------------------------------- */

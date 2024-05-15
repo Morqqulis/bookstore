@@ -54,6 +54,7 @@
 	overflow: auto;
 	padding-inline: 20px;
 	padding-bottom: 10px;
+	scrollbar-width: thin;
 }
 .catalog__genres-item {
 }
@@ -78,6 +79,7 @@
 }
 
 .catalog__slide {
+    cursor: pointer;
 }
 .catalog__card {
 	--delay-multiplier: 0.1s;
@@ -171,6 +173,10 @@
 	&::after {
 		font-size: 35px;
 	}
+}
+
+.catalog__first-slider {
+	padding-top: 50px;
 }
 
 .loader {

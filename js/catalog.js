@@ -31,7 +31,7 @@ const generateBookHTML = (book, isNew) => {
 	return `
         <div class="swiper-slide catalog__slide">
             <div class="catalog__card ${isNew ? 'catalog__card_new' : ''} wow animate__zoomIn">
-                <div class="swiper-zoom-container" data-swiper-zoom="5">
+                <div class="swiper-zoom-container" data-swiper-zoom="2">
                     <img class="catalog__card-img" src="${image || book?.imageLinks?.thumbnail}" alt="book" width="135" height="180" loading="lazy">
                 </div>
                 <div class="swiper-lazy-preloader"></div>
@@ -106,12 +106,19 @@ sliders.forEach((slider, i) => {
 	}
 
 	new Swiper(slider, {
+		nested: true,
 		slidesPerView: 5,
 		spaceBetween: 60,
 		mouseControl: true,
 		scroll: true,
 		observer: true,
 		observeParents: true,
+		observeSlideChildren: true,
+        speed: 1000,
+        zoom: {
+            maxRatio: 5,
+          },
+
 		effect: `${i === 0 ? 'coverflow' : i === 1 ? 'slide' : 'cube'}`,
 
 		autoplay: {
