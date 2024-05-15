@@ -183,8 +183,6 @@ const addClassNameToHTML = className => {
 	html.classList.add(`${className}`)
 }
 
-/* =====================Event Listeners=========================== */
-
 /* Close menu on resize */
 window.addEventListener('resize', closeMenuOnResize)
 /*------------------------------------------------------------ */
@@ -197,6 +195,33 @@ document.addEventListener('keydown', e => {
 
 /* -----------------------SignUp------------------------------------ */
 
+const setErrorToMessage = selector => {
+	selector.classList.add('error')
+}
+const validateLogin = (loginValue, loginMessage) => {
+	if (!validator.isAlphanumeric(loginValue) || !validator.isLength(loginValue, { min: 4, max: 20 })) {
+		setErrorToMessage(loginMessage)
+		return false
+	}
+	return true
+}
+
+const validateEmail = (emailValue, emailMessage) => {
+	if (!validator.isEmail(emailValue)) {
+		setErrorToMessage(emailMessage)
+		return false
+	}
+	return true
+}
+
+const validatePassword = (passwordValue, passwordMessage) => {
+	if (!validator.isStrongPassword(passwordValue)) {
+		setErrorToMessage(passwordMessage)
+		return false
+	}
+	return true
+}
+
 const signUpAdmin = () => {
 	const loginValue = document.getElementById('signUp-login').value
 	const emailValue = document.getElementById('signUp-email').value
@@ -206,19 +231,7 @@ const signUpAdmin = () => {
 	const emailMessage = document.querySelector('.signUp__email-message')
 	const passwordMessage = document.querySelector('.signUp__password-message')
 
-	const setErrorToMessage = selector => {
-		selector.classList.add('error')
-	}
-
-	if (!validator.isEmail(emailValue)) {
-		setErrorToMessage(emailMessage)
-	}
-	if (loginValue.length < 3) {
-		setErrorToMessage(loginMessage)
-	}
-
-	if (!validator.isStrongPassword(passwordValue) && passwordValue.length < 8) {
-		setErrorToMessage(passwordMessage)
+	if (!validateLogin(loginValue, loginMessage) || !validateEmail(emailValue, emailMessage) || !validatePassword(passwordValue, passwordMessage)) {
 		return
 	}
 
@@ -243,6 +256,7 @@ const signUpAdmin = () => {
 	}
 
 	pushDBData('/users', newUser)
+
 	signUpModal.classList.add('modal_closed')
 
 	setTimeout(() => {
@@ -251,7 +265,7 @@ const signUpAdmin = () => {
 	}, 3000)
 }
 
-/* ----------------------------------------------------------- */
+/* =====================Event Listeners=========================== */
 
 html.addEventListener('click', e => {
 	/* Open || Close Modal */
@@ -271,6 +285,7 @@ html.addEventListener('click', e => {
 		removeClassNameFromHTML('menu-open')
 	}
 
+	/* Sign up */
 	if (e.target.closest('#register')) {
 		signUpModal.showModal()
 	}
