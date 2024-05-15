@@ -2,8 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 	const swiper = new Swiper('.swiper', {
 		slidesPerView: 1,
-		// effect: 'fade',
-
+		effect: 'fade',
+		autoHeight: true,
 		observer: true,
 		observeParents: true,
 
@@ -22,29 +22,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const getBookDataFromApi = async () => {
 		const searchInput = document.getElementById('searchBook').value
-		const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchInput ? searchInput : 'Frontend'}`)
+		const fields = 'items(volumeInfo/title,volumeInfo/authors,volumeInfo/description,volumeInfo/categories,volumeInfo/imageLinks/thumbnail)'
+		const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchInput ? searchInput : 'JavaScript'}&fields=${fields}`)
 		const data = await res.json()
-		const books = data.items
-		return books
+		return data.items
 	}
 
 	const renderBooks = async () => {
 		const books = await getBookDataFromApi()
-		books.forEach(book => {
-			const bookCover = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''
-			const bookTitle = book.volumeInfo.title
-			const bookAuthor = book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown'
-			const bookDescription = book.volumeInfo.description ? book.volumeInfo.description : 'No description available'
-			const bookType = book.volumeInfo.categories ? book.volumeInfo.categories.join(', ') : 'Unknown'
+		books.forEach(({ volumeInfo }) => {
+			const { imageLinks, title, authors, description, categories } = volumeInfo
 			sliderWrapper.innerHTML += `
                 <div class="swiper-slide">
-                    <div class="card">
-                        <img src="${bookCover}" class="card-img-top" loading="lazy" alt="Book Cover">
+                    <div class="card wow animate__zoomIn">
+                        <div class="swiper-zoom-container" data-swiper-zoom="5">
+                            <img src="${imageLinks?.thumbnail}" class="card-img-top" loading="lazy" alt="Book Cover" width="128" height="192">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">${bookTitle}</h5>
-                            <p class="card-text"><strong>Author:</strong> ${bookAuthor}</p>
-                            <p class="card-text"><strong>Type:</strong> ${bookType}</p>
-                            <p class="card-text"><strong>Description:</strong> ${bookDescription.length > 200 ? bookDescription.slice(0, 200) + '...' : bookDescription}</p>
+                            <h5 class="card-title">${title}</h5>
+                            <p class="card-text"><strong>Author:</strong> ${authors.join(', ')}</p>
+                            <p class="card-text"><strong>Type:</strong> ${categories?.join(', ')}</p>
+                            <p class="card-text"><strong>Description:</strong> ${description?.length > 100 ? `${description.slice(0, 100)}...` : description}</p>
                         </div>
                     </div>
                 </div>
@@ -59,17 +57,4 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 
 	renderBooks()
-})
-
-
-const headerLogo = document.querySelector(".header__logo");
-const headerMenu = document.querySelector(".header__menu")
-
-headerLogo.addEventListener('mouseenter',() =>{
-    headerMenu.classList.toggle("active")
-})
-
-
-headerMenu.addEventListener('mouseleave',() =>{
-    headerMenu.classList.remove("active")
 })

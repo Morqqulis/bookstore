@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section class="admin__welcome">
+    <section class="admin__welcome wow animate__fadeIn">
         <header class="admin__welcome__header">
             <div class="welcome__logo">
                 <img src="../images/header/library__logo.svg" alt="">
@@ -26,10 +26,10 @@
                 </div>
                 <div class="welcome__login__body">
                     <div class="login__input">
-                        <input type="text" id="login__username" placeholder="Username">
+                        <input type="text" id="login__username" placeholder="Username" autocomplete='nickname'>
                     </div>
                     <div class="login__input">
-                        <input type="password" id="login__password" placeholder="Password">
+                        <input type="password" id="login__password" placeholder="Password" autocomplete='current-password'>
                     </div>
                 </div>
                 <div class="welcome__login__btn__wrapper">
@@ -42,6 +42,8 @@
         </main>
     </section>
 
+    <script src="./js/libs/validator.min.js"></script>
+    <script src="./js/libs/wow.min.js"></script>
     <script src="./js/global.js" type='module'></script>
     <script src="./js/adminLogin.js" type='module'></script>
 </body>

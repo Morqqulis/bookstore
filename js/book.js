@@ -15,7 +15,6 @@ const bookCategory = document.querySelector('.bookCategory')
 getBooks('', localStorage.getItem('bookId'))
 	.then(data => {
 		const book = data.items[0].volumeInfo
-		// console.log(book)
 
 		if (data) {
 			if (book.publishedDate) {

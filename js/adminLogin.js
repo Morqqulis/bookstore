@@ -1,25 +1,32 @@
 import { getDBData } from './global.js'
 
-const checkAdminCredentials = async () => {
+const checkAdminCredentials = e => {
+	e.preventDefault()
 	const usernameInput = document.getElementById('login__username')
 	const passwordInput = document.getElementById('login__password')
 
-	const username = usernameInput.value.trim()
-	const userPassword = passwordInput.value.trim()
+	const usernameValue = usernameInput.value.trim()
+	const userPasswordValue = passwordInput.value.trim()
+	let credentialsMatched = false
 
-	await getDBData('/admins').then(data => {
-		const { login, password } = data
+	getDBData('/users').then(data => {
+		const admins = Object.values(data).filter(admin => admin.role === 'admin')
 
-		if (username === login && userPassword === password) {
-			sessionStorage.setItem('adminAuthenticated', 'true')
-			window.location.href = 'admin.html'
-		} else {
-			alert('Wrong username or password')
+		admins.forEach(admin => {
+			const { name, password } = admin
+			if (usernameValue === name && userPasswordValue === password) {
+				sessionStorage.setItem('adminAuthenticated', 'true')
+				sessionStorage.setItem('adminName', name)
+				window.location.href = 'admin.html'
+				credentialsMatched = true
+				return
+			}
+		})
+
+		if (!credentialsMatched) {
+			alert('Wrong credentials')
 		}
 	})
 }
 
-document.querySelector('#admin-join').addEventListener('click', async e => {
-	e.preventDefault()
-	await checkAdminCredentials()
-})
+document.querySelector('.welcome__login').addEventListener('submit', checkAdminCredentials)

@@ -3,29 +3,11 @@
 import { getBooks, getDBData } from './global.js'
 /* ================================================ */
 
+import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
 const html = document.documentElement
-
-html.addEventListener('click', e => {
-	const genreButtons = document.querySelectorAll('.catalog__genres-btn')
-
-	/* Set active genre */
-	if (e.target.closest('.catalog__genres-btn')) {
-		genreButtons.forEach(button => button.classList.remove('catalog__genres-btn_active'))
-		e.target.classList.add('catalog__genres-btn_active')
-		localStorage.setItem('genre', e.target.textContent)
-
-		/* Update Sliders */
-		appendSliderItems()
-		firstSlider.update()
-		secondSlider.update()
-		thirdSlider.update()
-	}
-})
-
+const bookGenre = localStorage.getItem('genre')
 /* ====================================================== */
 /* Sliders */
-import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
-const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
 
 const appendGenre = genre => {
 	const genreList = document.querySelector('.catalog__genres')
@@ -44,73 +26,47 @@ window.setBookId = function (id) {
 	window.location.href = 'book.html'
 }
 
+const generateBookHTML = (book, isNew) => {
+	const { image, title, author } = book
+	return `
+        <div class="swiper-slide catalog__slide">
+            <div class="catalog__card ${isNew ? 'catalog__card_new' : ''} wow animate__zoomIn">
+                <div class="swiper-zoom-container" data-swiper-zoom="5">
+                    <img class="catalog__card-img" src="${image || book?.imageLinks?.thumbnail}" alt="book" width="135" height="180" loading="lazy">
+                </div>
+                <div class="swiper-lazy-preloader"></div>
+                <div class="catalog__card-info">
+                    <span class="catalog__card-name">${title}</span>
+                    <span class="catalog__card-author">${author || book?.authors[0]}</span>
+                    <button class="catalog__card-btn btn" onclick="setBookId('${title}')" type="button" title="read">READ MORE</button>
+                </div>
+            </div>
+        </div>
+    `
+}
+
 const appendSliderItems = () => {
 	const swiperWrappers = document.querySelectorAll('.swiper-wrapper')
+
 	getBooks(localStorage.getItem('genre')).then(data => {
 		let randomSlider = Math.floor(Math.random() * data.items.length)
 		data?.items.forEach((item, i) => {
-			if (item.volumeInfo.imageLinks) {
-				swiperWrappers[0].insertAdjacentHTML(
-					'afterbegin',
-					`
-                        <div class="swiper-slide catalog__slide">
-                            <div class="catalog__card ${i === randomSlider ? 'catalog__card_new' : ''}">
-                                <img class="catalog__card-img" src="${item.volumeInfo.imageLinks.thumbnail}" alt="book" width="135" height="180" loading="lazy">
-                                <div class="catalog__card-info">
-                                    <span class="catalog__card-name">${item.volumeInfo.title}</span>
-                                    <span class="catalog__card-author">${item.volumeInfo?.authors}</span>
-                                    <button class="catalog__card-btn btn" onclick="setBookId('${item.id}')" type="button" title="read">READ MORE</button>
-                                </div>
-                            </div>
-                        </div>
-                    `
-				)
+			if (item?.volumeInfo?.imageLinks) {
+				swiperWrappers[0].insertAdjacentHTML('afterbegin', generateBookHTML(item.volumeInfo, i === randomSlider))
 			}
 		})
 	})
 
-	getDBData('/bestsellers').then(data => {
+	getDBData('/books').then(data => {
 		const books = Object.values(data)
-		let randomSlider = Math.floor(Math.random() * books.length)
-		books.forEach((book, i) => {
-			swiperWrappers[1].innerHTML += `
-                <div class="swiper-slide catalog__slide">
-                    <div class="catalog__card ${i === randomSlider ? 'catalog__card_new' : ''}">
-                        <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
-                        <div class="catalog__card-info">
-                            <span class="catalog__card-name">${book.title}</span>
-                            <span class="catalog__card-author">${book.author}</span>
-                            <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
-                        </div>
-                    </div>
-                </div>
-            `
-		})
-	})
+		const bestAndNewBooks = books.filter(book => book.bestsellers || book.newBooks)
 
-	getDBData('/new').then(data => {
-		const books = Object.values(data)
-		let randomSlider = Math.floor(Math.random() * books.length)
-		books.forEach(book => {
-			swiperWrappers[2].innerHTML += `
-                <div class="swiper-slide catalog__slide">
-                    <div class="catalog__card catalog__card_new">
-                        <img class="catalog__card-img" src="${book.image}" alt="book" width="135" height="180" loading="lazy">
-                        <div class="catalog__card-info">
-                            <span class="catalog__card-name">${book.title}</span>
-                            <span class="catalog__card-author">${book.author}</span>
-                            <button class="catalog__card-btn btn" onclick="setBookId('${book.author}')" type="button" title="read">READ MORE</button>
-                        </div>
-                    </div>
-                </div>
-            `
-		})
+		bestAndNewBooks.forEach(book => (swiperWrappers[1].innerHTML += generateBookHTML(book, book.newBooks)))
+		books.filter(book => book.newBooks).forEach(book => (swiperWrappers[2].innerHTML += generateBookHTML(book, book.newBooks)))
 	})
 
 	swiperWrappers.forEach(wrapper => (wrapper.innerHTML = ''))
 }
-
-const bookGenre = localStorage.getItem('genre')
 
 if (document.querySelector('.catalog__genres')) {
 	appendGenre(bookGenre)
@@ -120,44 +76,69 @@ if (bookGenre) {
 	appendSliderItems()
 }
 
-const firstSlider = new Swiper('.catalog__first-slider', {
-	slidesPerView: 5,
-	spaceBetween: 60,
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-})
+const sliders = document.querySelectorAll('.slider')
 
-const secondSlider = new Swiper('.catalog__second-slider', {
-	slidesPerView: 5,
-	spaceBetween: 60,
+sliders.forEach((slider, i) => {
+	const breakPointOptions = () => {
+		if (i !== 2) {
+			return {
+				320: {
+					slidesPerView: 1,
+				},
+				576: {
+					slidesPerView: 2,
+					spaceBetween: 30,
+				},
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 40,
+				},
+				992: {
+					slidesPerView: 3,
+					spaceBetween: 50,
+				},
+				1200: {
+					slidesPerView: 5,
+					spaceBetween: 60,
+				},
+			}
+		}
+	}
 
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
-})
+	new Swiper(slider, {
+		slidesPerView: 5,
+		spaceBetween: 60,
+		mouseControl: true,
+		scroll: true,
+		observer: true,
+		observeParents: true,
+		effect: `${i === 0 ? 'coverflow' : i === 1 ? 'slide' : 'cube'}`,
 
-const thirdSlider = new Swiper('.catalog__third-slider', {
-	slidesPerView: 5,
-	spaceBetween: 60,
+		autoplay: {
+			enabled: true,
+			delay: 3000,
+		},
 
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-	},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+
+		breakpoints: breakPointOptions(),
+	})
 })
 
 /* ===================================================================== */
-const headerLogo = document.querySelector(".header__logo");
-const headerMenu = document.querySelector(".header__menu")
 
-headerLogo.addEventListener('mouseenter',() =>{
-    headerMenu.classList.toggle("active")
-})
+html.addEventListener('click', e => {
+	const genreButtons = document.querySelectorAll('.catalog__genres-btn')
 
+	/* Set active genre */
+	if (e.target.closest('.catalog__genres-btn')) {
+		genreButtons.forEach(button => button.classList.remove('catalog__genres-btn_active'))
+		e.target.classList.add('catalog__genres-btn_active')
+		localStorage.setItem('genre', e.target.textContent)
 
-headerMenu.addEventListener('mouseleave',() =>{
-    headerMenu.classList.remove("active")
+		appendSliderItems()
+	}
 })

@@ -5,20 +5,25 @@
 /* ==================================== */
 
 .about {
+	padding-block: 120px;
 }
 
 .flex-container {
 	display: flex;
 	justify-content: space-between;
-	gap: 20px;
+	gap: 40px;
 	align-items: center;
+	@media (max-width: 991.98px) {
+		flex-direction: column;
+	}
 }
 .about__content {
 	display: flex;
 	flex-direction: column;
-	min-height: calc(85vh - 83px);
+	min-height: calc(100dvh - 240px);
 	justify-content: center;
 	align-items: center;
+	gap: 10px;
 }
 
 .about__title {
@@ -26,6 +31,12 @@
 	font-size: 36px;
 	font-weight: 900;
 	margin-bottom: 25px;
+	@media (max-width: 767.98px) {
+		font-size: 28px;
+	}
+	@media (max-width: 566.98px) {
+		font-size: 26px;
+	}
 }
 
 .leftside {
@@ -35,16 +46,22 @@
 	font-size: 18px;
 	font-weight: 400px;
 	line-height: 35.31px;
-	background: #fffaf5;
 	transform: translate(0px, -25px);
+	@media (max-width: 991.98px) {
+		max-width: 100%;
+	}
+	@media (max-width: 767.98px) {
+		font-size: 16px;
+	}
 }
-
-@media screen and (max-width: 480px) {
-	.flex-container {
-		display: flex;
-		flex-direction: column-reverse;
-		justify-content: space-between;
-		gap: 20px;
-		align-items: center;
+.flex-child-right {
+	img {
+		height: auto;
+		max-width: 100%;
+		@media (max-width: 991.98px) {
+			width: 100%;
+			margin: 0 auto;
+			display: block;
+		}
 	}
 }
