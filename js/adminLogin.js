@@ -16,8 +16,10 @@ const checkAdminCredentials = e => {
 			const { name, password } = admin
 			if (usernameValue === name && userPasswordValue === password) {
 				sessionStorage.setItem('adminAuthenticated', 'true')
+				sessionStorage.setItem('adminName', name)
 				window.location.href = 'admin.html'
 				credentialsMatched = true
+				return
 			}
 		})
 
