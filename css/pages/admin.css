@@ -590,9 +590,10 @@ div .search-result_show {
 }
 /* .checkboxes__text {
 } */
-/* ----------------Admin Logout------------------- */
+
+/* ----------------Logout-Modal------------------- */
 .logout {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   max-width: 662px;
   min-height: 250px;

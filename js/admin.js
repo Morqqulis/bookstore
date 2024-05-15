@@ -250,3 +250,10 @@ getDBData('/contacts').then(data => {
 })
 
 // ----------------Logout-Modal--------------------
+
+document.getElementById("logoutBtn").addEventListener("click", confirmLogout)
+
+const confirmLogout = () => {
+	const logoutModal = document.getElementById("logoutModal")
+	logoutModal.open=true
+}
