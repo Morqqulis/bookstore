@@ -104,10 +104,6 @@
                             </div>
 
                         </div>
-                        <!-- <div>
-                            <div id="infos" type="text" class="changeVisibility" aria-label="search" aria-describedby="basic-addon1">
-                            </div>
-                        </div> -->
 
                         <div class="search-result">
                             <ul class="search-result__list"></ul>
@@ -127,7 +123,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="image-url">Book Image URL</label>
-                                    <input type="text" id="image-url" placeholder="Alex Smith" autocomplete="url" />
+                                    <input type="text" id="image-url" placeholder="Image URL" autocomplete="url" />
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Description</label>
@@ -290,13 +286,17 @@
 
         </main>
         <dialog class="logout" id="logoutModal">
-            <p class="logout__text">
-                Are you sure you want to go out?
-            </p>
-            <div class="logout__buttons">
-                <button class="logout__button" type="button">Yes</button>
-                <button class="logout__button" type="button">No</button>
+
+            <div class="logout__content">
+                <p class="logout__text">
+                    Are you sure you want to go out?
+                </p>
+                <div class="logout__buttons">
+                    <button class="logout__button" type="button" id="logout_yes">Yes</button>
+                    <button class="logout__button" type="button" id="logout_no">No</button>
+                </div>
             </div>
+
         </dialog>
 
     </div>
