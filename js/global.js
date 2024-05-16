@@ -291,7 +291,7 @@ html.addEventListener('click', e => {
 		addJoinedUser()
 	}
 
-	/* Sign up admin */
+	/* Sign in admin */
 	if (e.target.closest('#signUp-submit')) {
 		e.preventDefault()
 		signUpAdmin()
