@@ -12,10 +12,10 @@ const bookAbout = document.querySelector('.bookAbout')
 const bookImage = document.querySelector('.bookImage')
 const bookCategory = document.querySelector('.bookCategory')
 
-getBooks('', localStorage.getItem('bookId'))
+getBooks('', localStorage.getItem('bookTitle'))
 	.then(data => {
 		const book = data.items[0].volumeInfo
-
+		console.log(book)
 		if (data) {
 			if (book.publishedDate) {
 				bookDate.textContent = book.publishedDate
@@ -27,7 +27,7 @@ getBooks('', localStorage.getItem('bookId'))
 				bookAuthor.textContent = book.authors.join(', ')
 			}
 			if (book.description) {
-				bookAbout.textContent = book.description
+				bookAbout.textContent = book.description.length > 400 ? book.description.slice(0, 400) + '...' : book.description
 			}
 			if (book.imageLinks && book.imageLinks.thumbnail) {
 				bookImage.src = book.imageLinks.thumbnail

@@ -9,6 +9,9 @@
 	--crimson: 'Crimson Text';
 	--mont: 'Montserrat';
 	--preah: 'Preahvihear';
+	/* scrollbar-width: thin; */
+	scrollbar-color: var(--orange) #e0e0e0;
+    scrollbar-width: thin;
 }
 
 body {
@@ -208,7 +211,7 @@ textarea {
 		border: none;
 		transform: translate(-50%, -50%) scale(1);
 		border-radius: 0;
-		z-index: 999;
+		z-index: 100;
 		visibility: visible;
 	}
 }
@@ -374,9 +377,145 @@ textarea {
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	background: var(--orange);
+	box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
+}
+/* ========================================== */
+
+.signUp {
+	border: none;
+	width: 100%;
+	background-color: transparent;
+	position: absolute;
+	left: 50vw;
+	top: 50vh;
+	transform: translate(-50%, -50%);
+	max-width: 700px;
+	&::backdrop {
+		background: rgba(0, 0, 0, 0.8);
+		backdrop-filter: blur(5px);
+		transition: all 1s ease 0s;
+	}
+}
+
+.signUp__content {
+	max-width: 700px;
+	width: 100%;
+
+	border-radius: 20px;
+	padding: 100px 40px 30px;
+	background-color: var(--red);
+	color: var(--background);
+	& * {
+		color: inherit;
+	}
+}
+.signUp__message {
+	position: absolute;
+	top: 0;
+	display: block;
+	opacity: 0;
+	left: 50%;
+	transform: translate(-50%, 0px) scale(1);
+	font-size: 24px;
+	color: rgb(19, 216, 19);
+	background-color: #262626;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	padding: 25px 20px;
+	text-align: center;
+	transition: all 1s ease 0s;
+	.modal_closed & {
+		opacity: 1;
+		transform: translate(-50%, 0px) scale(1);
+	}
+}
+.signUp__title {
+	text-align: center;
+	font-size: 32px;
+	margin-bottom: 40px;
+}
+.signUp__form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.signUp__label {
+	width: 100%;
+}
+.signUp__input {
+	padding: 20px;
+	transition: all 0.3s ease 0s;
+	display: block;
+	width: 100%;
+	border-radius: 10px;
+	border: 5px solid var(--red);
+	outline: none;
+	color: var(--text);
+	font-size: 20px;
+	&::placeholder {
+		font-size: 16px;
+	}
+	&:focus {
+		border: 5px solid var(--orange);
+	}
+}
+
+.signUp__login-message,
+.signUp__password-message,
+.signUp__email-message {
+	padding-left: 20px;
+	transition: opacity 0.3s ease 0s;
+	display: block;
+	font-size: 14px;
+	opacity: 0;
+	color: gold;
+	height: 0;
+	&.error {
+		height: auto;
+
+		opacity: 1;
+	}
+}
+
+.signUp__button {
+	padding: 20px;
+	margin-top: 20px;
+	border-radius: 15px;
+	padding-block: 20px;
+	font-weight: 700;
+	font-size: 20px;
+	animation-delay: 0.5s;
+}
+
+.signUp__text {
+	margin-block: 10px;
+	text-align: center;
+	font-size: 18px;
+}
+.signUp__link {
+	text-align: center;
+	display: block;
+	border-radius: 15px;
+	padding-block: 20px;
+	font-weight: 700;
+	font-size: 20px;
+	animation-delay: 0.5s;
+}
+
+dialog[open] {
+	animation: show 1s ease normal;
+}
+
+@keyframes show {
+	from {
+		transform: translate(-50%, -110%);
+	}
+	to {
+		transform: translate(-50%, -50%);
+	}
 }
