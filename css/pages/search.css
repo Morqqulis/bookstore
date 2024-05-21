@@ -155,6 +155,7 @@
 .btn {
 	width: calc(100% - 90px);
 	height: 40px;
+	transition: all 0.3s ease 0s;
 	margin-right: 5px;
 }
 .form-control {
@@ -189,6 +190,7 @@
 
 /* ========================================== */
 .swiper-slide {
+	cursor: pointer;
 }
 .swiper-zoom-container {
 	justify-content: start;
@@ -265,3 +267,5 @@
 		display: none;
 	}
 }
+
+/* =========================== */

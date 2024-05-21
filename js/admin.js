@@ -282,4 +282,5 @@ const setSignedAdminName = () => {
 	if (!sessionStorage.getItem('adminName')) return
 	document.getElementById('adminUsername').textContent = sessionStorage.getItem('adminName')
 }
+
 setSignedAdminName()

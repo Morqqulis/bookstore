@@ -70,6 +70,8 @@ export const getBooks = async (genre = '', id = '') => {
 // Global variables
 const html = document.documentElement
 const modal = document.getElementById('modal')
+const signUpModal = document.getElementById('signUp')
+const signUpSubmit = document.getElementById('signUp-submit')
 const header = document.querySelector('.header')
 const navLinks = document.querySelectorAll('.header__menu-link')
 /* ============Global Functions============ */
@@ -92,16 +94,6 @@ const handleCloseMenuByEsc = e => {
 	}
 }
 /* ---------------------------------------------------------- */
-// Show message with animation
-function showMessage(messageElement, messageText) {
-	messageElement.textContent = messageText
-	messageElement.classList.add('show')
-}
-
-// Hide message with animation
-function hideMessage(messageElement) {
-	messageElement.classList.remove('show')
-}
 
 /* Add joined user to DB */
 const addJoinedUser = async () => {
@@ -181,8 +173,6 @@ const addClassNameToHTML = className => {
 	html.classList.add(`${className}`)
 }
 
-/* =====================Event Listeners=========================== */
-
 /* Close menu on resize */
 window.addEventListener('resize', closeMenuOnResize)
 /*------------------------------------------------------------ */
@@ -193,7 +183,79 @@ document.addEventListener('keydown', e => {
 	handleCloseMenuByEsc(e)
 })
 
-/* ----------------------------------------------------------- */
+/* -----------------------SignUp------------------------------------ */
+
+const setErrorToMessage = selector => {
+	selector.classList.add('error')
+}
+const validateLogin = (loginValue, loginMessage) => {
+	if (!validator.isAlphanumeric(loginValue) || !validator.isLength(loginValue, { min: 4, max: 20 })) {
+		setErrorToMessage(loginMessage)
+		return false
+	}
+	return true
+}
+
+const validateEmail = (emailValue, emailMessage) => {
+	if (!validator.isEmail(emailValue)) {
+		setErrorToMessage(emailMessage)
+		return false
+	}
+	return true
+}
+
+const validatePassword = (passwordValue, passwordMessage) => {
+	if (!validator.isStrongPassword(passwordValue)) {
+		setErrorToMessage(passwordMessage)
+		return false
+	}
+	return true
+}
+
+const signUpAdmin = () => {
+	const loginValue = document.getElementById('signUp-login').value
+	const emailValue = document.getElementById('signUp-email').value
+	const passwordValue = document.getElementById('signUp-password').value
+
+	const loginMessage = document.querySelector('.signUp__login-message')
+	const emailMessage = document.querySelector('.signUp__email-message')
+	const passwordMessage = document.querySelector('.signUp__password-message')
+
+	if (!validateLogin(loginValue, loginMessage) || !validateEmail(emailValue, emailMessage) || !validatePassword(passwordValue, passwordMessage)) {
+		return
+	}
+
+	getDBData('/users').then(data => {
+		const users = Object.values(data).filter(user => user.role === 'admin')
+		if (users.some(user => user.email === emailValue)) {
+			setErrorToMessage(emailMessage)
+			return
+		}
+
+		if (users.some(user => user.login === loginValue)) {
+			setErrorToMessage(loginMessage)
+			return
+		}
+	})
+
+	const newUser = {
+		login: loginValue,
+		email: emailValue,
+		password: passwordValue,
+		role: 'admin',
+	}
+
+	pushDBData('/users', newUser)
+
+	signUpModal.classList.add('modal_closed')
+
+	setTimeout(() => {
+		signUpModal.close()
+		signUpModal.classList.remove('modal_closed')
+	}, 3000)
+}
+
+/* =====================Event Listeners=========================== */
 
 html.addEventListener('click', e => {
 	/* Open || Close Modal */
@@ -213,12 +275,26 @@ html.addEventListener('click', e => {
 		removeClassNameFromHTML('menu-open')
 	}
 
+	/* Sign up */
+	if (e.target.closest('#register')) {
+		signUpModal.showModal()
+	}
+	if (e.target === signUpModal) {
+		signUpModal.close()
+	}
+
 	/* Set active genre for catalog page */
 	if (e.target.closest('.catalog__link')) localStorage.setItem('genre', e.target.textContent)
 
 	/* Add joined user */
 	if (e.target.closest('#join-submit')) {
 		addJoinedUser()
+	}
+
+	/* Sign in admin */
+	if (e.target.closest('#signUp-submit')) {
+		e.preventDefault()
+		signUpAdmin()
 	}
 })
 
@@ -243,4 +319,3 @@ document.addEventListener('DOMContentLoaded', () => {
 	})
 	wow.init()
 })
-/* ----------------------------------------------------------- */

@@ -53,9 +53,8 @@
 
                     </ul>
 
-
                     <div class="header__actions wow animate__animated animate__backInDown">
-                        <button class="header__action" type='button' title="button">
+                        <button class="header__action" id='register' type='button' title="button">
                             <svg class='header__action-icon' width="17.000000" height="21.000000" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg"
                                  xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <defs />
@@ -257,6 +256,33 @@
                 </form>
             </div>
         </dialog>
+
+        <dialog class="signUp" id='signUp'>
+            <div class="signUp__content">
+                <span class="signUp__message">Welcome to the library</span>
+                <h3 class="signUp__title title">Registration</h3>
+                <form class="signUp__form" action="#">
+                    <label class="signUp__label">
+                        <input class="signUp__input" id='signUp-login' type="text" name='login' placeholder='Login' autocomplete='username'>
+                        <span class="signUp__login-message">Login must be at least 3 characters long</span>
+                    </label>
+                    <label class="signUp__label">
+                        <input class="signUp__input" id='signUp-email' type="email" name='Email' autocomplete='email' placeholder='Email'>
+                        <span class="signUp__email-message">Please enter a valid email address</span>
+                    </label>
+                    <label class="signUp__label">
+                        <input class="signUp__input" id='signUp-password' type="password" name='Password' autocomplete='current-password' placeholder='Password'>
+                        <span class="signUp__password-message">
+                            Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number and one special character
+                        </span>
+                    </label>
+                    <button class="signUp__button btn wow animate__bounceIn" id='signUp-submit' type="submit" title="signUp button">Register</button>
+                </form>
+                <p class='signUp__text'>Already have an account?</p>
+                <a class="signUp__link btn wow animate__bounceIn" href="adminLogin.html"> Log in</a>
+            </div>
+        </dialog>
+
     </div>
 
 

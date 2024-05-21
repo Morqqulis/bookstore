@@ -107,6 +107,9 @@
 	gap: 8px;
 	width: fit-content;
 	align-items: center;
+	span {
+		text-transform: capitalize;
+	}
 }
 
 .title {
@@ -168,7 +171,7 @@ section form div label {
 		width: 63px;
 		border-radius: 50px;
 		background-color: #ff8b00;
-		transition: all 0.3s ease 0s;   
+		transition: all 0.3s ease 0s;
 		/* display: none; */
 		&:hover {
 			background-color: #adadad;

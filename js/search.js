@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
 	const swiper = new Swiper('.swiper', {
 		slidesPerView: 1,
 		effect: 'fade',
-		autoHeight: true,
 		observer: true,
 		observeParents: true,
 
